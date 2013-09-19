@@ -4,13 +4,14 @@
  */
 package Aula;
 
+import calendario.Interface;
 import java.util.List;
 
 /**
  *
  * @author GeOrge
  */
-public class Laboratorio extends Aula{
+public class Laboratorio extends Aula implements Interface {
     
     private List<String> equipo;
     

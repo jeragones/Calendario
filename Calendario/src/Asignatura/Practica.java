@@ -4,19 +4,20 @@
  */
 package Asignatura;
 
-import java.util.List;
+import calendario.Interface;
+import java.util.ArrayList;
 
 /**
  *
  * @author GeOrge
  */
-public class Practica extends Asignatura{
+public class Practica extends Asignatura implements Interface {
     
     private String sistema;
-    private List<String> material;
+    private ArrayList<String> material = new ArrayList<>();
     
-    public Practica(String _nombre, int _grupo, int _semestre, int _creditos, /*Departamento _departamento, */boolean _tipo, String _sistema) {
-        super(_nombre, _grupo, _semestre, _creditos, _tipo);
+    public Practica(String _codigo, String _nombre, int _grupo, int _semestre, int _creditos, String _sistema) {
+        super(_codigo, _nombre, _grupo, _semestre, _creditos);
         sistema = _sistema;
     }
     

@@ -4,11 +4,13 @@
  */
 package Usuario;
 
+import calendario.Interface;
+
 /**
  *
  * @author GeOrge
  */
-public class Estudiante extends Usuario {
+public class Estudiante extends Usuario implements Interface {
     
     private String carne;
     

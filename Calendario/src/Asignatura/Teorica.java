@@ -4,16 +4,18 @@
  */
 package Asignatura;
 
+import calendario.Interface;
+
 /**
  *
  * @author GeOrge
  */
-public class Teorica extends Asignatura{
+public class Teorica extends Asignatura implements Interface {
     
     private String pagina;
     
-    public Teorica(String _nombre, int _grupo, int _semestre, int _creditos, /*Departamento _departamento, */boolean _tipo, String _pagina) {
-        super(_nombre, _grupo, _semestre, _creditos, _tipo);
+    public Teorica(String _codigo, String _nombre, int _grupo, int _semestre, int _creditos, String _pagina) {
+        super(_codigo, _nombre, _grupo, _semestre, _creditos);
         pagina = _pagina;
     }
 }

@@ -4,7 +4,8 @@
  */
 package Aula;
 
-import java.util.List;
+import Horario.Dia;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,13 +17,17 @@ public abstract class Aula {
     private int numero;
     private String ubicacion;
     private int capacidad;
-    //private List<Dia> horario;
+    private ArrayList<Dia> horario = new ArrayList<>();
     
     public Aula(String _nombre, int _numero, String _ubicacion, int _capacidad) {
         nombre = _nombre;
         numero = _numero;
         ubicacion = _ubicacion;
         capacidad = _capacidad;
+    }
+    
+    public void agregar(Dia _horario) {
+        horario.add(_horario);
     }
     
     public abstract void agregar(String objeto);

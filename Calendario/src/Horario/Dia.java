@@ -4,6 +4,7 @@
  */
 package Horario;
 
+import Aula.Aula;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class Dia {
     
     private String dia;
     private List<Horario> horario;
+    private Aula aula;
     
     public Dia(String _dia) {
         dia = _dia;
@@ -21,5 +23,9 @@ public class Dia {
     
     public void agregar(Horario _horario) {
         horario.add(_horario);
+    }
+    
+    public void agregar(Aula _aula) {
+        aula = _aula;
     }
 }

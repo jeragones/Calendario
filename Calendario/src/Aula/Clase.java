@@ -4,13 +4,14 @@
  */
 package Aula;
 
+import calendario.Interface;
 import java.util.List;
 
 /**
  *
  * @author GeOrge
  */
-public class Clase extends Aula {
+public class Clase extends Aula implements Interface {
     
     private boolean acondicionado;
     private List<String> multimedia;
