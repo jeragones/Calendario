@@ -5,6 +5,7 @@
 package Aula;
 
 import calendario.Interface;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 public class Clase extends Aula implements Interface {
     
     private boolean acondicionado;
-    private List<String> multimedia;
+    private ArrayList<String> multimedia = new ArrayList<>();
     
     public Clase(String _nombre, int _numero, String _ubicacion, int _capacidad, boolean _acondicionado) {
         super(_nombre, _numero, _ubicacion, _capacidad);

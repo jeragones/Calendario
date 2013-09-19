@@ -24,7 +24,7 @@ public class Departamento implements Interface {
         asignatura.add(_asignatura);
     }
     
-    public List<Asignatura> asignaturas() {
+    public ArrayList<Asignatura> asignaturas() {
         return asignatura;
     }
 }

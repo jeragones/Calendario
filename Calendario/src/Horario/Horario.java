@@ -10,18 +10,14 @@ import Aula.Aula;
  *
  * @author GeOrge
  */
-public class Horario {
+public class Horario extends Dia{
     
     private String horaInicio;
     private String horaFinal;
-    private Aula aula;
     
-    public Horario(String _inicio, String _final) {
+    public Horario(String _dia, String _inicio, String _final) {
+        super(_dia);
         horaInicio = _inicio;
         horaFinal = _final;
-    }
-    
-    public void agregar(Aula _aula) {
-        aula = _aula;
     }
 }

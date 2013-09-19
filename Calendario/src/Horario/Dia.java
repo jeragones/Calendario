@@ -5,6 +5,7 @@
 package Horario;
 
 import Aula.Aula;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 public class Dia {
     
     private String dia;
-    private List<Horario> horario;
+    private ArrayList<Horario> horario = new ArrayList<>();
     private Aula aula;
     
     public Dia(String _dia) {

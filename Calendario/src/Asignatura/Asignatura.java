@@ -4,7 +4,6 @@
  */
 package Asignatura;
 
-import Aula.Aula;
 import Horario.Dia;
 import java.util.ArrayList;
 
