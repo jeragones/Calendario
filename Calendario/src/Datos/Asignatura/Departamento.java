@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Asignatura;
-import Usuario.Profesor;
-import calendario.Interface;
+package Datos.Asignatura;
+
+import Datos.Usuario.Profesor;
+import Datos.calendario.Interface;
 import java.util.ArrayList;
 
 /**
@@ -20,6 +21,14 @@ public class Departamento implements Interface {
     public Departamento(String _departamento) {
         departamento = _departamento;
     }
+    
+    public ArrayList<Asignatura> getAsignatura() {
+        return asignatura;
+    }
+
+    public ArrayList<Profesor> getProfesor() {
+        return profesor;
+    }
 
     public String getDepartamento() {
         return departamento;
@@ -29,7 +38,7 @@ public class Departamento implements Interface {
         asignatura.add(_asignatura);
     }
     
-    public ArrayList<Asignatura> asignaturas() {
-        return asignatura;
+    public void agregar(Profesor _profesor) {
+        profesor.add(_profesor);
     }
 }

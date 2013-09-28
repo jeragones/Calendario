@@ -2,12 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Usuario;
+package Datos.Usuario;
 
-import Asignatura.Asignatura;
-import Aula.Aula;
-import Horario.Dia;
-import calendario.Interface;
+import Datos.Asignatura.Asignatura;
+import Datos.Horario.Dia;
+import Datos.calendario.Interface;
 import java.util.ArrayList;
 
 /**

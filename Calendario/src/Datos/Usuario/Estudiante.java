@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Usuario;
+package Datos.Usuario;
 
-import calendario.Interface;
+import Datos.calendario.Interface;
 
 /**
  *

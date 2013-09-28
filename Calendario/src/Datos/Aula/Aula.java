@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Aula;
+package Datos.Aula;
 
-import Horario.Dia;
+import Datos.Horario.Dia;
 import java.util.ArrayList;
 
 /**

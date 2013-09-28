@@ -2,22 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Horario;
+package Datos.Horario;
 
-import Aula.Aula;
+import Datos.Aula.Aula;
 
 /**
  *
  * @author GeOrge
  */
-public class Horario extends Dia{
+public class Horario {
     
     private String horaInicio;
     private String horaFinal;
     private boolean estado;
     
-    public Horario(String _dia, String _inicio, String _final) {
-        super(_dia);
+    public Horario(String _inicio, String _final) {
         horaInicio = _inicio;
         horaFinal = _final;
         estado = true;

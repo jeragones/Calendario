@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Horario;
+package Datos.Horario;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class Dia {
     
     private String dia;
-    private ArrayList<Horario> horario = new ArrayList<>();
+    private List<Horario> horario = new ArrayList<>();
     
     public Dia(String _dia) {
         dia = _dia;
@@ -23,7 +24,7 @@ public class Dia {
         return dia;
     }
 
-    public ArrayList<Horario> getHorario() {
+    public List<Horario> getHorario() {
         return horario;
     }
     
