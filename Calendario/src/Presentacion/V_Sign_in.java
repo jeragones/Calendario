@@ -146,36 +146,57 @@ public class V_Sign_in extends javax.swing.JFrame {
         String user=(String)usuarioTipo.getSelectedItem();
         switch (user){
             case "Coordinator":
-                for(int i=0; i<listas.getCoordinador().size();i++){
-            if(listas.getCoordinador().get(i).getUsuario().equals(userName)&&listas.getCoordinador().get(i).getContrasena().equals(userPassword)){
-                        this.setVisible(false);
-            }
-            else{
-                System.out.println("no Funco");
-            }
-        }
-            case "Student":
-                for(int i=0; i<listas.getEstudiante().size();i++){
-            if(listas.getEstudiante().get(i).getUsuario().equals(userName)&&listas.getEstudiante().get(i).getContrasena().equals(userPassword)){
-                        this.setVisible(false);
-            }
-            else{
-                System.out.println("no Funco");
-            }
+                if (listas.getCoordinador()!=null){
+                    
+                    
+                    for(int i=0; i<listas.getCoordinador().size();i++){
+                if(listas.getCoordinador().get(i).getUsuario().equals(userName)&&listas.getCoordinador().get(i).getContrasena().equals(userPassword)){
+                            this.setVisible(false);
+                            new V_Coordinador().show();
                 }
-                
-            case "Teacher":
-                for(int i=0; i<listas.getProfesor().size();i++){
-            if(listas.getProfesor().get(i).getUsuario().equals(userName)&&listas.getProfesor().get(i).getContrasena().equals(userPassword)){
-                        this.setVisible(false);
+                else{
+                    new V_Aviso().show();
+                    }
             }
-            else{
-                System.out.println("no Funco");
-            } 
-                } 
-                
-        
         }
+                else{
+                    
+                }
+            case "Student":
+                if (listas.getEstudiante()!=null){
+                    for(int i=0; i<listas.getEstudiante().size();i++){
+                if(listas.getEstudiante().get(i).getUsuario().equals(userName)&&listas.getEstudiante().get(i).getContrasena().equals(userPassword)){
+                            this.setVisible(false);
+
+                }
+                else{
+                    new V_Aviso().show();
+
+                }
+                    }
+                }
+                else{
+                    
+                }
+
+            case "Teacher":
+                if(listas.getProfesor()!=null){
+                    for(int i=0; i<listas.getProfesor().size();i++){
+                if(listas.getProfesor().get(i).getUsuario().equals(userName)&&listas.getProfesor().get(i).getContrasena().equals(userPassword)){
+                            this.setVisible(false);
+                }
+                else{
+                    new V_Aviso().show();} 
+                    } 
+                }
+                else{
+                    
+                }
+
+
+        }
+        txtPassword.setText("");
+        txtUser.setText("");
         
         
         
