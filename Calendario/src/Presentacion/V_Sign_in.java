@@ -146,58 +146,54 @@ public class V_Sign_in extends javax.swing.JFrame {
         String user=(String)usuarioTipo.getSelectedItem();
         switch (user){
             case "Coordinator":
-                if (listas.getCoordinador()!=null){
-                    
-                    
+                if (!listas.getCoordinador().isEmpty()){
                     for(int i=0; i<listas.getCoordinador().size();i++){
-                if(listas.getCoordinador().get(i).getUsuario().equals(userName)&&listas.getCoordinador().get(i).getContrasena().equals(userPassword)){
-                            this.setVisible(false);
-                            new V_Coordinador().show();
-                }
-                else{
-                    new V_Aviso().show();
+                        if(listas.getCoordinador().get(i).getUsuario().equals(userName)&&listas.getCoordinador().get(i).getContrasena().equals(userPassword)){
+                                this.setVisible(false);
+                                new V_Coordinador().show();
                     }
-            }
-        }
-                else{
-                    
+                    else{
+                        new V_Aviso().show();
+                        }
+                    }
                 }
+                else{
+                    new V_Aviso_Listas_Vacias().show();
+                }
+                break;
             case "Student":
-                if (listas.getEstudiante()!=null){
+                if (!listas.getEstudiante().isEmpty()){
                     for(int i=0; i<listas.getEstudiante().size();i++){
-                if(listas.getEstudiante().get(i).getUsuario().equals(userName)&&listas.getEstudiante().get(i).getContrasena().equals(userPassword)){
-                            this.setVisible(false);
-
-                }
-                else{
-                    new V_Aviso().show();
-
-                }
+                        if(listas.getEstudiante().get(i).getUsuario().equals(userName)&&listas.getEstudiante().get(i).getContrasena().equals(userPassword)){
+                                    this.setVisible(false);
+                        }
+                        else{
+                            new V_Aviso().show();
+                        }
                     }
                 }
                 else{
-                    
+                    new V_Aviso_Listas_Vacias().show();
                 }
-
+                break;
             case "Teacher":
-                if(listas.getProfesor()!=null){
+                if(!listas.getProfesor().isEmpty()){
                     for(int i=0; i<listas.getProfesor().size();i++){
-                if(listas.getProfesor().get(i).getUsuario().equals(userName)&&listas.getProfesor().get(i).getContrasena().equals(userPassword)){
-                            this.setVisible(false);
+                        if(listas.getProfesor().get(i).getUsuario().equals(userName)&&listas.getProfesor().get(i).getContrasena().equals(userPassword)){
+                                    this.setVisible(false);
+                        }
+                        else{
+                            new V_Aviso().show();} 
+                        } 
+                    }
+                else {
+                    new V_Aviso_Listas_Vacias().show();
                 }
-                else{
-                    new V_Aviso().show();} 
-                    } 
-                }
-                else{
-                    
-                }
-
-
+                break;
         }
         txtPassword.setText("");
         txtUser.setText("");
-        
+        System.out.println(user);
         
         
       
