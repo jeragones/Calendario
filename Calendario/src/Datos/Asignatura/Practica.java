@@ -19,6 +19,14 @@ public class Practica extends Asignatura {
         super(_codigo, _nombre, _grupo, _semestre, _creditos);
         sistema = _sistema;
     }
+
+    public String getSistema() {
+        return sistema;
+    }
+
+    public ArrayList<String> getMaterial() {
+        return material;
+    }
     
     public void agregar(String _material) {
         material.add(_material);

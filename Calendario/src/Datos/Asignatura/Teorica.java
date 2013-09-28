@@ -16,4 +16,8 @@ public class Teorica extends Asignatura {
         super(_codigo, _nombre, _grupo, _semestre, _creditos);
         pagina = _pagina;
     }
+
+    public String getPagina() {
+        return pagina;
+    }
 }
