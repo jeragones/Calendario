@@ -4,14 +4,13 @@
  */
 package Datos.Aula;
 
-import Datos.calendario.Interface;
 import java.util.ArrayList;
 
 /**
  *
  * @author GeOrge
  */
-public class Clase extends Aula implements Interface {
+public class Clase extends Aula {
     
     private boolean acondicionado;
     private ArrayList<String> multimedia = new ArrayList<>();

@@ -4,14 +4,13 @@
  */
 package Datos.Asignatura;
 
-import Datos.calendario.Interface;
 import java.util.ArrayList;
 
 /**
  *
  * @author GeOrge
  */
-public class Practica extends Asignatura implements Interface {
+public class Practica extends Asignatura {
     
     private String sistema;
     private ArrayList<String> material = new ArrayList<>();

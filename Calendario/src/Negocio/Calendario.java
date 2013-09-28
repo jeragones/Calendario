@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Datos.calendario;
+package Negocio;
 
 import Datos.Asignatura.Departamento;
 import Datos.Asignatura.Practica;
@@ -47,7 +47,7 @@ public class Calendario {
     }
     
     protected void profesores1() {
-        for(int i=0; i<profesores.size();i++) {
+        for(int i=0; i<profesores.size(); i++) {
             Dia d1 = new Dia("Lunes");
             d1.agregar(new Horario("7:00", "11:30"));
             d1.agregar(new Horario("12:30", "4:00"));

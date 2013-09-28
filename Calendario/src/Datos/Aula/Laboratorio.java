@@ -3,16 +3,13 @@
  * and open the template in the editor.
  */
 package Datos.Aula;
-
-import Datos.Aula.Aula;
-import Datos.calendario.Interface;
 import java.util.List;
 
 /**
  *
  * @author GeOrge
  */
-public class Laboratorio extends Aula implements Interface {
+public class Laboratorio extends Aula {
     
     private List<String> equipo;
     

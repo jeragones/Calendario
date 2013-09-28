@@ -6,14 +6,13 @@ package Datos.Usuario;
 
 import Datos.Asignatura.Asignatura;
 import Datos.Horario.Dia;
-import Datos.calendario.Interface;
 import java.util.ArrayList;
 
 /**
  *
  * @author GeOrge
  */
-public class Profesor extends Usuario implements Interface {
+public class Profesor extends Usuario {
     
     private String cedula;
     private ArrayList<Dia> horario = new ArrayList<>();

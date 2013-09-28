@@ -5,14 +5,13 @@
 package Datos.Asignatura;
 
 import Datos.Usuario.Profesor;
-import Datos.calendario.Interface;
 import java.util.ArrayList;
 
 /**
  *
  * @author GeOrge
  */
-public class Departamento implements Interface {
+public class Departamento {
 
     private String departamento;
     private ArrayList<Asignatura> asignatura = new ArrayList<>(); 

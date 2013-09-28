@@ -4,13 +4,11 @@
  */
 package Datos.Asignatura;
 
-import Datos.calendario.Interface;
-
 /**
  *
  * @author GeOrge
  */
-public class Teorica extends Asignatura implements Interface {
+public class Teorica extends Asignatura {
     
     private String pagina;
     

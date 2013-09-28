@@ -4,13 +4,11 @@
  */
 package Datos.Usuario;
 
-import Datos.calendario.Interface;
-
 /**
  *
  * @author GeOrge
  */
-public class Coordinador extends Usuario implements Interface {
+public class Coordinador extends Usuario {
     
     public Coordinador(String _nombre, String _usuario, String _contrasena) {
         super(_nombre, _usuario, _contrasena);
