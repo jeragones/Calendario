@@ -13,23 +13,23 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Usuario extends Main{
+public class Usuario implements Main{
 
     private ArrayList<Coordinador> coordinador = new ArrayList<>();
     private ArrayList<Profesor> profesor = new ArrayList<>();
     private ArrayList<Estudiante> estudiante = new ArrayList<>();
     
     @Override
-    public void insertar(Object[] args, int op) {
+    public void insertar(Object args, int op) {
         switch(op) {
             case 1:
-                coordinador.add(new Coordinador(args[0].toString(),args[1].toString(),args[2].toString()));
+                coordinador.add((Coordinador)args);
                 break;
             case 2:
-                profesor.add(new Profesor(args[0].toString(),args[1].toString(),args[2].toString(),args[3].toString()));
+                profesor.add((Profesor)args);
                 break;
             case 3:
-                estudiante.add(new Estudiante(args[0].toString(),args[1].toString(),args[2].toString(),args[3].toString()));
+                estudiante.add((Estudiante)args);
                 break;
         }
     }

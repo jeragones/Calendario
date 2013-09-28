@@ -8,7 +8,7 @@ package Negocio;
  *
  * @author GeOrge
  */
-public abstract class Main {
+public interface Main {
     
-    public abstract void insertar(Object[] args, int op);
+    public abstract void insertar(Object args, int op);
 }

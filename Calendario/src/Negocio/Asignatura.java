@@ -12,19 +12,19 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Asignatura extends Main{
+public class Asignatura implements Main{
     
     private ArrayList<Practica> practica = new ArrayList<>();
     private ArrayList<Teorica> teorica = new ArrayList<>();
     
     @Override
-    public void insertar(Object[] args, int op) {
+    public void insertar(Object args, int op) {
         switch(op) {
             case 1:
-                practica.add(new Practica((String)args[0], (String)args[1], (int)args[2], (int)args[3], (int)args[4], (String)args[5]));
+                practica.add((Practica)args);
                 break;
             case 2:
-                teorica.add(new Teorica((String)args[0], (String)args[1], (int)args[2], (int)args[3], (int)args[4], (String)args[5]));
+                teorica.add((Teorica)args);
                 break;
         }
     }
