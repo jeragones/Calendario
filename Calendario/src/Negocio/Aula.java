@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class Aula implements Main{
 
-    private ArrayList<Clase> clase = new ArrayList<>();
-    private ArrayList<Laboratorio> laboratorio = new ArrayList<>();
+    private static ArrayList<Clase> clase = new ArrayList<>();
+    private static ArrayList<Laboratorio> laboratorio = new ArrayList<>();
     
     @Override
     public void insertar(Object args, int op) {

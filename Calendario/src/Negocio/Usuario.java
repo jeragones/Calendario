@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 public class Usuario implements Main{
 
-    private ArrayList<Coordinador> coordinador = new ArrayList<>();
-    private ArrayList<Profesor> profesor = new ArrayList<>();
-    private ArrayList<Estudiante> estudiante = new ArrayList<>();
+    private static ArrayList<Coordinador> coordinador = new ArrayList<>();
+    private static ArrayList<Profesor> profesor = new ArrayList<>();
+    private static ArrayList<Estudiante> estudiante = new ArrayList<>();
     
     @Override
     public void insertar(Object args, int op) {

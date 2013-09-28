@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class Asignatura implements Main{
     
-    private ArrayList<Practica> practica = new ArrayList<>();
-    private ArrayList<Teorica> teorica = new ArrayList<>();
+    private static ArrayList<Practica> practica = new ArrayList<>();
+    private static ArrayList<Teorica> teorica = new ArrayList<>();
     
     @Override
     public void insertar(Object args, int op) {

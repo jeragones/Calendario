@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Departamentos implements Main{
     
-    private ArrayList<Departamento> departamento = new ArrayList<>();
+    private static ArrayList<Departamento> departamento = new ArrayList<>();
 
     @Override
     public void insertar(Object args, int op) {
