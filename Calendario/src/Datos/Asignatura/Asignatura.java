@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public abstract class Asignatura {
+public class Asignatura {
     
     private String codigo;
     private String nombre;
