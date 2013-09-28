@@ -7,6 +7,8 @@ package Presentacion;
 import Datos.Asignatura.Departamento;
 import Datos.Asignatura.Practica;
 import Datos.Asignatura.Teorica;
+import Negocio.*;
+import Datos.Usuario.*;
 import Datos.Aula.Aula;
 import Datos.Aula.Clase;
 import Datos.Aula.Laboratorio;
@@ -23,6 +25,7 @@ public class V_Sign_in extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     
+    Negocio.Usuario listas = new Negocio.Usuario();
     ArrayList<Departamento> departamentos = new ArrayList<>();
     ArrayList<Aula> aulas = new ArrayList<>();
     
@@ -141,6 +144,41 @@ public class V_Sign_in extends javax.swing.JFrame {
         String userName=txtUser.getText();
         String userPassword=txtPassword.getText();
         String user=(String)usuarioTipo.getSelectedItem();
+        switch (user){
+            case "Coordinator":
+                for(int i=0; i<listas.getCoordinador().size();i++){
+            if(listas.getCoordinador().get(i).getUsuario().equals(userName)&&listas.getCoordinador().get(i).getContrasena().equals(userPassword)){
+                        this.setVisible(false);
+            }
+            else{
+                System.out.println("no Funco");
+            }
+        }
+            case "Student":
+                for(int i=0; i<listas.getEstudiante().size();i++){
+            if(listas.getEstudiante().get(i).getUsuario().equals(userName)&&listas.getEstudiante().get(i).getContrasena().equals(userPassword)){
+                        this.setVisible(false);
+            }
+            else{
+                System.out.println("no Funco");
+            }
+                }
+                
+            case "Teacher":
+                for(int i=0; i<listas.getProfesor().size();i++){
+            if(listas.getProfesor().get(i).getUsuario().equals(userName)&&listas.getProfesor().get(i).getContrasena().equals(userPassword)){
+                        this.setVisible(false);
+            }
+            else{
+                System.out.println("no Funco");
+            } 
+                }
+                
+        
+        }
+        
+        
+        
       
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -150,6 +188,10 @@ public class V_Sign_in extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        Coordinador leo = new Coordinador("Leonardo Viquez","lviquez","1234");
+        
+        listas.getCoordinador().add(leo);
+        System.out.println(listas.getCoordinador().get(0).getClass().getSimpleName());
     }//GEN-LAST:event_formComponentShown
 
     /**
