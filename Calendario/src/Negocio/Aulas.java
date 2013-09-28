@@ -4,6 +4,7 @@
  */
 package Negocio;
 
+import Datos.Aula.Aula;
 import Datos.Aula.Clase;
 import Datos.Aula.Laboratorio;
 import java.util.ArrayList;
@@ -12,28 +13,34 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Aula implements Main{
+public class Aulas implements Main{
 
-    private static ArrayList<Clase> clase = new ArrayList<>();
-    private static ArrayList<Laboratorio> laboratorio = new ArrayList<>();
+    private static ArrayList<Aula> aula = new ArrayList<>();
+    /*private static ArrayList<Clase> clase = new ArrayList<>();
+    private static ArrayList<Laboratorio> laboratorio = new ArrayList<>();*/
     
     @Override
     public void insertar(Object args, int op) {
-        switch(op) {
+        aula.add((Aula)args);
+        /*switch(op) {
             case 1:
                 clase.add((Clase)args);
                 break;
             case 2:
                 laboratorio.add((Laboratorio)args);
                 break;
-        }
+        }*/
     }
 
-    public ArrayList<Clase> getClase() {
+    /*public ArrayList<Clase> getClase() {
         return clase;
     }
 
     public ArrayList<Laboratorio> getLaboratorio() {
         return laboratorio;
+    }*/
+
+    public static ArrayList<Aula> getAula() {
+        return aula;
     }
 }
