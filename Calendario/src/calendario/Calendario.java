@@ -10,7 +10,7 @@ import Asignatura.Teorica;
 import Aula.Aula;
 import Aula.Clase;
 import Aula.Laboratorio;
-import Interfaz.NewJFrame;
+import Interfaz.vPrincipal;
 import Usuario.Profesor;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class Calendario {
     
     
     public static void main(String[] args) {
-        new NewJFrame().show();
+        new vPrincipal().show();
     }
     
     protected  void profesores() {
