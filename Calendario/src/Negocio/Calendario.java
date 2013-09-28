@@ -28,8 +28,7 @@ public class Calendario {
      */
     
     List<Departamento> departamentos = new ArrayList<>();
-    List<Teorica> asignaturasT = new ArrayList<>();
-    List<Practica> asignaturasP = new ArrayList<>();
+    
     List<Aula> aulas = new ArrayList<>();
     List<Profesor> profesores = new ArrayList<>();
     List<Asignatura> asignaturas = new ArrayList<>();
@@ -207,44 +206,23 @@ public class Calendario {
     }
     
     protected void asignaturas1() {
-        for(int i=0; i<asignaturasP.size(); i++) {
+        for(int i=0; i<asignaturas.size(); i++) {
             Dia d1 = new Dia("Lunes");
             d1.agregar(new Horario("7:00", "11:30"));
             d1.agregar(new Horario("12:30", "4:00"));
-            asignaturasP.get(i).agregar(d1);
+            asignaturas.get(i).agregar(d1);
             Dia d2 = new Dia("Martes");
             d2.agregar(new Horario("7:00", "11:30"));
             d2.agregar(new Horario("12:30", "4:00"));
-            asignaturasP.get(i).agregar(d2);
+            asignaturas.get(i).agregar(d2);
             Dia d3 = new Dia("Miercoles");
             d3.agregar(new Horario("7:00", "11:30"));
             d3.agregar(new Horario("12:30", "4:00"));
-            asignaturasP.get(i).agregar(d3);
+            asignaturas.get(i).agregar(d3);
             Dia d4 = new Dia("Jueves");
             d4.agregar(new Horario("7:00", "11:30"));
             d4.agregar(new Horario("12:30", "4:00"));
-            asignaturasP.get(i).agregar(d4);
-            Dia d5 = new Dia("Viernes");
-            d5.agregar(new Horario("7:00", "11:30"));
-            d5.agregar(new Horario("12:30", "4:00"));
-        }
-        for(int i=0; i<asignaturasT.size(); i++) {
-            Dia d1 = new Dia("Lunes");
-            d1.agregar(new Horario("7:00", "11:30"));
-            d1.agregar(new Horario("12:30", "4:00"));
-            asignaturasT.get(i).agregar(d1);
-            Dia d2 = new Dia("Martes");
-            d2.agregar(new Horario("7:00", "11:30"));
-            d2.agregar(new Horario("12:30", "4:00"));
-            asignaturasT.get(i).agregar(d2);
-            Dia d3 = new Dia("Miercoles");
-            d3.agregar(new Horario("7:00", "11:30"));
-            d3.agregar(new Horario("12:30", "4:00"));
-            asignaturasT.get(i).agregar(d3);
-            Dia d4 = new Dia("Jueves");
-            d4.agregar(new Horario("7:00", "11:30"));
-            d4.agregar(new Horario("12:30", "4:00"));
-            asignaturasT.get(i).agregar(d4);
+            asignaturas.get(i).agregar(d4);
             Dia d5 = new Dia("Viernes");
             d5.agregar(new Horario("7:00", "11:30"));
             d5.agregar(new Horario("12:30", "4:00"));
@@ -252,6 +230,8 @@ public class Calendario {
     }
     
     public void ordenar() {
-        for(int x=0; x<)
+        for(int x=0; x<asignaturas.size(); x++) {
+            
+        }
     }
 }

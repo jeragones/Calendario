@@ -4,6 +4,7 @@
  */
 package Negocio;
 
+import Datos.Asignatura.Asignatura;
 import Datos.Asignatura.Practica;
 import Datos.Asignatura.Teorica;
 import java.util.ArrayList;
@@ -12,28 +13,32 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Asignatura implements Main{
+public class Asignaturas implements Main{
     
-    private static ArrayList<Practica> practica = new ArrayList<>();
-    private static ArrayList<Teorica> teorica = new ArrayList<>();
+    private static ArrayList<Asignatura> asignatura = new ArrayList<>();
     
     @Override
     public void insertar(Object args, int op) {
-        switch(op) {
+        asignatura.add((Asignatura)args);
+        /*switch(op) {
             case 1:
-                practica.add((Practica)args);
+                asignatura.add((Practica)args);
                 break;
             case 2:
-                teorica.add((Teorica)args);
+                asignatura.add((Teorica)args);
                 break;
-        }
+        }*/
     }
 
-    public ArrayList<Practica> getPractica() {
+    /*public ArrayList<Practica> getPractica() {
         return practica;
     }
 
     public ArrayList<Teorica> getTeorica() {
         return teorica;
+    }*/
+
+    public static ArrayList<Asignatura> getAsignatura() {
+        return asignatura;
     }
 }
