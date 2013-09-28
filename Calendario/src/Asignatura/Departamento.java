@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package Asignatura;
+import Usuario.Profesor;
 import calendario.Interface;
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public class Departamento implements Interface {
 
     private String departamento;
     private ArrayList<Asignatura> asignatura = new ArrayList<>(); 
+    private ArrayList<Profesor> profesor = new ArrayList<>(); 
     
     public Departamento(String _departamento) {
         departamento = _departamento;

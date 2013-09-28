@@ -30,7 +30,8 @@ public class Calendario {
     
     
     public static void main(String[] args) {
-        new vPrincipal().show();
+        
+        //new vPrincipal().show();
     }
     
     protected  void profesores() {
