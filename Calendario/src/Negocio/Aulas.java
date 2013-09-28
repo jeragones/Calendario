@@ -13,14 +13,14 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Aulas implements Main{
+public class Aulas implements Interface{
 
     private static ArrayList<Aula> aula = new ArrayList<>();
     /*private static ArrayList<Clase> clase = new ArrayList<>();
     private static ArrayList<Laboratorio> laboratorio = new ArrayList<>();*/
     
     @Override
-    public void insertar(Object args, int op) {
+    public void insertar(Object args) {
         aula.add((Aula)args);
         /*switch(op) {
             case 1:

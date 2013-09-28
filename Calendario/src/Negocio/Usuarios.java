@@ -7,21 +7,21 @@ package Negocio;
 import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
+import Datos.Usuario.Usuario;
 import java.util.ArrayList;
 
 /**
  *
  * @author GeOrge
  */
-public class Usuario implements Main{
+public class Usuarios implements Interface{
 
-    private static ArrayList<Coordinador> coordinador = new ArrayList<>();
-    private static ArrayList<Profesor> profesor = new ArrayList<>();
-    private static ArrayList<Estudiante> estudiante = new ArrayList<>();
+    private static ArrayList<Usuario> usuario = new ArrayList<>();
     
     @Override
-    public void insertar(Object args, int op) {
-        switch(op) {
+    public void insertar(Object args) {
+        usuario.add((Usuario)args);
+        /*switch(op) {
             case 1:
                 coordinador.add((Coordinador)args);
                 break;
@@ -31,10 +31,10 @@ public class Usuario implements Main{
             case 3:
                 estudiante.add((Estudiante)args);
                 break;
-        }
+        }*/
     }
 
-    public ArrayList<Coordinador> getCoordinador() {
+    /*public ArrayList<Coordinador> getCoordinador() {
         return coordinador;
     }
 
@@ -44,5 +44,9 @@ public class Usuario implements Main{
 
     public ArrayList<Estudiante> getEstudiante() {
         return estudiante;
+    }*/
+
+    public static ArrayList<Usuario> getUsuario() {
+        return usuario;
     }
 }

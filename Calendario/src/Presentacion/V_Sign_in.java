@@ -25,7 +25,7 @@ public class V_Sign_in extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     
-    Negocio.Usuario listas = new Negocio.Usuario();
+    Negocio.Usuarios listas = new Negocio.Usuarios();
     ArrayList<Departamento> departamentos = new ArrayList<>();
     ArrayList<Aula> aulas = new ArrayList<>();
     

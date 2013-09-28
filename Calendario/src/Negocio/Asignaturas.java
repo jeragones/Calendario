@@ -13,12 +13,12 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Asignaturas implements Main{
+public class Asignaturas implements Interface{
     
     private static ArrayList<Asignatura> asignatura = new ArrayList<>();
     
     @Override
-    public void insertar(Object args, int op) {
+    public void insertar(Object args) {
         asignatura.add((Asignatura)args);
         /*switch(op) {
             case 1:

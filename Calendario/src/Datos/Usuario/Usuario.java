@@ -8,7 +8,7 @@ package Datos.Usuario;
  *
  * @author GeOrge
  */
-public abstract class Usuario {
+public class Usuario {
     
     private String nombre;
     private String usuario;

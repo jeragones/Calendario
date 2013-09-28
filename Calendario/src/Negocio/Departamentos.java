@@ -11,12 +11,12 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Departamentos implements Main{
+public class Departamentos implements Interface{
     
     private static ArrayList<Departamento> departamento = new ArrayList<>();
 
     @Override
-    public void insertar(Object args, int op) {
+    public void insertar(Object args) {
         departamento.add((Departamento)args);
     }
 

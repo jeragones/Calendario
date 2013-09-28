@@ -27,12 +27,20 @@ public class Calendario {
      * @param args the command line arguments
      */
     
+    List<Asignatura> calendario = new ArrayList<>();
+    
+    
+    
+    
+    
+    
+    
     List<Departamento> departamentos = new ArrayList<>();
     
     List<Aula> aulas = new ArrayList<>();
     List<Profesor> profesores = new ArrayList<>();
     List<Asignatura> asignaturas = new ArrayList<>();
-    List<Asignatura> calendario = new ArrayList<>();
+    
     
     
     /*public static void main(String[] args) {
@@ -233,5 +241,34 @@ public class Calendario {
         for(int x=0; x<asignaturas.size(); x++) {
             
         }
+    }
+    
+    /**
+     * Recorre la lista calendario.
+     * 
+     * @param _horario
+     * @return true:el campo esta libre
+     *         false: el campo esta ocupado
+     */
+    protected boolean buscarCalendario(Dia _horario) {
+        if(calendario.isEmpty())
+            return true;
+        else {
+            for(int i=0; i<calendario.size(); i++) {
+                if(buscarDia(calendario.get(i).getHorario(),_horario))
+                    return false;
+            }
+            return true;
+        }
+    }
+    
+    protected boolean buscarDia(ArrayList<Dia> _lista, Dia _horario) {
+        if(_lista.isEmpty())
+            return false;
+        else {
+            for(int i=0; i<_lista.size(); i++) {
+            }
+        }
+        return true;
     }
 }
