@@ -19,4 +19,16 @@ public abstract class Usuario {
         usuario = _usuario;
         contrasena = _contrasena;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
 }

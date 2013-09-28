@@ -15,5 +15,4 @@ public class Coordinador extends Usuario implements Interface {
     public Coordinador(String _nombre, String _usuario, String _contrasena) {
         super(_nombre, _usuario, _contrasena);
     }
-    
 }

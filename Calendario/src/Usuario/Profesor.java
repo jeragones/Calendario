@@ -19,7 +19,6 @@ public class Profesor extends Usuario implements Interface {
     private String cedula;
     private ArrayList<Dia> horario = new ArrayList<>();
     private ArrayList<Asignatura> asignatura = new ArrayList<>();
-    private ArrayList<Aula> aula = new ArrayList<>();
     
     public Profesor(String _nombre, String _usuario, String _contrasena, String _cedula) {
         super(_nombre, _usuario, _contrasena);
@@ -33,8 +32,16 @@ public class Profesor extends Usuario implements Interface {
     public void agregar(Asignatura _asignatura) {
         asignatura.add(_asignatura);
     }
-    
-    public void agregar(Aula _aula) {
-        aula.add(_aula);
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public ArrayList<Dia> getHorario() {
+        return horario;
+    }
+
+    public ArrayList<Asignatura> getAsignatura() {
+        return asignatura;
     }
 }

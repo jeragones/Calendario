@@ -18,6 +18,10 @@ public class Laboratorio extends Aula implements Interface {
     public Laboratorio(String _nombre, int _numero, String _ubicacion, int _capacidad) {
         super(_nombre, _numero, _ubicacion, _capacidad);
     }
+
+    public List<String> getEquipo() {
+        return equipo;
+    }
     
     @Override
     public void agregar(String _equipo) {

@@ -26,6 +26,26 @@ public abstract class Aula {
         capacidad = _capacidad;
     }
     
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public ArrayList<Dia> getHorario() {
+        return horario;
+    }
+    
     public void agregar(Dia _horario) {
         horario.add(_horario);
     }

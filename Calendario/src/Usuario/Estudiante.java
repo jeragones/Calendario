@@ -18,4 +18,8 @@ public class Estudiante extends Usuario implements Interface {
         super(_nombre, _usuario, _contrasena);
         carne = _carne;
     }
+
+    public String getCarne() {
+        return carne;
+    }
 }

@@ -4,6 +4,7 @@
  */
 package Asignatura;
 
+import Aula.Aula;
 import calendario.Interface;
 import java.util.ArrayList;
 

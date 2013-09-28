@@ -4,6 +4,7 @@
  */
 package Asignatura;
 
+import Aula.Aula;
 import Horario.Dia;
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public abstract class Asignatura {
     private int grupo;
     private int semestre;
     private int creditos;
+    private ArrayList<Aula> aula = new ArrayList<>();
     private ArrayList<Dia> horario = new ArrayList<>();
     private int tipoSemestre;
     
@@ -29,8 +31,44 @@ public abstract class Asignatura {
         creditos = _creditos;
         tipoSemestre = _semestre % 2; // 0 = semestre I, 1 = semestre II
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getGrupo() {
+        return grupo;
+    }
+
+    public int getSemestre() {
+        return semestre;
+    }
+
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public ArrayList<Aula> getAula() {
+        return aula;
+    }
+
+    public ArrayList<Dia> getHorario() {
+        return horario;
+    }
+
+    public int getTipoSemestre() {
+        return tipoSemestre;
+    }
     
-    /*public void agregar(Aula _aula) {
+    public void agregar(Aula _aula) {
         aula.add(_aula);
-    }*/
+    }
+    
+    public void agregar(Dia _horario) {
+        horario.add(_horario);
+    }
 }

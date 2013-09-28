@@ -5,7 +5,6 @@
 package Asignatura;
 import calendario.Interface;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -18,6 +17,10 @@ public class Departamento implements Interface {
     
     public Departamento(String _departamento) {
         departamento = _departamento;
+    }
+
+    public String getDepartamento() {
+        return departamento;
     }
     
     public void agregar(Asignatura _asignatura) {
