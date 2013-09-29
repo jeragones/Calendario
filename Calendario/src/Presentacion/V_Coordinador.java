@@ -6,6 +6,8 @@ package Presentacion;
 
 import Datos.Usuario.Profesor;
 import Negocio.Usuarios;
+import java.awt.Color;
+import java.util.Collections;
 import javax.swing.DefaultListModel;
 
 /**
@@ -41,11 +43,11 @@ public class V_Coordinador extends javax.swing.JFrame {
         txt_Prof_ID = new javax.swing.JTextField();
         txt_Prof_Pass = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaUser = new javax.swing.JList();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         Exit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaUser = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coordinador");
@@ -64,14 +66,30 @@ public class V_Coordinador extends javax.swing.JFrame {
             }
         });
 
+        txt_Prof_User.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Prof_UserActionPerformed(evt);
+            }
+        });
+
+        txt_Prof_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Prof_IDActionPerformed(evt);
+            }
+        });
+
+        txt_Prof_Pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Prof_PassActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jScrollPane1.setViewportView(listaUser);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,15 +105,13 @@ public class V_Coordinador extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel3))
                         .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_Prof_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                            .addComponent(txt_Prof_User)
-                            .addComponent(txt_Prof_Pass)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txt_Prof_Pass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(txt_Prof_User, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_Prof_Name, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_Prof_ID)))
                     .addComponent(jButton1))
-                .addGap(84, 84, 84)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,23 +121,20 @@ public class V_Coordinador extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txt_Prof_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txt_Prof_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txt_Prof_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txt_Prof_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_Prof_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txt_Prof_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txt_Prof_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Teacher", jPanel1);
@@ -130,11 +143,11 @@ public class V_Coordinador extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGap(0, 317, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 296, Short.MAX_VALUE)
+            .addGap(0, 161, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Add Student", jPanel2);
@@ -143,11 +156,11 @@ public class V_Coordinador extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGap(0, 317, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 296, Short.MAX_VALUE)
+            .addGap(0, 161, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Add Coodinator", jPanel3);
@@ -159,16 +172,20 @@ public class V_Coordinador extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setViewportView(listaUser);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 150, Short.MAX_VALUE)
                         .addComponent(Exit)))
                 .addContainerGap())
         );
@@ -176,10 +193,13 @@ public class V_Coordinador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Exit)
-                .addGap(28, 28, 28)
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(Exit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,33 +211,49 @@ public class V_Coordinador extends javax.swing.JFrame {
         new V_Sign_in().show();
     }//GEN-LAST:event_ExitActionPerformed
 
-    private void txt_Prof_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Prof_NameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_Prof_NameActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String n = txt_Prof_Name.getText();
         String u =txt_Prof_User.getText();
         String p=txt_Prof_Pass.getText();
         String id=txt_Prof_ID.getText();
-        if (n==""||u==""||p==""||id==""){
-            
+        DefaultListModel modelo = new DefaultListModel();
+        if (n.isEmpty()||u.isEmpty()||p.isEmpty()||id.isEmpty()){
+            new V_Alerta_Coor().show();
         }
         else{
             Datos.Usuario.Profesor prof = new Profesor(n, u, p, id);
             Usuarios.getUsuario().add(prof);
+            for(int i =0; i<Usuarios.getUsuario().size();i++){
+               if (Usuarios.getUsuario().get(i).getClass().getSimpleName().equals("Profesor")){
+                    modelo.addElement((Usuarios.getUsuario().get(i).getNombre()).toString() + "  ( Teacher )");
+                }       
+            }
+            listaUser.setModel(modelo);
+            
         }
-        
-        
-        DefaultListModel modelo = new DefaultListModel();
 
-        for(int i =0; i<Usuarios.getUsuario().size();i++){
-            modelo.addElement((Usuarios.getUsuario().get(i).getNombre()).toString() + "  ("+Usuarios.getUsuario().get(i).getClass().getSimpleName()+")");
-        } 
-        listaUser.setModel(modelo);
         
+
+        
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txt_Prof_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Prof_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Prof_IDActionPerformed
+
+    private void txt_Prof_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Prof_UserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Prof_UserActionPerformed
+
+    private void txt_Prof_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Prof_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Prof_NameActionPerformed
+
+    private void txt_Prof_PassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Prof_PassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Prof_PassActionPerformed
 
     /**
      * @param args the command line arguments
