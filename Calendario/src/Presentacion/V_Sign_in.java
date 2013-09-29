@@ -136,18 +136,12 @@ public class V_Sign_in extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName=txtUser.getText();
         String userPassword=txtPassword.getText();
-        
-        
-            
-                
         for(int i=0; i<Usuarios.getUsuario().size();i++){
-
             try{
-                
                 if(((Estudiante)Usuarios.getUsuario().get(i)).getUsuario().equals(userName)&&((Estudiante)Usuarios.getUsuario().get(i)).getContrasena().equals(userPassword)){
                         this.setVisible(false);
+                        new V_Estudiante().show();
                 }
-                
             }
             catch(Exception e){
                 try{
@@ -155,33 +149,18 @@ public class V_Sign_in extends javax.swing.JFrame {
                         this.setVisible(false);
                         new V_Coordinador().show();
                     }
-
-                    
                 }
                 catch(Exception ex){
                     if(((Profesor)Usuarios.getUsuario().get(i)).getUsuario().equals(userName)&&((Profesor)Usuarios.getUsuario().get(i)).getContrasena().equals(userPassword)){
                             this.setVisible(false);
+                            new V_Profesor().show();
                     }
-                    
-                        
-                    
-
                 }
-                
             } 
             msg.setText("Invalid User or Password ");
             }
-            
-                    
-                
-
-
         txtPassword.setText("");
-        txtUser.setText("");
-      
-        
-        
-      
+        txtUser.setText("");  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
@@ -193,7 +172,6 @@ public class V_Sign_in extends javax.swing.JFrame {
         Coordinador leo = new Coordinador("Leonardo Viquez","lviquez","1234");
         Profesor prof =new Profesor("Oscar Viquez", "oviquez", "1234", "123456789");
         Estudiante est =new Estudiante("Daniel Berrocal", "dberrocal", "1234", "206980244");
-        
         Usuarios.getUsuario().add(leo);
         Usuarios.getUsuario().add(prof);
         Usuarios.getUsuario().add(est);
@@ -235,12 +213,6 @@ public class V_Sign_in extends javax.swing.JFrame {
         });
     }
     
-    
-    
-    
-    
-    
-    
     protected void departamentos(){
         departamentos.add(new Departamento("Computacion"));
         departamentos.add(new Departamento("Ciencias y Letras"));
@@ -263,8 +235,7 @@ public class V_Sign_in extends javax.swing.JFrame {
         aulas.add(new Clase("Aula 12",12,"Ciencias y Letras",30,false));
         aulas.add(new Clase("Aula 13",13,"Ciencias y Letras",30,false));
         aulas.add(new Clase("Aula 14",14,"Ciencias y Letras",30,true));
-        aulas.add(new Clase("Aula 15",15,"Ciencias y Letras",30,false));
-        
+        aulas.add(new Clase("Aula 15",15,"Ciencias y Letras",30,false));    
         // (String _nombre, int _numero, String _ubicacion, int _capacidad)
         aulas.add(new Laboratorio("LAIMI",4,"Computacion",30));
         aulas.add(new Laboratorio("Laboratorio 01",1,"Computacion",24));

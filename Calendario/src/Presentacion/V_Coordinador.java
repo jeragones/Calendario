@@ -408,8 +408,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                 }       
             }
             listaUser.setModel(modelo);
-            
-        }
+            }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
