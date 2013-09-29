@@ -38,9 +38,9 @@ public class Calendario {
     
     List<Departamento> departamentos = new ArrayList<>();
     
-    List<Aula> aulas = new ArrayList<>();
-    List<Usuario> profesores = new ArrayList<>();
-    List<Asignatura> asignaturas = new ArrayList<>();
+    static List<Aula> aulas = new ArrayList<>();
+    static List<Usuario> profesores = new ArrayList<>();
+    static List<Asignatura> asignaturas = new ArrayList<>();
     
     
     
@@ -261,20 +261,28 @@ public class Calendario {
      * @return 
      */
     protected Horario compararHora(List<Horario> cursos, List<Horario> curso, boolean x) {
-        String 
+        Horario hora = new Horario(null, null);
         for(int i=0; i<cursos.size(); i++) {
             for(int j=0; j<curso.size(); j++) {
-                if(cursos.get(i).getHoraInicio().equals(curso.get(j).getHoraInicio()) &
+                if(cursos.get(i).isEstado() & curso.get(j).isEstado() &
+                   cursos.get(i).getHoraInicio().equals(curso.get(j).getHoraInicio()) &
                    cursos.get(i).getHoraFinal().equals(curso.get(j).getHoraFinal())) {
-                    if(x)
+                    if(x) {
+                        cursos.get(i).setEstado(false);
                         return null;
+                    }
+                } else if(!x) {
+                    hora.setEstado(false);
+                    hora.setHoraInicio(curso.get(j).getHoraInicio());
+                    hora.setHoraInicio(curso.get(j).getHoraFinal());
+                    return hora;
                 }
             }
         }
         if(x)
             return null;
         else
-            return (new Horario("", ""));
+            return hora;
     }
     
     /**
@@ -284,21 +292,22 @@ public class Calendario {
      * @return 
      */
     protected Dia compararDia(List<Dia> cursos, List<Dia> curso, boolean x) { // true: encontrar - false: no encontrar
-        String d="";
+        Dia dia;
         for(int n=0; n<cursos.size(); n++) {
             for(int m=0; m< curso.size(); m++) {
                 if(cursos.get(n).getDia().equals(curso.get(m).getDia())) {
-                    if(compararHora(cursos.get(n).getHorario(), curso.get(m).getHorario(), x) != null) {
-                        Dia dia = new Dia(d);
+                    Horario hora = compararHora(cursos.get(n).getHorario(), curso.get(m).getHorario(), x);
+                    if(x & hora == null)
+                        return null;
+                    else if(hora != null) {
+                        dia = new Dia(curso.get(m).getDia());
+                        dia.agregar(hora);
                         return dia;
                     }
                 }
             }
         }
-        if(x)
-            return null;
-        else
-            return true;
+        return null;
     }
     
     /**
@@ -310,10 +319,10 @@ public class Calendario {
     protected boolean comparar(Asignatura curso, List<Usuario> lista) {
         for(int i=0; i<lista.size(); i++) {
             if(lista.get(i).getClass().equals(Profesor.class)) {
-                List<Asignatura> cursos = ((Profesor)lista.get(i)).getAsignatura();
-                for(int j=0; j<cursos.size(); j++) {
-                    if(cursos.get(j).getCodigo().equals(curso.getCodigo())) {
-                        if(compararDia(cursos.get(j).getHorario(), curso.getHorario(), true) == null)
+                List<Asignatura> profesor = ((Profesor)lista.get(i)).getAsignatura();
+                for(int j=0; j<profesor.size(); j++) {
+                    if(profesor.get(j).getCodigo().equals(curso.getCodigo())) {
+                        if(compararDia(((Profesor)lista.get(i)).getHorario(), curso.getHorario(), true) == null)
                             return true;
                     }    
                 }
@@ -333,22 +342,33 @@ public class Calendario {
         return null;
     }
     
+    protected boolean tipoDato(Class t1, Class t2) {
+        if(t1.equals(Teorica.class) & t2.equals(Clase.class))
+            return true;
+        else if(t1.equals(Practica.class) & t2.equals(Laboratorio.class))
+            return true;
+        else 
+            return false;
+    }
+    
     /*
      * EN PROCESO DE CONSTRUCCION (SI SE NECESITA !!!!)
      */
     protected Aula buscarAula(List<Dia> _horario, Class tipo) {
         for(int i=0; i<aulas.size(); i++) {
-            if(tipo.equals(aulas.getClass())) {
+            if(tipoDato(tipo,aulas.get(i).getClass())) {
                 if(aulas.get(i).getHorario().isEmpty()) {
                     return aulas.get(i);
                 } else {
-                    if(compararDia(aulas.get(i).getHorario(), _horario, false)) // retorna un Dia que hay que setearlo al aula
+                    Dia dia = compararDia(aulas.get(i).getHorario(), _horario, false);
+                    if(dia != null) { // retorna un Dia que hay que setearlo al aula
+                        aulas.get(i).agregar(dia);
                         return aulas.get(i);
+                    }
                 }
-            }
+            }    
         }
-        Object r = null;
-        //return (Aula)r;
+        return null;
     }
     
     public void inicializarCalendario() {
@@ -371,7 +391,12 @@ public class Calendario {
                     x -= 1;
                 } else {
                     for(int i=0; i < aulas.size(); i++) {
-                        //Aula aula = buscarAula(asignaturas.get(x).getHorario(), asignaturas.get(x).getClass());
+                        Aula aula = buscarAula(asignaturas.get(x).getHorario(), asignaturas.get(x).getClass());
+                        this.aula.add(aula);
+                        asignaturas.get(x).agregar(aula);
+                        calendario.add(asignaturas.get(x));
+                        asignaturas.remove(x);
+                        x -= 1;
                     }
                 }
             
