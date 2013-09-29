@@ -28,7 +28,7 @@ public class Calendario {
      * @param args the command line arguments
      */
     
-    List<Asignatura> calendario = new ArrayList<>();
+    static List<Asignatura> calendario = new ArrayList<>();
     List<Aula> aula = new ArrayList<Aula>();
     
     
@@ -108,7 +108,8 @@ public class Calendario {
             d5.agregar(new Horario("12:30", "4:00"));
             ((Profesor)profesores.get(i)).agregar(d5);
         }
-        inicializarCalendario();
+        creara(asignaturas,profesores,aulas,calendario);
+        //inicializarCalendario();
     }
     
     protected void departamentos(){
@@ -254,6 +255,144 @@ public class Calendario {
         return true;
     } */
     
+    protected Dia nuevoDia(String d, Horario h) {
+        Dia dia = new Dia(d);
+        Horario hora = new Horario(h.getHoraInicio(), h.getHoraFinal());
+        hora.setEstado(false);
+        dia.agregar(hora);
+        return dia;
+    }
+    
+    protected boolean tipoAula(Class t1, Class t2) {
+        if(t1.equals(Teorica.class) & t2.equals(Clase.class))
+            return true;
+        else if(t1.equals(Practica.class) & t2.equals(Laboratorio.class))
+            return true;
+        else 
+            return false;
+    }
+    
+    protected boolean aulaHora(List<Horario> aula, Horario hora) {
+        for(int x=0; x < aula.size(); x++) {
+            if(aula.get(x).getHoraInicio().equals(hora.getHoraInicio()) & 
+               aula.get(x).getHoraFinal().equals(hora.getHoraFinal())) {
+                if(!aula.get(x).isEstado()) {
+                    aula.get(x).setEstado(false);
+                    return true;
+                } else
+                    return false;
+            }
+        }
+        Horario h = new Horario(hora.getHoraInicio(), hora.getHoraFinal());
+        h.setEstado(false);
+        aula.add(h);
+        return true;
+    }
+    
+    protected boolean aulaDia(Aula aula, List<Dia> aulaDia, String dia, Horario hora) {
+        if(aulaDia.isEmpty()) {
+            aula.agregar(nuevoDia(dia, hora));
+            return true;
+        } else {
+            for(int x=0; x < aulaDia.size(); x++) {
+                if(aulaDia.get(x).getDia().equals(dia)) {
+                    if(aulaHora(aulaDia.get(x).getHorario(), hora))
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            aula.agregar(nuevoDia(dia, hora));
+            return true;
+        }
+    }
+    
+    protected Aula aula(List<Aula> aula, String dia, Horario hora, Class curso, boolean restriccion) {
+        for(int x=0; x < aula.size(); x++) {
+            if(tipoAula(curso, aula.get(x).getClass()) & restriccion) {
+                if(aulaDia(aula.get(x), aula.get(x).getHorario(), dia, hora))
+                    return aula.get(x);
+            } else {
+                if(aulaDia(aula.get(x), aula.get(x).getHorario(), dia, hora) & !restriccion)
+                    return aula.get(x);
+            }
+        }
+        if(restriccion)
+            aula(aula, dia, hora, curso, false);
+        return null;
+    }
+    
+    protected boolean crear(Asignatura curso, List<Horario> horaCurso, List<Horario> horaProfesor, String dia, List<Aula> aulas) {
+        for(int i=0; i < horaCurso.size(); i++) {
+            for(int j=0; j < horaProfesor.size(); j++) {
+                if(horaCurso.get(i).isEstado() & horaProfesor.get(j).isEstado()) {
+                    String[] hCurso = new String[]{horaCurso.get(i).getHoraInicio(), horaCurso.get(i).getHoraFinal()};
+                    String[] hProfesor = new String[]{horaProfesor.get(j).getHoraInicio(), horaProfesor.get(j).getHoraFinal()};
+                    if(hCurso[0].equals(hProfesor[0]) & hCurso[1].equals(hProfesor[1])) {                
+                        Aula aula = aula(aulas, dia, horaCurso.get(i), curso.getClass(), true);
+                        if(aula != null) {
+                            horaCurso.get(i).setEstado(false);
+                            horaProfesor.get(j).setEstado(false);
+                            curso.agregar(aula);
+                            return true;
+                        } else 
+                            return false;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
+    protected boolean validar(Asignatura curso, List<Dia> diaCurso, List<Dia> diaProfesor, List<Aula> aula) {
+        for(int i=0; i < diaCurso.size(); i++) {
+            for(int j=0; j < diaProfesor.size(); j++) {
+                if(diaCurso.get(i).getDia().equals(diaProfesor.get(j).getDia())) {
+                    if(crear(curso, diaCurso.get(i).getHorario(), diaProfesor.get(j).getHorario(), diaCurso.get(i).getDia(), aula))
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    protected boolean crear(Asignatura curso, Profesor profesor, List<Aula> aula) {
+        for(int x=0; x < profesor.getAsignatura().size(); x++) {
+            if(curso.equals(profesor.getAsignatura().get(x))) {
+                if(validar(curso, curso.getHorario(), profesor.getHorario(), aula))
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    protected boolean crear(Asignatura curso, List<Usuario> profesor, List<Aula> aula) {
+        for(int x=0; x < profesor.size(); x++) {
+            if(profesor.get(x).getClass().equals(Profesor.class)) {
+                if(crear(curso, (Profesor)profesor.get(x), aula)) 
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    public void creara(List<Asignatura> curso, List<Usuario> profesor, List<Aula> aula, List<Asignatura> calendario) {
+        if(!curso.isEmpty() & !profesor.isEmpty() & !aula.isEmpty()) {
+            for(int x=0; x < curso.size(); x++) {
+                if(crear(curso.get(x), profesor, aula)) {
+                    calendario.add(curso.get(x));
+                    curso.remove(x);
+                    x -= 1;
+                }
+            }
+        }
+        //return calendario;
+    }
+    
+    
+    
+    
+    
     /**
      * 
      * @param cursos
@@ -268,6 +407,7 @@ public class Calendario {
                    cursos.get(i).getHoraInicio().equals(curso.get(j).getHoraInicio()) &
                    cursos.get(i).getHoraFinal().equals(curso.get(j).getHoraFinal())) {
                     if(x) {
+                        curso.get(i).setEstado(false);
                         cursos.get(i).setEstado(false);
                         return null;
                     }
@@ -342,21 +482,14 @@ public class Calendario {
         return null;
     }
     
-    protected boolean tipoDato(Class t1, Class t2) {
-        if(t1.equals(Teorica.class) & t2.equals(Clase.class))
-            return true;
-        else if(t1.equals(Practica.class) & t2.equals(Laboratorio.class))
-            return true;
-        else 
-            return false;
-    }
+    
     
     /*
      * EN PROCESO DE CONSTRUCCION (SI SE NECESITA !!!!)
      */
     protected Aula buscarAula(List<Dia> _horario, Class tipo) {
         for(int i=0; i<aulas.size(); i++) {
-            if(tipoDato(tipo,aulas.get(i).getClass())) {
+            if(tipoAula(tipo,aulas.get(i).getClass())) {
                 if(aulas.get(i).getHorario().isEmpty()) {
                     return aulas.get(i);
                 } else {
@@ -375,7 +508,7 @@ public class Calendario {
         for(int x=0; x<asignaturas.size(); x++) {
             if(comparar(asignaturas.get(x), profesores)) {
                 if(calendario.isEmpty()) {
-                    asignaturas.get(x).getHorario().get(0).getHorario().get(0).setEstado(false); // coloca el primer horario de la asignatura en false
+                    //asignaturas.get(x).getHorario().get(0).getHorario().get(0).setEstado(false); // coloca el primer horario de la asignatura en false
                     Aula aula = null;
                     if(asignaturas.get(x) instanceof Practica)
                         aula = buscarAula("Laboratorio");
