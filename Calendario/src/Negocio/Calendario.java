@@ -28,7 +28,7 @@ public class Calendario {
      */
     
     List<Asignatura> calendario = new ArrayList<>();
-    
+    List<Aula> aula = new ArrayList<Aula>();
     
     
     
@@ -80,6 +80,7 @@ public class Calendario {
         p6.agregar(asignaturas.get(10));
         p6.agregar(asignaturas.get(11));
         profesores.add(p6);
+        aulas();
         profesores1();
     }
     
@@ -235,11 +236,74 @@ public class Calendario {
             d5.agregar(new Horario("7:00", "11:30"));
             d5.agregar(new Horario("12:30", "4:00"));
         }
+        inicializarCalendario();
     }
     
-    public void ordenar() {
+    /*protected boolean compararDia(List<Dia> _calDia, List<Dia> _asigDia) {
+        
+        for(int i=0; i<_calDia.size(); i++) {
+            for(int j=0; j<_asigDia.size(); j++) {
+                if(!_calDia.get(i).getDia().equals(_asigDia.get(j).getDia())) {
+                    
+                }
+            }
+        }
+        
+        return true;
+    } */
+    
+    protected Aula buscarAula(String tipo) {
+        for(int i=0; i<aulas.size(); i++) {
+            if(aulas.get(i).getClass().getName().equals(tipo))
+                return aulas.get(i);
+        }
+        return null;
+    }
+    
+    public void inicializarCalendario() {
         for(int x=0; x<asignaturas.size(); x++) {
-            
+            if(calendario.isEmpty()) {
+                asignaturas.get(x).getHorario().get(0).getHorario().get(0).setEstado(false);
+                Aula aula = null;
+                if(asignaturas.get(x) instanceof Practica)
+                    aula = buscarAula("Laboratorio");
+                else 
+                    aula = buscarAula("Clase");
+                Dia dia = new Dia(asignaturas.get(x).getHorario().get(0).getDia());
+                dia.agregar(asignaturas.get(x).getHorario().get(0).getHorario().get(0));
+                aula.agregar(dia);
+                asignaturas.get(x).agregar(aula);
+                calendario.add(asignaturas.get(x));
+                asignaturas.remove(x);
+                x -= 1;
+            } else {
+                for(int i=0; i < aulas.size(); i++) {
+                    
+                }
+                
+                /*for(int i=0; i<calendario.size(); i++) { // recorre lista calendario
+                    List<Dia> dias = calendario.get(i).getHorario();
+                    for(int j=0; j<dias.size(); j++) { // recorre lista de los dias
+                        List<Horario> horarios = dias.get(j).getHorario();
+                        if(dias.get(j).getDia().equals(asignaturas.get(i).getHorario().get(0).getDia())) {
+                            
+                        }
+                        for(int k=0; k<horarios.size(); k++) { // recorre lista de horarios de un dia
+                            if(horarios.get(i).isEstado()) { // retorna 
+                                if(compararHorario()) {
+                                
+                                }
+                            }   
+                            if(_lista.get(i).isEstado())
+                                compararHorario()
+                        }           
+                        if(_lista.get(i).getDia().equals(_horario.getDia()))
+                            return buscarHorario(_lista.get(i).getHorario(), _horario.getHorario());
+                    }
+                    if(buscarDia(calendario.get(i).getHorario(),_horario))
+                        return false;
+                }*/
+            }
         }
     }
     
@@ -250,7 +314,7 @@ public class Calendario {
      * @return true:el campo esta libre
      *         false: el campo esta ocupado
      */
-    protected boolean buscarCalendario(Dia _horario) {
+    /*protected boolean buscarCalendario(Dia _horario) {
         if(calendario.isEmpty())
             return true;
         else {
@@ -267,8 +331,32 @@ public class Calendario {
             return false;
         else {
             for(int i=0; i<_lista.size(); i++) {
+                if(_lista.get(i).getDia().equals(_horario.getDia()))
+                    return buscarHorario(_lista.get(i).getHorario(), _horario.getHorario());
             }
         }
         return true;
     }
+    
+    protected boolean buscarHorario(ArrayList<Horario> _lista, ArrayList<Horario> _horario) {
+        if(_lista.isEmpty())
+            return false;
+        else {
+            for(int i=0; i<_lista.size(); i++) {
+                if(_lista.get(i).isEstado())
+                    compararHorario()
+            }
+        }
+        return true;
+    }*/
+    
+    protected boolean compararHorario(String _horario1, String _horario2) {
+        
+        
+        
+        
+        
+        
+        return true;
+    } 
 }

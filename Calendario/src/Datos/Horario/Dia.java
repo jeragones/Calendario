@@ -14,7 +14,7 @@ import java.util.List;
 public class Dia {
     
     private String dia;
-    private List<Horario> horario = new ArrayList<>();
+    private ArrayList<Horario> horario = new ArrayList<>();
     
     public Dia(String _dia) {
         dia = _dia;
@@ -24,7 +24,7 @@ public class Dia {
         return dia;
     }
 
-    public List<Horario> getHorario() {
+    public ArrayList<Horario> getHorario() {
         return horario;
     }
     
