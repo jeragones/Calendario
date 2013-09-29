@@ -22,6 +22,7 @@ public class Asignatura {
     private ArrayList<Aula> aula = new ArrayList<>();
     private ArrayList<Dia> horario = new ArrayList<>();
     private int tipoSemestre;
+    private int error;
     
     public Asignatura(String _codigo, String _nombre, int _grupo, int _semestre, int _creditos) {
         codigo = _codigo;
@@ -30,6 +31,7 @@ public class Asignatura {
         semestre = _semestre;
         creditos = _creditos;
         tipoSemestre = _semestre % 2; // 0 = semestre I, 1 = semestre II
+        error = 0;
     }
 
     public String getCodigo() {
@@ -50,6 +52,10 @@ public class Asignatura {
 
     public int getCreditos() {
         return creditos;
+    }
+
+    public void setError(int error) {
+        this.error = error;
     }
 
     public ArrayList<Aula> getAula() {

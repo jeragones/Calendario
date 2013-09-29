@@ -14,6 +14,7 @@ import Datos.Aula.Laboratorio;
 import Datos.Horario.Dia;
 import Datos.Horario.Horario;
 import Datos.Usuario.Profesor;
+import Datos.Usuario.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class Calendario {
     List<Departamento> departamentos = new ArrayList<>();
     
     List<Aula> aulas = new ArrayList<>();
-    List<Profesor> profesores = new ArrayList<>();
+    List<Usuario> profesores = new ArrayList<>();
     List<Asignatura> asignaturas = new ArrayList<>();
     
     
@@ -50,6 +51,7 @@ public class Calendario {
     // AUTOMATICO
     
     public void profesores() {
+        aulas();
         departamentos();
         Profesor p1 = new Profesor("Oscar Viquez", "oviquez", "oviquez", "2-987-654");
         p1.agregar(asignaturas.get(0));
@@ -80,7 +82,6 @@ public class Calendario {
         p6.agregar(asignaturas.get(10));
         p6.agregar(asignaturas.get(11));
         profesores.add(p6);
-        aulas();
         profesores1();
     }
     
@@ -89,24 +90,25 @@ public class Calendario {
             Dia d1 = new Dia("Lunes");
             d1.agregar(new Horario("7:00", "11:30"));
             d1.agregar(new Horario("12:30", "4:00"));
-            profesores.get(i).agregar(d1);
+            ((Profesor)profesores.get(i)).agregar(d1);
             Dia d2 = new Dia("Martes");
             d2.agregar(new Horario("7:00", "11:30"));
             d2.agregar(new Horario("12:30", "4:00"));
-            profesores.get(i).agregar(d2);
+            ((Profesor)profesores.get(i)).agregar(d2);
             Dia d3 = new Dia("Miercoles");
             d3.agregar(new Horario("7:00", "11:30"));
             d3.agregar(new Horario("12:30", "4:00"));
-            profesores.get(i).agregar(d3);
+            ((Profesor)profesores.get(i)).agregar(d3);
             Dia d4 = new Dia("Jueves");
             d4.agregar(new Horario("7:00", "11:30"));
             d4.agregar(new Horario("12:30", "4:00"));
-            profesores.get(i).agregar(d4);
+            ((Profesor)profesores.get(i)).agregar(d4);
             Dia d5 = new Dia("Viernes");
             d5.agregar(new Horario("7:00", "11:30"));
             d5.agregar(new Horario("12:30", "4:00"));
-            profesores.get(i).agregar(d5);
+            ((Profesor)profesores.get(i)).agregar(d5);
         }
+        inicializarCalendario();
     }
     
     protected void departamentos(){
@@ -236,7 +238,7 @@ public class Calendario {
             d5.agregar(new Horario("7:00", "11:30"));
             d5.agregar(new Horario("12:30", "4:00"));
         }
-        inicializarCalendario();
+        
     }
     
     /*protected boolean compararDia(List<Dia> _calDia, List<Dia> _asigDia) {
@@ -252,34 +254,127 @@ public class Calendario {
         return true;
     } */
     
+    /**
+     * 
+     * @param cursos
+     * @param curso
+     * @return 
+     */
+    protected Horario compararHora(List<Horario> cursos, List<Horario> curso, boolean x) {
+        String 
+        for(int i=0; i<cursos.size(); i++) {
+            for(int j=0; j<curso.size(); j++) {
+                if(cursos.get(i).getHoraInicio().equals(curso.get(j).getHoraInicio()) &
+                   cursos.get(i).getHoraFinal().equals(curso.get(j).getHoraFinal())) {
+                    if(x)
+                        return null;
+                }
+            }
+        }
+        if(x)
+            return null;
+        else
+            return (new Horario("", ""));
+    }
+    
+    /**
+     * 
+     * @param cursos
+     * @param curso
+     * @return 
+     */
+    protected Dia compararDia(List<Dia> cursos, List<Dia> curso, boolean x) { // true: encontrar - false: no encontrar
+        String d="";
+        for(int n=0; n<cursos.size(); n++) {
+            for(int m=0; m< curso.size(); m++) {
+                if(cursos.get(n).getDia().equals(curso.get(m).getDia())) {
+                    if(compararHora(cursos.get(n).getHorario(), curso.get(m).getHorario(), x) != null) {
+                        Dia dia = new Dia(d);
+                        return dia;
+                    }
+                }
+            }
+        }
+        if(x)
+            return null;
+        else
+            return true;
+    }
+    
+    /**
+     * 
+     * @param curso
+     * @param lista
+     * @return 
+     */
+    protected boolean comparar(Asignatura curso, List<Usuario> lista) {
+        for(int i=0; i<lista.size(); i++) {
+            if(lista.get(i).getClass().equals(Profesor.class)) {
+                List<Asignatura> cursos = ((Profesor)lista.get(i)).getAsignatura();
+                for(int j=0; j<cursos.size(); j++) {
+                    if(cursos.get(j).getCodigo().equals(curso.getCodigo())) {
+                        if(compararDia(cursos.get(j).getHorario(), curso.getHorario(), true) == null)
+                            return true;
+                    }    
+                }
+            }
+        }
+        return false;
+    }
+    
+    // SE ELIMINA SI SE LOGRA ADAPTAR AL
     protected Aula buscarAula(String tipo) {
         for(int i=0; i<aulas.size(); i++) {
-            if(aulas.get(i).getClass().getName().equals(tipo))
+            if(tipo.equals("Clase") & aulas.get(i) instanceof Clase)
                 return aulas.get(i);
+            else if(tipo.equals("Laboratorio") & aulas.get(i) instanceof Laboratorio)
+                return aulas.get(i);    
         }
         return null;
     }
     
+    /*
+     * EN PROCESO DE CONSTRUCCION (SI SE NECESITA !!!!)
+     */
+    protected Aula buscarAula(List<Dia> _horario, Class tipo) {
+        for(int i=0; i<aulas.size(); i++) {
+            if(tipo.equals(aulas.getClass())) {
+                if(aulas.get(i).getHorario().isEmpty()) {
+                    return aulas.get(i);
+                } else {
+                    if(compararDia(aulas.get(i).getHorario(), _horario, false)) // retorna un Dia que hay que setearlo al aula
+                        return aulas.get(i);
+                }
+            }
+        }
+        Object r = null;
+        //return (Aula)r;
+    }
+    
     public void inicializarCalendario() {
         for(int x=0; x<asignaturas.size(); x++) {
-            if(calendario.isEmpty()) {
-                asignaturas.get(x).getHorario().get(0).getHorario().get(0).setEstado(false);
-                Aula aula = null;
-                if(asignaturas.get(x) instanceof Practica)
-                    aula = buscarAula("Laboratorio");
-                else 
-                    aula = buscarAula("Clase");
-                Dia dia = new Dia(asignaturas.get(x).getHorario().get(0).getDia());
-                dia.agregar(asignaturas.get(x).getHorario().get(0).getHorario().get(0));
-                aula.agregar(dia);
-                asignaturas.get(x).agregar(aula);
-                calendario.add(asignaturas.get(x));
-                asignaturas.remove(x);
-                x -= 1;
-            } else {
-                for(int i=0; i < aulas.size(); i++) {
-                    
+            if(comparar(asignaturas.get(x), profesores)) {
+                if(calendario.isEmpty()) {
+                    asignaturas.get(x).getHorario().get(0).getHorario().get(0).setEstado(false); // coloca el primer horario de la asignatura en false
+                    Aula aula = null;
+                    if(asignaturas.get(x) instanceof Practica)
+                        aula = buscarAula("Laboratorio");
+                    else 
+                        aula = buscarAula("Clase");
+                    Dia dia = new Dia(asignaturas.get(x).getHorario().get(0).getDia()); // crea un dia con el primer dia de la lista de horarios de la asignatura
+                    dia.agregar(asignaturas.get(x).getHorario().get(0).getHorario().get(0)); // le agrega al dia el primer horario que tiene la asignatura
+                    aula.agregar(dia);  // le agrega el horario al dia
+                    this.aula.add(aula); // agrega el aula a la lista temporal
+                    asignaturas.get(x).agregar(aula); // agrega el aula a la asignatura
+                    calendario.add(asignaturas.get(x)); // agrega la asignatura al calendario
+                    asignaturas.remove(x); // elimina la asignatura que se agrego al calendario de la lista de asignaturas
+                    x -= 1;
+                } else {
+                    for(int i=0; i < aulas.size(); i++) {
+                        //Aula aula = buscarAula(asignaturas.get(x).getHorario(), asignaturas.get(x).getClass());
+                    }
                 }
+            
                 
                 /*for(int i=0; i<calendario.size(); i++) { // recorre lista calendario
                     List<Dia> dias = calendario.get(i).getHorario();
@@ -303,7 +398,8 @@ public class Calendario {
                     if(buscarDia(calendario.get(i).getHorario(),_horario))
                         return false;
                 }*/
-            }
+            } else
+                asignaturas.get(x).setError(1); // error 1: no coinciden los horarios del profesor con la asignatura
         }
     }
     
@@ -349,14 +445,4 @@ public class Calendario {
         }
         return true;
     }*/
-    
-    protected boolean compararHorario(String _horario1, String _horario2) {
-        
-        
-        
-        
-        
-        
-        return true;
-    } 
 }
