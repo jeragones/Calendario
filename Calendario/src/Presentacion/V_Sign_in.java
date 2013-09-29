@@ -25,7 +25,7 @@ public class V_Sign_in extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     
-    Negocio.Usuarios listas = new Negocio.Usuarios();
+    
     ArrayList<Departamento> departamentos = new ArrayList<>();
     ArrayList<Aula> aulas = new ArrayList<>();
     
@@ -42,25 +42,18 @@ public class V_Sign_in extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        usuarioTipo = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         txtUser = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        msg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIGN IN");
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
-            }
-        });
-
-        usuarioTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Student", "Teacher", "Coordinator" }));
-        usuarioTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioTipoActionPerformed(evt);
             }
         });
 
@@ -87,6 +80,9 @@ public class V_Sign_in extends javax.swing.JFrame {
             }
         });
 
+        msg.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        msg.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,15 +95,16 @@ public class V_Sign_in extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(usuarioTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(46, 46, 46)
-                                    .addComponent(jButton1))
+                                .addComponent(msg, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(141, 141, 141)))
                             .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 20, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(9, 9, 9)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -122,18 +119,14 @@ public class V_Sign_in extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usuarioTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(msg, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void usuarioTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioTipoActionPerformed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
@@ -143,57 +136,49 @@ public class V_Sign_in extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName=txtUser.getText();
         String userPassword=txtPassword.getText();
-        String user=(String)usuarioTipo.getSelectedItem();
-        switch (user){
-            case "Coordinator":
-                if (!listas.getCoordinador().isEmpty()){
-                    for(int i=0; i<listas.getCoordinador().size();i++){
-                        if(listas.getCoordinador().get(i).getUsuario().equals(userName)&&listas.getCoordinador().get(i).getContrasena().equals(userPassword)){
-                                this.setVisible(false);
-                                new V_Coordinador().show();
+        
+        
+            
+                
+        for(int i=0; i<Usuarios.getUsuario().size();i++){
+
+            try{
+                
+                if(((Estudiante)Usuarios.getUsuario().get(i)).getUsuario().equals(userName)&&((Estudiante)Usuarios.getUsuario().get(i)).getContrasena().equals(userPassword)){
+                        this.setVisible(false);
+                }
+                
+            }
+            catch(Exception e){
+                try{
+                    if(((Coordinador)Usuarios.getUsuario().get(i)).getUsuario().equals(userName)&&((Coordinador)Usuarios.getUsuario().get(i)).getContrasena().equals(userPassword)){
+                        this.setVisible(false);
+                        new V_Coordinador().show();
                     }
-                    else{
-                        new V_Aviso().show();
-                        }
+
+                    
+                }
+                catch(Exception ex){
+                    if(((Profesor)Usuarios.getUsuario().get(i)).getUsuario().equals(userName)&&((Profesor)Usuarios.getUsuario().get(i)).getContrasena().equals(userPassword)){
+                            this.setVisible(false);
                     }
+                    
+                        
+                    
+
                 }
-                else{
-                    new V_Aviso_Listas_Vacias().show();
-                }
-                break;
-            case "Student":
-                if (!listas.getEstudiante().isEmpty()){
-                    for(int i=0; i<listas.getEstudiante().size();i++){
-                        if(listas.getEstudiante().get(i).getUsuario().equals(userName)&&listas.getEstudiante().get(i).getContrasena().equals(userPassword)){
-                                    this.setVisible(false);
-                        }
-                        else{
-                            new V_Aviso().show();
-                        }
-                    }
-                }
-                else{
-                    new V_Aviso_Listas_Vacias().show();
-                }
-                break;
-            case "Teacher":
-                if(!listas.getProfesor().isEmpty()){
-                    for(int i=0; i<listas.getProfesor().size();i++){
-                        if(listas.getProfesor().get(i).getUsuario().equals(userName)&&listas.getProfesor().get(i).getContrasena().equals(userPassword)){
-                                    this.setVisible(false);
-                        }
-                        else{
-                            new V_Aviso().show();} 
-                        } 
-                    }
-                else {
-                    new V_Aviso_Listas_Vacias().show();
-                }
-                break;
-        }
+                
+            } 
+            msg.setText("Invalid User or Password ");
+            }
+            
+                    
+                
+
+
         txtPassword.setText("");
         txtUser.setText("");
-        System.out.println(user);
+      
         
         
       
@@ -206,9 +191,13 @@ public class V_Sign_in extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         Coordinador leo = new Coordinador("Leonardo Viquez","lviquez","1234");
+        Profesor prof =new Profesor("Oscar Viquez", "oviquez", "1234", "123456789");
+        Estudiante est =new Estudiante("Daniel Berrocal", "dberrocal", "1234", "206980244");
         
-        listas.getCoordinador().add(leo);
-        System.out.println(listas.getCoordinador().get(0).getClass().getSimpleName());
+        Usuarios.getUsuario().add(leo);
+        Usuarios.getUsuario().add(prof);
+        Usuarios.getUsuario().add(est);
+        System.out.println(Usuarios.getUsuario().get(0).getClass().getSimpleName());
     }//GEN-LAST:event_formComponentShown
 
     /**
@@ -347,8 +336,8 @@ public class V_Sign_in extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel msg;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
-    private javax.swing.JComboBox usuarioTipo;
     // End of variables declaration//GEN-END:variables
 }
