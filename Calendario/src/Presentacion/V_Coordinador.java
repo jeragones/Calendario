@@ -6,11 +6,14 @@ package Presentacion;
 
 import Datos.Asignatura.Asignatura;
 import Datos.Asignatura.Departamento;
+import Datos.Asignatura.Practica;
+import Datos.Asignatura.Teorica;
 import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
 import Negocio.Usuarios;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.DefaultListModel;
 
@@ -573,6 +576,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         int g =0;
         int s=0;
         int c=0;
+        String var = txt_Asig_Variable.getText();
         try{
             g= (int)Integer.parseInt(txt_Asig_Group.getText());
         }
@@ -590,21 +594,48 @@ public class V_Coordinador extends javax.swing.JFrame {
         }
         catch(Exception e){
             txt_Asig_Cred .setText("This field can only contain numbers");
-        } 
-        DefaultListModel modelo = new DefaultListModel();
-        if (id.isEmpty()||n.isEmpty()){
-            new V_Alerta_Coor().show();
         }
-        else{
-            Asignatura asig = new Asignatura(id,n,g,s,c);
-            Departamento.getAsignatura().add(asig);
-            for(int i =0; i<Departamento.getAsignatura().size();i++){
-               
-                    modelo.addElement((Departamento.getAsignatura().get(i).getNombre()).toString() + "  ( Coordinator )");
-                      
+       
+        DefaultListModel modelo = new DefaultListModel();
+        
+            if (id.isEmpty()||n.isEmpty()){
+                new V_Alerta_Coor().show();
             }
+            else{
+               if (asig_tipo.getSelectedItem().toString().equals("Practice")){
+                   Teorica teo = new Teorica(id,n,g,s,c,var);
+                     Departamento.getAsignatura().add(teo);
+                     for(int i =0; i<Departamento.getAsignatura().size();i++){
+                             if (Departamento.getAsignatura().get(i).getClass().getSimpleName().equals("Teorica")){
+                                 modelo.addElement((Departamento.getAsignatura().get(i).getNombre()).toString() + "  ( Teoric )");
+                             }
+                     }
+                 }
+               else{
+                   Practica prac = new Practica(id,n, g, s, c,var);
+                   prac.agregarMateriales(materiales);
+                   Departamento.getAsignatura().add(prac);
+                   for(int i =0; i<Departamento.getAsignatura().size();i++){
+                             if (Departamento.getAsignatura().get(i).getClass().getSimpleName().equals("Practica")){
+                                 modelo.addElement((Departamento.getAsignatura().get(i).getNombre()).toString() + "  ( Practice )");
+                             }
+                     }
+               }
             listaUser.setModel(modelo);
+            
+            txt_Asig_Cred.setText("");
+            txt_Asig_Group.setText("");
+            txt_Asig_ID.setText("");
+            txt_Asig_Material.setText("");       
+            txt_Asig_Name.setText("");
+            txt_Asig_Sem.setText("");
+            txt_Asig_Variable.setText("");
+            materiales.clear();
+            
+            
             }
+            
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
@@ -618,12 +649,30 @@ public class V_Coordinador extends javax.swing.JFrame {
             jLabel_Material.setVisible(true);
             txt_Asig_Material.setVisible(true);
             jLabel_Variable.setText("System");
+            txt_Asig_Cred.setText("");
+            txt_Asig_Group.setText("");
+            txt_Asig_ID.setText("");
+            txt_Asig_Material.setText("");       
+            txt_Asig_Name.setText("");
+            txt_Asig_Sem.setText("");
+            txt_Asig_Variable.setText("");
+        }
+        
+        else{
+            jB_Add_Material.setVisible(false);
+            jLabel_Material.setVisible(false);
+            txt_Asig_Material.setVisible(false);
+            jLabel_Variable.setText("Link:");
         }
         
     }//GEN-LAST:event_asig_tipoItemStateChanged
-
+    ArrayList<String> materiales =new ArrayList();
     private void jB_Add_MaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Add_MaterialActionPerformed
         // TODO add your handling code here:
+        String mate =txt_Asig_Material.getText();
+        materiales.add(mate);
+        txt_Asig_Material.setText("");
+        
     }//GEN-LAST:event_jB_Add_MaterialActionPerformed
 
     private void asig_tipoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_asig_tipoPropertyChange

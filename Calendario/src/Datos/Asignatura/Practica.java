@@ -31,4 +31,8 @@ public class Practica extends Asignatura {
     public void agregar(String _material) {
         material.add(_material);
     }
+    
+    public void agregarMateriales(ArrayList l){
+        this.material=l;
+    }
 }
