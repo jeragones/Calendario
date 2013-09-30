@@ -14,18 +14,18 @@ import java.util.ArrayList;
 public class Departamento {
 
     private String departamento;
-    private ArrayList<Asignatura> asignatura = new ArrayList<>(); 
-    private ArrayList<Profesor> profesor = new ArrayList<>(); 
+    private static ArrayList<Asignatura> asignatura = new ArrayList<>(); 
+    private static ArrayList<Profesor> profesor = new ArrayList<>(); 
     
     public Departamento(String _departamento) {
         departamento = _departamento;
     }
     
-    public ArrayList<Asignatura> getAsignatura() {
+    public static ArrayList<Asignatura> getAsignatura() {
         return asignatura;
     }
 
-    public ArrayList<Profesor> getProfesor() {
+    public static ArrayList<Profesor> getProfesor() {
         return profesor;
     }
 
@@ -40,4 +40,6 @@ public class Departamento {
     public void agregar(Profesor _profesor) {
         profesor.add(_profesor);
     }
+    
+    
 }

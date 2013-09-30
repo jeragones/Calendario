@@ -4,6 +4,8 @@
  */
 package Presentacion;
 
+import Datos.Asignatura.Asignatura;
+import Datos.Asignatura.Departamento;
 import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
@@ -63,6 +65,18 @@ public class V_Coordinador extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txt_Coor_Pass = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txt_Asig_ID = new javax.swing.JTextField();
+        txt_Asig_Name = new javax.swing.JTextField();
+        txt_Asig_Group = new javax.swing.JTextField();
+        txt_Asig_Sem = new javax.swing.JTextField();
+        txt_Asig_Cred = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaUser = new javax.swing.JList();
@@ -130,7 +144,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                                 .addComponent(txt_Prof_Name, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(txt_Prof_ID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton1))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +167,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                     .addComponent(txt_Prof_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Teacher", jPanel1);
@@ -197,7 +211,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_Est_User, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_Est_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +234,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                     .addComponent(txt_Est_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Student", jPanel2);
@@ -258,7 +272,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_Coor_User, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_Coor_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,10 +291,87 @@ public class V_Coordinador extends javax.swing.JFrame {
                     .addComponent(txt_Coor_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Coodinator", jPanel3);
+
+        jLabel12.setText("Id:");
+
+        jLabel13.setText("Name:");
+
+        jLabel14.setText("Group:");
+
+        jLabel15.setText("Semester:");
+
+        jLabel16.setText("Credits:");
+
+        txt_Asig_Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Asig_NameActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Add");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_Asig_Cred, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(txt_Asig_Sem)
+                            .addComponent(txt_Asig_Group)
+                            .addComponent(txt_Asig_Name)
+                            .addComponent(txt_Asig_ID)))
+                    .addComponent(jButton4))
+                .addContainerGap(159, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txt_Asig_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addComponent(txt_Asig_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(txt_Asig_Group, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(txt_Asig_Sem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(txt_Asig_Cred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Add Course ", jPanel4);
 
         Exit.setText("Exit");
         Exit.addActionListener(new java.awt.event.ActionListener() {
@@ -339,6 +430,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         else{
             Datos.Usuario.Profesor prof = new Profesor(n, u, p, id);
             Usuarios.getUsuario().add(prof);
+            Departamento.getProfesor().add(prof);
             for(int i =0; i<Usuarios.getUsuario().size();i++){
                if (Usuarios.getUsuario().get(i).getClass().getSimpleName().equals("Profesor")){
                     modelo.addElement((Usuarios.getUsuario().get(i).getNombre()).toString() + "  ( Teacher )");
@@ -411,6 +503,51 @@ public class V_Coordinador extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String id =txt_Asig_ID.getText();
+        String n = txt_Asig_Name.getText();
+        int g =0;
+        int s=0;
+        int c=0;
+        try{
+            g= (int)Integer.parseInt(txt_Asig_Group.getText());
+        }
+        catch(Exception e){
+            txt_Asig_Group.setText("This field can only contain numbers");
+        }
+        try{
+           s = (int)Integer.parseInt(txt_Asig_Sem.getText());
+       }
+       catch(Exception e){
+           txt_Asig_Sem.setText("This field can only contain numbers");
+       }
+       try{
+             c = (int)Integer.parseInt(txt_Asig_Cred.getText());
+        }
+        catch(Exception e){
+            txt_Asig_Cred .setText("This field can only contain numbers");
+        } 
+        DefaultListModel modelo = new DefaultListModel();
+        if (id.isEmpty()||n.isEmpty()){
+            new V_Alerta_Coor().show();
+        }
+        else{
+            Asignatura asig = new Asignatura(id,n,g,s,c);
+            Departamento.getAsignatura().add(asig);
+            for(int i =0; i<Departamento.getAsignatura().size();i++){
+               
+                    modelo.addElement((Departamento.getAsignatura().get(i).getNombre()).toString() + "  ( Coordinator )");
+                      
+            }
+            listaUser.setModel(modelo);
+            }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Asig_NameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -450,9 +587,15 @@ public class V_Coordinador extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -464,9 +607,15 @@ public class V_Coordinador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JList listaUser;
+    private javax.swing.JTextField txt_Asig_Cred;
+    private javax.swing.JTextField txt_Asig_Group;
+    private javax.swing.JTextField txt_Asig_ID;
+    private javax.swing.JTextField txt_Asig_Name;
+    private javax.swing.JTextField txt_Asig_Sem;
     private javax.swing.JTextField txt_Coor_Name;
     private javax.swing.JTextField txt_Coor_Pass;
     private javax.swing.JTextField txt_Coor_User;
