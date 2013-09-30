@@ -23,4 +23,12 @@ public class Departamentos implements Interface{
     public ArrayList<Departamento> getDepartamento() {
         return departamento;
     }
+    
+    public Departamento getDepartamento(String arg) {
+        for(int x=0; x < departamento.size(); x++) {
+            if(departamento.get(x).getDepartamento().equals(arg))
+                return departamento.get(x);
+        }
+        return null;
+    }
 }
