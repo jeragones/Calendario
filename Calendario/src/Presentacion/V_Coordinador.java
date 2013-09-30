@@ -4,7 +4,6 @@
  */
 package Presentacion;
 
-import Datos.Asignatura.Asignatura;
 import Datos.Asignatura.Departamento;
 import Datos.Asignatura.Practica;
 import Datos.Asignatura.Teorica;
@@ -12,9 +11,7 @@ import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
 import Negocio.Usuarios;
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.swing.DefaultListModel;
 
 /**
@@ -502,8 +499,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                     modelo.addElement((Usuarios.getUsuario().get(i).getNombre()).toString() + "  ( Teacher )");
                 }       
             }
-            listaUser.setModel(modelo);
-            
+            listaUser.setModel(modelo);            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -541,10 +537,8 @@ public class V_Coordinador extends javax.swing.JFrame {
                     modelo.addElement((Usuarios.getUsuario().get(i).getNombre()).toString() + "  ( Student )");
                 }       
             }
-            listaUser.setModel(modelo);
-            
+            listaUser.setModel(modelo);            
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -552,7 +546,6 @@ public class V_Coordinador extends javax.swing.JFrame {
         String n = txt_Coor_Name.getText();
         String u =txt_Coor_User.getText();
         String p=txt_Coor_Pass.getText();
-       
         DefaultListModel modelo = new DefaultListModel();
         if (n.isEmpty()||u.isEmpty()||p.isEmpty()){
             new V_Alerta_Coor().show();
@@ -595,10 +588,8 @@ public class V_Coordinador extends javax.swing.JFrame {
         catch(Exception e){
             txt_Asig_Cred .setText("This field can only contain numbers");
         }
-       
         DefaultListModel modelo = new DefaultListModel();
-        
-            if (id.isEmpty()||n.isEmpty()){
+        if (id.isEmpty()||n.isEmpty()){
                 new V_Alerta_Coor().show();
             }
             else{
@@ -621,8 +612,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                              }
                      }
                }
-            listaUser.setModel(modelo);
-            
+            listaUser.setModel(modelo);            
             txt_Asig_Cred.setText("");
             txt_Asig_Group.setText("");
             txt_Asig_ID.setText("");
@@ -631,11 +621,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             txt_Asig_Sem.setText("");
             txt_Asig_Variable.setText("");
             materiales.clear();
-            
-            
             }
-            
-        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
@@ -656,8 +642,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             txt_Asig_Name.setText("");
             txt_Asig_Sem.setText("");
             txt_Asig_Variable.setText("");
-        }
-        
+        }       
         else{
             jB_Add_Material.setVisible(false);
             jLabel_Material.setVisible(false);
@@ -671,26 +656,24 @@ public class V_Coordinador extends javax.swing.JFrame {
             txt_Asig_Name.setText("");
             txt_Asig_Sem.setText("");
             txt_Asig_Variable.setText("");
-        }
-        
+        }        
     }//GEN-LAST:event_asig_tipoItemStateChanged
+    
     ArrayList<String> materiales =new ArrayList();
+    
     private void jB_Add_MaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Add_MaterialActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:     
         String mate =txt_Asig_Material.getText();
         materiales.add(mate);
-        txt_Asig_Material.setText("");
-        
+        txt_Asig_Material.setText("");      
     }//GEN-LAST:event_jB_Add_MaterialActionPerformed
 
     private void asig_tipoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_asig_tipoPropertyChange
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:        
     }//GEN-LAST:event_asig_tipoPropertyChange
 
     private void asig_tipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asig_tipoMouseClicked
-        // TODO add your handling code here:
-       
+        // TODO add your handling code here:     
     }//GEN-LAST:event_asig_tipoMouseClicked
 
     /**
