@@ -4,9 +4,6 @@
  */
 package Negocio;
 
-import Datos.Usuario.Coordinador;
-import Datos.Usuario.Estudiante;
-import Datos.Usuario.Profesor;
 import Datos.Usuario.Usuario;
 import java.util.ArrayList;
 
@@ -46,6 +43,7 @@ public class Usuarios implements Interface{
         return estudiante;
     }*/
 
+    
     public static ArrayList<Usuario> getUsuario() {
         return usuario;
     }
