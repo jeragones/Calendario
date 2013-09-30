@@ -663,6 +663,14 @@ public class V_Coordinador extends javax.swing.JFrame {
             jLabel_Material.setVisible(false);
             txt_Asig_Material.setVisible(false);
             jLabel_Variable.setText("Link:");
+            jLabel_Variable.setText("System");
+            txt_Asig_Cred.setText("");
+            txt_Asig_Group.setText("");
+            txt_Asig_ID.setText("");
+            txt_Asig_Material.setText("");       
+            txt_Asig_Name.setText("");
+            txt_Asig_Sem.setText("");
+            txt_Asig_Variable.setText("");
         }
         
     }//GEN-LAST:event_asig_tipoItemStateChanged
