@@ -4,6 +4,7 @@
  */
 package Presentacion;
 
+import Negocio.Archivo;
 import Negocio.Calendario;
 
 /**
@@ -60,9 +61,11 @@ public class Borreme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Calendario ins = new Calendario();
-        ins.profesores();
-        System.out.println("si");
+        /*Calendario ins = new Calendario();
+        ins.profesores();*/
+        Archivo ins = new Archivo();
+        ins.cargarArchivo();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -5,8 +5,6 @@
 package Negocio;
 
 import Datos.Aula.Aula;
-import Datos.Aula.Clase;
-import Datos.Aula.Laboratorio;
 import java.util.ArrayList;
 
 /**

@@ -112,7 +112,7 @@ public class Calendario {
         //inicializarCalendario();
     }
     
-    protected void departamentos(){
+    protected void departamentos() {
         departamentos.add(new Departamento("Computacion"));
         departamentos.add(new Departamento("Ciencias y Letras"));
         departamentos.add(new Departamento("Administracion de Empresas"));
