@@ -8,6 +8,7 @@ import Negocio.ArchivoCls;
 import Negocio.AulaCls;
 import Negocio.CalendarioCls;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -71,7 +72,7 @@ public class Borreme extends javax.swing.JFrame {
         for (int i=0; i < CalendarioCls.aulas.size(); i++) {
             l.add(CalendarioCls.aulas.get(i));
         }
-        ins1.guardar("aula", CalendarioCls.aulas);
+        ins1.guardar("aula", l);
         ins1.cargar("aula");
     }//GEN-LAST:event_jButton1ActionPerformed
 
