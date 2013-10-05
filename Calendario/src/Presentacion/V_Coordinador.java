@@ -10,7 +10,7 @@ import Datos.Asignatura.Teorica;
 import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
-import Negocio.Usuarios;
+import Negocio.UsuarioCls;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -492,11 +492,11 @@ public class V_Coordinador extends javax.swing.JFrame {
         }
         else{
             Datos.Usuario.Profesor prof = new Profesor(n, u, p, id);
-            Usuarios.getUsuario().add(prof);
+            UsuarioCls.getUsuario().add(prof);
             Departamento.getProfesor().add(prof);
-            for(int i =0; i<Usuarios.getUsuario().size();i++){
-               if (Usuarios.getUsuario().get(i).getClass().getSimpleName().equals("Profesor")){
-                    modelo.addElement((Usuarios.getUsuario().get(i).getNombre()).toString() + "  ( Teacher )");
+            for(int i =0; i<UsuarioCls.getUsuario().size();i++){
+               if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Profesor")){
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString() + "  ( Teacher )");
                 }       
             }
             listaUser.setModel(modelo);            
@@ -531,10 +531,10 @@ public class V_Coordinador extends javax.swing.JFrame {
         }
         else{
             Datos.Usuario.Estudiante est = new Estudiante(n, u, p, id);
-            Usuarios.getUsuario().add(est);
-            for(int i =0; i<Usuarios.getUsuario().size();i++){
-               if (Usuarios.getUsuario().get(i).getClass().getSimpleName().equals("Estudiante")){
-                    modelo.addElement((Usuarios.getUsuario().get(i).getNombre()).toString() + "  ( Student )");
+            UsuarioCls.getUsuario().add(est);
+            for(int i =0; i<UsuarioCls.getUsuario().size();i++){
+               if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Estudiante")){
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString() + "  ( Student )");
                 }       
             }
             listaUser.setModel(modelo);            
@@ -552,10 +552,10 @@ public class V_Coordinador extends javax.swing.JFrame {
         }
         else{
             Datos.Usuario.Coordinador coor = new Coordinador(n, u, p);
-            Usuarios.getUsuario().add(coor);
-            for(int i =0; i<Usuarios.getUsuario().size();i++){
-               if (Usuarios.getUsuario().get(i).getClass().getSimpleName().equals("Coordinador")){
-                    modelo.addElement((Usuarios.getUsuario().get(i).getNombre()).toString() + "  ( Coordinator )");
+            UsuarioCls.getUsuario().add(coor);
+            for(int i =0; i<UsuarioCls.getUsuario().size();i++){
+               if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Coordinador")){
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString() + "  ( Coordinator )");
                 }       
             }
             listaUser.setModel(modelo);

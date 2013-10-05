@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Departamentos implements Interface{
+public class DepartamentoCls implements Interface{
     
     private static ArrayList<Departamento> departamento = new ArrayList<>();
 
@@ -30,5 +30,9 @@ public class Departamentos implements Interface{
                 return departamento.get(x);
         }
         return null;
+    }
+
+    public void setDepartamento(ArrayList<Departamento> departamento) {
+        this.departamento = departamento;
     }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public abstract class Aula {
+public abstract class Aula implements java.io.Serializable {
     
     private String nombre;
     private int numero;

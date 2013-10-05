@@ -136,22 +136,22 @@ public class V_Sign_in extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName=txtUser.getText();
         String userPassword=txtPassword.getText();
-        for(int i=0; i<Usuarios.getUsuario().size();i++){
+        for(int i=0; i<UsuarioCls.getUsuario().size();i++){
             try{
-                if(((Estudiante)Usuarios.getUsuario().get(i)).getUsuario().equals(userName)&&((Estudiante)Usuarios.getUsuario().get(i)).getContrasena().equals(userPassword)){
+                if(((Estudiante)UsuarioCls.getUsuario().get(i)).getUsuario().equals(userName)&&((Estudiante)UsuarioCls.getUsuario().get(i)).getContrasena().equals(userPassword)){
                         this.setVisible(false);
                         new V_Estudiante().show();
                 }
             }
             catch(Exception e){
                 try{
-                    if(((Coordinador)Usuarios.getUsuario().get(i)).getUsuario().equals(userName)&&((Coordinador)Usuarios.getUsuario().get(i)).getContrasena().equals(userPassword)){
+                    if(((Coordinador)UsuarioCls.getUsuario().get(i)).getUsuario().equals(userName)&&((Coordinador)UsuarioCls.getUsuario().get(i)).getContrasena().equals(userPassword)){
                         this.setVisible(false);
                         new V_Coordinador().show();
                     }
                 }
                 catch(Exception ex){
-                    if(((Profesor)Usuarios.getUsuario().get(i)).getUsuario().equals(userName)&&((Profesor)Usuarios.getUsuario().get(i)).getContrasena().equals(userPassword)){
+                    if(((Profesor)UsuarioCls.getUsuario().get(i)).getUsuario().equals(userName)&&((Profesor)UsuarioCls.getUsuario().get(i)).getContrasena().equals(userPassword)){
                             this.setVisible(false);
                             new V_Profesor().show();
                     }
@@ -172,10 +172,10 @@ public class V_Sign_in extends javax.swing.JFrame {
         Coordinador leo = new Coordinador("Leonardo Viquez","lviquez","1234");
         Profesor prof =new Profesor("Oscar Viquez", "oviquez", "1234", "123456789");
         Estudiante est =new Estudiante("Daniel Berrocal", "dberrocal", "1234", "206980244");
-        Usuarios.getUsuario().add(leo);
-        Usuarios.getUsuario().add(prof);
-        Usuarios.getUsuario().add(est);
-        System.out.println(Usuarios.getUsuario().get(0).getClass().getSimpleName());
+        UsuarioCls.getUsuario().add(leo);
+        UsuarioCls.getUsuario().add(prof);
+        UsuarioCls.getUsuario().add(est);
+        System.out.println(UsuarioCls.getUsuario().get(0).getClass().getSimpleName());
     }//GEN-LAST:event_formComponentShown
 
     /**

@@ -4,8 +4,10 @@
  */
 package Presentacion;
 
-import Negocio.Archivo;
-import Negocio.Calendario;
+import Negocio.ArchivoCls;
+import Negocio.AulaCls;
+import Negocio.CalendarioCls;
+import java.util.ArrayList;
 
 /**
  *
@@ -61,11 +63,16 @@ public class Borreme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*Calendario ins = new Calendario();
-        ins.profesores();*/
-        Archivo ins = new Archivo();
-        ins.cargarArchivo();
-        
+        CalendarioCls ins = new CalendarioCls();
+        //ins.profesores();
+        ins.aulas();
+        ArchivoCls ins1 = new ArchivoCls();
+        ArrayList<Object> l = new ArrayList<>();
+        for (int i=0; i < CalendarioCls.aulas.size(); i++) {
+            l.add(CalendarioCls.aulas.get(i));
+        }
+        ins1.guardar("aula", CalendarioCls.aulas);
+        ins1.cargar("aula");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

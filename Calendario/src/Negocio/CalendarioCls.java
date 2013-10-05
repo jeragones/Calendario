@@ -22,7 +22,7 @@ import java.util.List;
  *
  * @author GeOrge
  */
-public class Calendario {
+public class CalendarioCls {
 
     /**
      * @param args the command line arguments
@@ -36,11 +36,10 @@ public class Calendario {
     
     
     
-    List<Departamento> departamentos = new ArrayList<>();
-    
-    static List<Aula> aulas = new ArrayList<>();
-    static List<Usuario> profesores = new ArrayList<>();
-    static List<Asignatura> asignaturas = new ArrayList<>();
+    public static ArrayList<Departamento> departamentos = new ArrayList<>();
+    public static ArrayList<Aula> aulas = new ArrayList<>();
+    public static ArrayList<Usuario> profesores = new ArrayList<>();
+    public static ArrayList<Asignatura> asignaturas = new ArrayList<>();
     
     
     
@@ -51,8 +50,8 @@ public class Calendario {
     // AUTOMATICO
     
     public void profesores() {
-        aulas();
-        departamentos();
+        //aulas();
+        //departamentos();
         Profesor p1 = new Profesor("Oscar Viquez", "oviquez", "oviquez", "2-987-654");
         p1.agregar(asignaturas.get(0));
         p1.agregar(asignaturas.get(1));
@@ -119,7 +118,7 @@ public class Calendario {
         asignaturas();
     }
     
-    protected void aulas() {
+    public void aulas() {
         // (String _nombre, int _numero, String _ubicacion, int _capacidad, boolean _acondicionado)
         aulas.add(new Clase("Aula 01",1,"Computacion",30,true));
         aulas.add(new Clase("Aula 02",2,"Computacion",30,true));

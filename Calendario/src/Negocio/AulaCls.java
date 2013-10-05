@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Aulas implements Interface{
+public class AulaCls implements Interface{
 
     private static ArrayList<Aula> aula = new ArrayList<>();
     /*private static ArrayList<Clase> clase = new ArrayList<>();
@@ -20,25 +20,13 @@ public class Aulas implements Interface{
     @Override
     public void insertar(Object args) {
         aula.add((Aula)args);
-        /*switch(op) {
-            case 1:
-                clase.add((Clase)args);
-                break;
-            case 2:
-                laboratorio.add((Laboratorio)args);
-                break;
-        }*/
     }
 
-    /*public ArrayList<Clase> getClase() {
-        return clase;
-    }
-
-    public ArrayList<Laboratorio> getLaboratorio() {
-        return laboratorio;
-    }*/
-
-    public static ArrayList<Aula> getAula() {
+    public ArrayList<Aula> getAula() {
         return aula;
+    }
+
+    public void setAula(ArrayList<Aula> aula) {
+        AulaCls.aula = aula;
     }
 }
