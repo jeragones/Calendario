@@ -4,6 +4,7 @@
  */
 package Presentacion;
 
+import Datos.Asignatura.Asignatura;
 import Datos.Asignatura.Departamento;
 import Datos.Aula.Aula;
 import Datos.Usuario.Usuario;
@@ -70,19 +71,17 @@ public class Borreme extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ArchivoCls ins1 = new ArchivoCls();
-        /*DepartamentoCls insDep = new DepartamentoCls();
-        AulaCls insAul = new AulaCls();
-        UsuarioCls insUs = new UsuarioCls();
-        CalendarioCls ins = new CalendarioCls();
-        //ins.departamentos();
-        //ArrayList<Object> l = new ArrayList<>();
-        /*for (int i=0; i < insDep.getDepartamento().size(); i++) {
-            l.add(insDep.getDepartamento().get(i));
-        }*/
-        //
-        //ins.profesores();
-        /*ins1.guardar("departamento", l);
+        //DepartamentoCls insDep = new DepartamentoCls();
+        //AulaCls insAul = new AulaCls();
+        //UsuarioCls insUs = new UsuarioCls();
+        
+        /*ins.profesores();
+        ArrayList<Object> l = new ArrayList<>();
         for (int i=0; i < insUs.getUsuario().size(); i++) {
+            l.add(insUs.getUsuario().get(i));
+        }*/
+        //ins1.guardar("usuario", l);
+        /*for (int i=0; i < insUs.getUsuario().size(); i++) {
             l.add(insUs.getUsuario().get(i));
         }*/
         /*for (int i=0; i < insUs.getUsuario().size(); i++) {
@@ -93,13 +92,15 @@ public class Borreme extends javax.swing.JFrame {
         /*ins1.cargar("departamento");
         ins1.cargar("aula");
         ins1.cargar("usuario");*/
+        //ins.profesores();
         ins1.cargar();
-        
-        CalendarioCls ins = new CalendarioCls();
-        ins.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula());
         ArrayList<Departamento> dep = DepartamentoCls.getDepartamento();
         ArrayList<Aula> aul = AulaCls.getAula();     
         ArrayList<Usuario> us = UsuarioCls.getUsuario();
+        
+        CalendarioCls ins = new CalendarioCls();
+        ArrayList<Asignatura> calendario = ins.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula());
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

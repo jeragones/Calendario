@@ -36,7 +36,6 @@ public class CalendarioCls {
     
     public ArrayList<Usuario> profesores = new ArrayList<>();
     List<Aula> aula = new ArrayList<Aula>();
-    /*public ArrayList<Usuario> usuarios = new ArrayList<>();
     
     DepartamentoCls insDepa = new DepartamentoCls();
     UsuarioCls insUs = new UsuarioCls();
@@ -44,51 +43,122 @@ public class CalendarioCls {
     public void profesores() {
         //aulas();
         departamentos();
+        /*ArchivoCls insC = new ArchivoCls();
+        insC.cargar();
+        for(int y=0; y < DepartamentoCls.getDepartamento().size(); y++) {
+            for(int x=0; x < DepartamentoCls.getDepartamento().get(y).getAsignatura().size(); x++) {
+                asignaturas.add(DepartamentoCls.getDepartamento().get(y).getAsignatura().get(x));
+            }
+        }*/
         Departamento dep = DepartamentoCls.getDepartamento("Computacion");
+        Departamento dep1 = DepartamentoCls.getDepartamento("Ciencias y Letras");
         Profesor p1 = new Profesor("Oscar Viquez", "oviquez", "oviquez", "2-987-654");
-        p1.agregar(asignaturas.get(0));
-        p1.agregar(asignaturas.get(1));
+        p1.agregar(asignaturas.get(8));
+        p1.agregar(asignaturas.get(18));
+        p1.agregar(asignaturas.get(23));
+        p1.agregar(asignaturas.get(29));
         profesores.add(p1);
         dep.agregar(p1);
         
-        Profesor p2 = new Profesor("Leonardo Viquez", "lviquez", "lviquez", "2-321-658");
+        /*Profesor p2 = new Profesor("Leonardo Viquez", "lviquez", "lviquez", "2-321-658");
         p2.agregar(asignaturas.get(2));
         p2.agregar(asignaturas.get(3));
         profesores.add(p2);
-        dep.agregar(p2);
+        dep.agregar(p2);*/
         
         Profesor p3 = new Profesor("Lorena Valerio", "lvalerio", "lvalerio", "3-895-234");
-        p3.agregar(asignaturas.get(4));
-        p3.agregar(asignaturas.get(5));
+        p3.agregar(asignaturas.get(7));
+        p3.agregar(asignaturas.get(12));
+        p3.agregar(asignaturas.get(31));
         profesores.add(p3);
         dep.agregar(p3);
         
         Profesor p4 = new Profesor("Gaudy Esquivel", "gesquivel", "gesquivel", "2-856-681");
-        p4.agregar(asignaturas.get(6));
-        p4.agregar(asignaturas.get(7));
+        p4.agregar(asignaturas.get(13));
+        p4.agregar(asignaturas.get(22));
         profesores.add(p4);
         dep.agregar(p4);
         
         Profesor p5 = new Profesor("Jorge Velazco", "jvelazco", "jvelazco", "1-963-785");
-        p5.agregar(asignaturas.get(8));
+        p5.agregar(asignaturas.get(0));
         p5.agregar(asignaturas.get(9));
+        p5.agregar(asignaturas.get(35));
         profesores.add(p5);
         dep.agregar(p5);
         
         Profesor p6 = new Profesor("Oscar Lopez", "olopez", "olopez", "2-963-741");
-        p6.agregar(asignaturas.get(10));
-        p6.agregar(asignaturas.get(11));
+        p6.agregar(asignaturas.get(17));
+        p6.agregar(asignaturas.get(19));
+        p6.agregar(asignaturas.get(24));
+        p6.agregar(asignaturas.get(30));
+        p6.agregar(asignaturas.get(28));
+        p6.agregar(asignaturas.get(36));
         profesores.add(p6);
         dep.agregar(p6);
         
+        Profesor p13 = new Profesor("Abel Mendez", "amendez", "amendez", "2-854-657");
+        p13.agregar(asignaturas.get(1));
+        p13.agregar(asignaturas.get(2));
+        p13.agregar(asignaturas.get(33));
+        p13.agregar(asignaturas.get(27));
+        p13.agregar(asignaturas.get(34));
+        profesores.add(p13);
+        dep.agregar(p13);
+        
         Profesor p7 = new Profesor("Oscar Cordoba", "ocordoba", "ocordoba", "2-682-789");
-        p7.agregar(asignaturas.get(12));
-        p7.agregar(asignaturas.get(13));
+        p7.agregar(asignaturas.get(37));
         profesores.add(p7);
         DepartamentoCls.getDepartamento("Administracion de Empresas").agregar(p7);
         
+        Profesor p8 = new Profesor("Esteban Ballestero", "eballestero", "eballestero", "2-983-137");
+        p8.agregar(asignaturas.get(11));
+        p8.agregar(asignaturas.get(21));
+        profesores.add(p8);
+        dep1.agregar(p8);
+        
+        Profesor p9 = new Profesor("Rodolfo Jimenez", "rjimenez", "rjimenez", "2-743-961");
+        p9.agregar(asignaturas.get(4));
+        p9.agregar(asignaturas.get(14));
+        p9.agregar(asignaturas.get(26));
+        profesores.add(p9);
+        dep1.agregar(p9);
+        
+        Profesor p10 = new Profesor("Marlon Benavidez", "mbenavidez", "mbenavidez", "3-951-753");
+        p10.agregar(asignaturas.get(15));
+        p10.agregar(asignaturas.get(20));
+        profesores.add(p10);
+        dep1.agregar(p10);
+        
+        Profesor p11 = new Profesor("Danilo Alpizar", "dalpizar", "dalpizar", "1-654-357");
+        p11.agregar(asignaturas.get(3));
+        p11.agregar(asignaturas.get(5));
+        p11.agregar(asignaturas.get(10));
+        profesores.add(p11);
+        dep1.agregar(p11);
+        
+        Profesor p12 = new Profesor("Karina Corella Esquivez", "kesquivel", "kesquivel", "1-125-985");
+        p12.agregar(asignaturas.get(6));
+        p12.agregar(asignaturas.get(16));
+        p12.agregar(asignaturas.get(25));
+        p12.agregar(asignaturas.get(32));
+        profesores.add(p12);
+        dep1.agregar(p12);
+        
         profesores1();
         UsuarioCls.setUsuario(profesores);
+        
+        ArchivoCls ins = new ArchivoCls();
+        
+        ArrayList<Object> l = new ArrayList<>();
+        for(int i=0; i < UsuarioCls.getUsuario().size(); i++) {
+            l.add(UsuarioCls.getUsuario().get(i));
+        }
+        ins.guardar("usuario", l);
+        l.clear();
+        for(int i=0; i < DepartamentoCls.getDepartamento().size(); i++) {
+            l.add(DepartamentoCls.getDepartamento().get(i));
+        }
+        ins.guardar("departamento", l);
     }
     
     protected void profesores1() {
@@ -114,8 +184,6 @@ public class CalendarioCls {
             d5.agregar(new Horario("12:30", "4:00"));
             ((Profesor)profesores.get(i)).agregar(d5);
         }
-        creara(asignaturas,profesores,aulas,calendario);
-        //inicializarCalendario();
     }
     
     public void departamentos() {
@@ -288,7 +356,7 @@ public class CalendarioCls {
                 insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d5);
             }
         }
-    }*/
+    }
     
     /*protected boolean compararDia(List<Dia> _calDia, List<Dia> _asigDia) {
         
@@ -314,8 +382,8 @@ public class CalendarioCls {
     protected boolean tipoAula(String t1, Class t2) {
         if(t1.equals("Computacion") & t2.equals(Laboratorio.class))
             return true;
-        /*else if(t1.equals(Teorica.class) & t2.equals(Clase.class))
-            return true;*/
+        else if(!t1.equals("Computacion") & t2.equals(Clase.class))
+            return true;
         else 
             return false;
     }
@@ -324,7 +392,7 @@ public class CalendarioCls {
         for(int x=0; x < aula.size(); x++) {
             if(aula.get(x).getHoraInicio().equals(hora.getHoraInicio()) & 
                aula.get(x).getHoraFinal().equals(hora.getHoraFinal())) {
-                if(!aula.get(x).isEstado()) {
+                if(aula.get(x).isEstado()) {
                     aula.get(x).setEstado(false);
                     return true;
                 } else
@@ -357,11 +425,11 @@ public class CalendarioCls {
     
     protected Aula aula(List<Aula> aula, String departamento, String dia, Horario hora, boolean restriccion) {
         for(int x=0; x < aula.size(); x++) {
-            if(tipoAula(departamento, aula.get(x).getClass()) & restriccion) {
-                if(aulaDia(aula.get(x), aula.get(x).getHorario(), dia, hora))
+            if(tipoAula(departamento, aula.get(x).getClass()) & restriccion) { // aqui
+                if(aulaDia(aula.get(x), aula.get(x).getHorario(), dia, hora)) 
                     return aula.get(x);
-            } else {
-                if(aulaDia(aula.get(x), aula.get(x).getHorario(), dia, hora) & !restriccion)
+            } else if(!restriccion) {
+                if(aulaDia(aula.get(x), aula.get(x).getHorario(), dia, hora))
                     return aula.get(x);
             }
         }
@@ -454,7 +522,7 @@ public class CalendarioCls {
      * @param curso
      * @return 
      */
-    protected Horario compararHora(List<Horario> cursos, List<Horario> curso, boolean x) {
+    /*protected Horario compararHora(List<Horario> cursos, List<Horario> curso, boolean x) {
         Horario hora = new Horario(null, null);
         for(int i=0; i<cursos.size(); i++) {
             for(int j=0; j<curso.size(); j++) {
@@ -486,7 +554,7 @@ public class CalendarioCls {
      * @param curso
      * @return 
      */
-    protected Dia compararDia(List<Dia> cursos, List<Dia> curso, boolean x) { // true: encontrar - false: no encontrar
+    /*protected Dia compararDia(List<Dia> cursos, List<Dia> curso, boolean x) { // true: encontrar - false: no encontrar
         Dia dia;
         for(int n=0; n<cursos.size(); n++) {
             for(int m=0; m< curso.size(); m++) {
@@ -511,7 +579,7 @@ public class CalendarioCls {
      * @param lista
      * @return 
      */
-    protected boolean comparar(Asignatura curso, List<Usuario> lista) {
+    /*protected boolean comparar(Asignatura curso, List<Usuario> lista) {
         for(int i=0; i<lista.size(); i++) {
             if(lista.get(i).getClass().equals(Profesor.class)) {
                 List<Asignatura> profesor = ((Profesor)lista.get(i)).getAsignatura();
@@ -542,7 +610,7 @@ public class CalendarioCls {
     /*
      * EN PROCESO DE CONSTRUCCION (SI SE NECESITA !!!!)
      */
-    protected Aula buscarAula(List<Dia> _horario, Class tipo) {
+    /*protected Aula buscarAula(List<Dia> _horario, Class tipo) {
         for(int i=0; i<aulas.size(); i++) {
             if(tipoAula(tipo.getName(),aulas.get(i).getClass())) {
                 if(aulas.get(i).getHorario().isEmpty()) {
@@ -611,7 +679,7 @@ public class CalendarioCls {
                     if(buscarDia(calendario.get(i).getHorario(),_horario))
                         return false;
                 }*/
-            } else
+            /*} else
                 asignaturas.get(x).setError(1); // error 1: no coinciden los horarios del profesor con la asignatura
         }
     }

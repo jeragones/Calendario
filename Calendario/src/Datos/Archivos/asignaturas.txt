@@ -1,38 +1,44 @@
-P@CI1400@Fundamentos de Organizacion de Computadoras@50@1@4@Ubunto
-P@CI1802@Introduccion a la Programacion@50@1@4@Windows 7
-P@CI1803@Taller de Programacion@50@1@4@Windows 7
-T@CI0202@Ingles Basico@50@1@2@www.tec-digital.itcr.ac.cr
-T@MA0101@Matematica General@50@1@3@www.tec-digital.itcr.ac.cr
-T@CI1311@Ingles I para Computacion@50@1@2@www.tec-digital.itcr.ac.cr
-T@CI1403@Comunicacion Tecnica@50@1@2@www.tec-digital.itcr.ac.cr
-P@CI2001@Estructura de Datos@50@2@4@Windows 7
-P@CI2101@Programacion Orientada a Objetos@50@2@4@Windows 7
-T@CI3101@Arquitectura de Computadores@50@2@4@www.tec-digital.itcr.ac.cr
-T@CI1312@Ingles II para Computacion@50@2@2@www.tec-digital.itcr.ac.cr
-T@MA1404@Calculo@50@2@4@www.tec-digital.itcr.ac.cr
-P@CI3002@Analisis de Algoritmos@50@3@4@Windows 7
-P@CI4301@Bases de Datos I@50@3@4@Ubunto
-T@CI1313@Ingles III para Computacion@50@3@2@www.tec-digital.itcr.ac.cr
-T@CS2101@Ambiente Humano@50@3@2@www.tec-digital.itcr.ac.cr
-T@MA2405@Algebra Lineal para Computacion@50@3@4@www.tec-digital.itcr.ac.cr
-P@CI4302@Bases de Datos II@50@4@4@Ubunto
-P@CI4700@Lenguajes de Programacion@50@4@4@Windows 7
-P@CI5821@Requerimientos de Software@50@4@4@Windows 7
-T@CI1314@Ingles IV para Computacion@50@4@2@www.tec-digital.itcr.ac.cr
-T@MA2404@Probabilidades@50@4@4@www.tec-digital.itcr.ac.cr
-T@CI4810@Administracion de Proyectos@50@5@4@www.tec-digital.itcr.ac.cr
-P@CI5701@Compiladores e Interpretes@50@5@4@Windows 7
-P@CI6821@Diseño de Software de Software@50@5@4@Windows 7
-T@CS3401@Seminario de Estudios Filosoficos@50@5@2@www.tec-digital.itcr.ac.cr
-T@MA3405@Estadistica@50@5@4@www.tec-digital.itcr.ac.cr
-P@CI4003@Electiva I@50@6@4@Windows 7
-T@CI6400@Investigacion de Operaciones@50@6@4@www.tec-digital.itcr.ac.cr
-T@CI6600@Principios de Sistemas Operativos@50@6@4@www.tec-digital.itcr.ac.cr
-P@CI6831@Aseguramiento de la Calidad de Software@50@6@4@Windows 7
-T@CI7900@Computacion y Sociedad@50@6@2@www.tec-digital.itcr.ac.cr
-T@CS4402@Seminario de Estudios Costarricenses@50@6@2@www.tec-digital.itcr.ac.cr
-P@CI5001@Electiva II@50@7@4@Windows 7
-P@CI6200@Inteligencia Artificial@50@7@4@Windows 7
-T@CI7602@Redes@50@7@4@www.tec-digital.itcr.ac.cr
-P@CI7841@Proyecto de Ingenieria de Software@50@7@4@Windows 7
-T@AE4208@Desarrollo de Emprendedores@50@7@3@www.tec-digital.itcr.ac.cr
+0@ CI1400 @Fundamentos de Organizacion de Computadoras@50@1@4@Ubunto
+1@ CI1802 @Introduccion a la Programacion@50@1@4@Windows 7
+2@ CI1803 @Taller de Programacion@50@1@4@Windows 7
+3@ CI0202 @Ingles Basico@50@1@2@www.tec-digital.itcr.ac.cr
+4@ MA0101 @Matematica General@50@1@3@www.tec-digital.itcr.ac.cr
+5@ CI1311 @Ingles I para Computacion@50@1@2@www.tec-digital.itcr.ac.cr
+6@ CI1403 @Comunicacion Tecnica@50@1@2@www.tec-digital.itcr.ac.cr
+
+7@ CI2001 @Estructura de Datos@50@2@4@Windows 7
+8@ CI2101 @Programacion Orientada a Objetos@50@2@4@Windows 7
+9@ CI3101 @Arquitectura de Computadores@50@2@4@www.tec-digital.itcr.ac.cr
+10@ CI1312 @Ingles II para Computacion@50@2@2@www.tec-digital.itcr.ac.cr
+11@ MA1404 @Calculo@50@2@4@www.tec-digital.itcr.ac.cr
+
+12@ CI3002 @Analisis de Algoritmos@50@3@4@Windows 7
+13@ CI4301 @Bases de Datos I@50@3@4@Ubunto
+14@ MA2405 @Algebra Lineal para Computacion@50@3@4@www.tec-digital.itcr.ac.cr
+15@ CI1313 @Ingles III para Computacion@50@3@2@www.tec-digital.itcr.ac.cr
+16@ CS2101 @Ambiente Humano@50@3@2@www.tec-digital.itcr.ac.cr
+
+17@ CI4302 @Bases de Datos II@50@4@4@Ubunto
+18@ CI4700 @Lenguajes de Programacion@50@4@4@Windows 7
+19@ CI5821 @Requerimientos de Software@50@4@4@Windows 7
+20@ CI1314 @Ingles IV para Computacion@50@4@2@www.tec-digital.itcr.ac.cr
+21@ MA2404 @Probabilidades@50@4@4@www.tec-digital.itcr.ac.cr
+
+22@ CI4810 @Administracion de Proyectos@50@5@4@www.tec-digital.itcr.ac.cr
+23@ CI5701 @Compiladores e Interpretes@50@5@4@Windows 7
+24@ CI6821 @Diseño de Software de Software@50@5@4@Windows 7
+25@ CS3401 @Seminario de Estudios Filosoficos@50@5@2@www.tec-digital.itcr.ac.cr
+26@ MA3405 @Estadistica@50@5@4@www.tec-digital.itcr.ac.cr
+
+27@ CI4003 @Electiva I@50@6@4@Windows 7
+28@ CI6400 @Investigacion de Operaciones@50@6@4@www.tec-digital.itcr.ac.cr
+29@ CI6600 @Principios de Sistemas Operativos@50@6@4@www.tec-digital.itcr.ac.cr
+30@ CI6831 @Aseguramiento de la Calidad de Software@50@6@4@Windows 7
+31@ CI7900 @Computacion y Sociedad@50@6@2@www.tec-digital.itcr.ac.cr
+32@ CS4402 @Seminario de Estudios Costarricenses@50@6@2@www.tec-digital.itcr.ac.cr
+
+33@ CI5001 @Electiva II@50@7@4@Windows 7
+34@ CI6200 @Inteligencia Artificial@50@7@4@Windows 7
+35@ CI7602 @Redes@50@7@4@www.tec-digital.itcr.ac.cr
+36@ CI7841 @Proyecto de Ingenieria de Software@50@7@4@Windows 7
+37@ AE4208 @Desarrollo de Emprendedores@50@7@3@www.tec-digital.itcr.ac.cr
