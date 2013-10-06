@@ -28,15 +28,15 @@ public class CalendarioCls {
      * @param args the command line arguments
      */
     
-    static List<Asignatura> calendario = new ArrayList<>();
-    List<Aula> aula = new ArrayList<Aula>();
-    
-    public ArrayList<Departamento> departamentos = new ArrayList<>();
+    static ArrayList<Asignatura> calendario = new ArrayList<>();
     public ArrayList<Aula> aulas = new ArrayList<>();
-    public ArrayList<Usuario> profesores = new ArrayList<>();
-    public ArrayList<Asignatura> asignaturas = new ArrayList<>();
-    public ArrayList<Usuario> usuarios = new ArrayList<>();
     
+    public ArrayList<Asignatura> asignaturas = new ArrayList<>();
+    public ArrayList<Departamento> departamentos = new ArrayList<>();
+    
+    public ArrayList<Usuario> profesores = new ArrayList<>();
+    List<Aula> aula = new ArrayList<Aula>();
+    /*public ArrayList<Usuario> usuarios = new ArrayList<>();
     
     DepartamentoCls insDepa = new DepartamentoCls();
     UsuarioCls insUs = new UsuarioCls();
@@ -126,7 +126,7 @@ public class CalendarioCls {
         asignaturas();
     }
     
-    /*public void aulas() {
+    public void aulas() {
         aulas.add(new Clase("Aula 01",1,"Computacion",30,true));
         aulas.add(new Clase("Aula 02",2,"Computacion",30,true));
         aulas.add(new Clase("Aula 03",3,"Computacion",30,true));
@@ -142,7 +142,7 @@ public class CalendarioCls {
         aulas.add(new Laboratorio("LAIMI",3,"Computacion",30));
         aulas.add(new Laboratorio("Laboratorio 01",1,"Computacion",24));
         aulas.add(new Laboratorio("Laboratorio 02",2,"Computacion",24));
-    }*/
+    }
     
     public void asignaturas(){
         Teorica p1 = new Teorica("CI1400","Fundamentos de Organizacion de Computadoras",50,1,4,"www.tec-digital.itcr.ac.cr");
@@ -288,7 +288,7 @@ public class CalendarioCls {
                 insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d5);
             }
         }
-    }
+    }*/
     
     /*protected boolean compararDia(List<Dia> _calDia, List<Dia> _asigDia) {
         
@@ -311,11 +311,11 @@ public class CalendarioCls {
         return dia;
     }
     
-    protected boolean tipoAula(Class t1, Class t2) {
-        if(t1.equals(Teorica.class) & t2.equals(Clase.class))
+    protected boolean tipoAula(String t1, Class t2) {
+        if(t1.equals("Computacion") & t2.equals(Laboratorio.class))
             return true;
-        else if(t1.equals(Practica.class) & t2.equals(Laboratorio.class))
-            return true;
+        /*else if(t1.equals(Teorica.class) & t2.equals(Clase.class))
+            return true;*/
         else 
             return false;
     }
@@ -355,9 +355,9 @@ public class CalendarioCls {
         }
     }
     
-    protected Aula aula(List<Aula> aula, String dia, Horario hora, Class curso, boolean restriccion) {
+    protected Aula aula(List<Aula> aula, String departamento, String dia, Horario hora, boolean restriccion) {
         for(int x=0; x < aula.size(); x++) {
-            if(tipoAula(curso, aula.get(x).getClass()) & restriccion) {
+            if(tipoAula(departamento, aula.get(x).getClass()) & restriccion) {
                 if(aulaDia(aula.get(x), aula.get(x).getHorario(), dia, hora))
                     return aula.get(x);
             } else {
@@ -366,18 +366,18 @@ public class CalendarioCls {
             }
         }
         if(restriccion)
-            aula(aula, dia, hora, curso, false);
+            aula(aula, departamento, dia, hora, false);
         return null;
     }
     
-    protected boolean crear(Asignatura curso, List<Horario> horaCurso, List<Horario> horaProfesor, String dia, List<Aula> aulas) {
+    protected boolean crear(Asignatura curso, List<Horario> horaCurso, List<Horario> horaProfesor, String dia, List<Aula> aulas, String departamento) {
         for(int i=0; i < horaCurso.size(); i++) {
             for(int j=0; j < horaProfesor.size(); j++) {
                 if(horaCurso.get(i).isEstado() & horaProfesor.get(j).isEstado()) {
                     String[] hCurso = new String[]{horaCurso.get(i).getHoraInicio(), horaCurso.get(i).getHoraFinal()};
                     String[] hProfesor = new String[]{horaProfesor.get(j).getHoraInicio(), horaProfesor.get(j).getHoraFinal()};
                     if(hCurso[0].equals(hProfesor[0]) & hCurso[1].equals(hProfesor[1])) {                
-                        Aula aula = aula(aulas, dia, horaCurso.get(i), curso.getClass(), true);
+                        Aula aula = aula(aulas, departamento, dia, horaCurso.get(i), true);
                         if(aula != null) {
                             horaCurso.get(i).setEstado(false);
                             horaProfesor.get(j).setEstado(false);
@@ -392,11 +392,11 @@ public class CalendarioCls {
         return false;
     }
     
-    protected boolean validar(Asignatura curso, List<Dia> diaCurso, List<Dia> diaProfesor, List<Aula> aula) {
+    protected boolean validar(Asignatura curso, List<Dia> diaCurso, List<Dia> diaProfesor, List<Aula> aula, String departamento) {
         for(int i=0; i < diaCurso.size(); i++) {
             for(int j=0; j < diaProfesor.size(); j++) {
                 if(diaCurso.get(i).getDia().equals(diaProfesor.get(j).getDia())) {
-                    if(crear(curso, diaCurso.get(i).getHorario(), diaProfesor.get(j).getHorario(), diaCurso.get(i).getDia(), aula))
+                    if(crear(curso, diaCurso.get(i).getHorario(), diaProfesor.get(j).getHorario(), diaCurso.get(i).getDia(), aula, departamento))
                         return true;
                 }
             }
@@ -404,30 +404,30 @@ public class CalendarioCls {
         return false;
     }
     
-    protected boolean crear(Asignatura curso, Profesor profesor, List<Aula> aula) {
+    protected boolean crear(Asignatura curso, Profesor profesor, List<Aula> aula, String departamento) {
         for(int x=0; x < profesor.getAsignatura().size(); x++) {
             if(curso.equals(profesor.getAsignatura().get(x))) {
-                if(validar(curso, curso.getHorario(), profesor.getHorario(), aula))
+                if(validar(curso, curso.getHorario(), profesor.getHorario(), aula, departamento))
                     return true;
             }
         }
         return false;
     }
     
-    protected boolean crear(Asignatura curso, List<Usuario> profesor, List<Aula> aula) {
+    protected boolean crear(Asignatura curso, List<Profesor> profesor, List<Aula> aula, String departamento) {
         for(int x=0; x < profesor.size(); x++) {
-            if(profesor.get(x).getClass().equals(Profesor.class)) {
-                if(crear(curso, (Profesor)profesor.get(x), aula)) 
-                    return true;
-            }
+            //if(profesor.get(x).getClass().equals(Profesor.class)) {
+            if(crear(curso, profesor.get(x), aula, departamento)) 
+                return true;
+            //}
         }
         return false;
     }
     
-    public void creara(List<Asignatura> curso, List<Usuario> profesor, List<Aula> aula, List<Asignatura> calendario) {
+    protected void calendario(List<Asignatura> curso, List<Profesor> profesor, List<Aula> aula, String departamento, List<Asignatura> calendario) {
         if(!curso.isEmpty() & !profesor.isEmpty() & !aula.isEmpty()) {
             for(int x=0; x < curso.size(); x++) {
-                if(crear(curso.get(x), profesor, aula)) {
+                if(crear(curso.get(x), profesor, aula, departamento)) {
                     calendario.add(curso.get(x));
                     curso.remove(x);
                     x -= 1;
@@ -435,6 +435,13 @@ public class CalendarioCls {
             }
         }
         //return calendario;
+    }
+    
+    public ArrayList<Asignatura> crear(List<Departamento> departamento, List<Usuario> usuario, List<Aula> aula) {
+        for(int x=0; x < departamento.size(); x++) {
+            calendario(departamento.get(x).getAsignatura(), departamento.get(x).getProfesor(), aula, departamento.get(x).getDepartamento(), calendario);
+        }
+        return calendario;
     }
     
     
@@ -537,7 +544,7 @@ public class CalendarioCls {
      */
     protected Aula buscarAula(List<Dia> _horario, Class tipo) {
         for(int i=0; i<aulas.size(); i++) {
-            if(tipoAula(tipo,aulas.get(i).getClass())) {
+            if(tipoAula(tipo.getName(),aulas.get(i).getClass())) {
                 if(aulas.get(i).getHorario().isEmpty()) {
                     return aulas.get(i);
                 } else {

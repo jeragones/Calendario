@@ -94,6 +94,9 @@ public class Borreme extends javax.swing.JFrame {
         ins1.cargar("aula");
         ins1.cargar("usuario");*/
         ins1.cargar();
+        
+        CalendarioCls ins = new CalendarioCls();
+        ins.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula());
         ArrayList<Departamento> dep = DepartamentoCls.getDepartamento();
         ArrayList<Aula> aul = AulaCls.getAula();     
         ArrayList<Usuario> us = UsuarioCls.getUsuario();
