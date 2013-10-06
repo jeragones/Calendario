@@ -11,21 +11,21 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Departamento {
+public class Departamento implements java.io.Serializable {
 
     private String departamento;
-    private static ArrayList<Asignatura> asignatura = new ArrayList<>(); 
-    private static ArrayList<Profesor> profesor = new ArrayList<>(); 
+    private ArrayList<Asignatura> asignatura = new ArrayList<>(); 
+    private ArrayList<Profesor> profesor = new ArrayList<>(); 
     
     public Departamento(String _departamento) {
         departamento = _departamento;
     }
     
-    public static ArrayList<Asignatura> getAsignatura() {
+    public ArrayList<Asignatura> getAsignatura() {
         return asignatura;
     }
 
-    public static ArrayList<Profesor> getProfesor() {
+    public ArrayList<Profesor> getProfesor() {
         return profesor;
     }
 

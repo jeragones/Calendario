@@ -4,9 +4,14 @@
  */
 package Presentacion;
 
+import Datos.Asignatura.Departamento;
+import Datos.Aula.Aula;
+import Datos.Usuario.Usuario;
 import Negocio.ArchivoCls;
 import Negocio.AulaCls;
 import Negocio.CalendarioCls;
+import Negocio.DepartamentoCls;
+import Negocio.UsuarioCls;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,16 +69,33 @@ public class Borreme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CalendarioCls ins = new CalendarioCls();
-        //ins.profesores();
-        ins.aulas();
         ArchivoCls ins1 = new ArchivoCls();
-        ArrayList<Object> l = new ArrayList<>();
-        for (int i=0; i < CalendarioCls.aulas.size(); i++) {
-            l.add(CalendarioCls.aulas.get(i));
+        /*DepartamentoCls insDep = new DepartamentoCls();
+        AulaCls insAul = new AulaCls();
+        UsuarioCls insUs = new UsuarioCls();
+        CalendarioCls ins = new CalendarioCls();
+        //ins.departamentos();
+        //ArrayList<Object> l = new ArrayList<>();
+        /*for (int i=0; i < insDep.getDepartamento().size(); i++) {
+            l.add(insDep.getDepartamento().get(i));
+        }*/
+        //
+        //ins.profesores();
+        /*ins1.guardar("departamento", l);
+        for (int i=0; i < insUs.getUsuario().size(); i++) {
+            l.add(insUs.getUsuario().get(i));
+        }*/
+        /*for (int i=0; i < insUs.getUsuario().size(); i++) {
+            l.add(insUs.getUsuario().get(i));
         }
-        ins1.guardar("aula", l);
+        ins1.guardar("usuario", l);*/
+        
+        ins1.cargar("departamento");
         ins1.cargar("aula");
+        ins1.cargar("usuario");
+        ArrayList<Departamento> dep = DepartamentoCls.getDepartamento();
+        ArrayList<Aula> aul = AulaCls.getAula();     
+        ArrayList<Usuario> us = UsuarioCls.getUsuario();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

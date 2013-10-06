@@ -31,57 +31,64 @@ public class CalendarioCls {
     static List<Asignatura> calendario = new ArrayList<>();
     List<Aula> aula = new ArrayList<Aula>();
     
+    public ArrayList<Departamento> departamentos = new ArrayList<>();
+    public ArrayList<Aula> aulas = new ArrayList<>();
+    public ArrayList<Usuario> profesores = new ArrayList<>();
+    public ArrayList<Asignatura> asignaturas = new ArrayList<>();
+    public ArrayList<Usuario> usuarios = new ArrayList<>();
     
     
-    
-    
-    
-    public static ArrayList<Departamento> departamentos = new ArrayList<>();
-    public static ArrayList<Aula> aulas = new ArrayList<>();
-    public static ArrayList<Usuario> profesores = new ArrayList<>();
-    public static ArrayList<Asignatura> asignaturas = new ArrayList<>();
-    
-    
-    
-    /*public static void main(String[] args) {
-
-    }*/
-    
-    // AUTOMATICO
+    DepartamentoCls insDepa = new DepartamentoCls();
+    UsuarioCls insUs = new UsuarioCls();
     
     public void profesores() {
         //aulas();
-        //departamentos();
+        departamentos();
+        Departamento dep = DepartamentoCls.getDepartamento("Computacion");
         Profesor p1 = new Profesor("Oscar Viquez", "oviquez", "oviquez", "2-987-654");
         p1.agregar(asignaturas.get(0));
         p1.agregar(asignaturas.get(1));
         profesores.add(p1);
+        dep.agregar(p1);
         
         Profesor p2 = new Profesor("Leonardo Viquez", "lviquez", "lviquez", "2-321-658");
         p2.agregar(asignaturas.get(2));
         p2.agregar(asignaturas.get(3));
         profesores.add(p2);
+        dep.agregar(p2);
         
         Profesor p3 = new Profesor("Lorena Valerio", "lvalerio", "lvalerio", "3-895-234");
         p3.agregar(asignaturas.get(4));
         p3.agregar(asignaturas.get(5));
         profesores.add(p3);
+        dep.agregar(p3);
         
         Profesor p4 = new Profesor("Gaudy Esquivel", "gesquivel", "gesquivel", "2-856-681");
         p4.agregar(asignaturas.get(6));
         p4.agregar(asignaturas.get(7));
         profesores.add(p4);
+        dep.agregar(p4);
         
         Profesor p5 = new Profesor("Jorge Velazco", "jvelazco", "jvelazco", "1-963-785");
         p5.agregar(asignaturas.get(8));
         p5.agregar(asignaturas.get(9));
         profesores.add(p5);
+        dep.agregar(p5);
         
         Profesor p6 = new Profesor("Oscar Lopez", "olopez", "olopez", "2-963-741");
         p6.agregar(asignaturas.get(10));
         p6.agregar(asignaturas.get(11));
         profesores.add(p6);
+        dep.agregar(p6);
+        
+        Profesor p7 = new Profesor("Oscar Cordoba", "ocordoba", "ocordoba", "2-682-789");
+        p7.agregar(asignaturas.get(12));
+        p7.agregar(asignaturas.get(13));
+        profesores.add(p7);
+        DepartamentoCls.getDepartamento("Administracion de Empresas").agregar(p7);
+        
         profesores1();
+        UsuarioCls.setUsuario(profesores);
     }
     
     protected void profesores1() {
@@ -111,134 +118,176 @@ public class CalendarioCls {
         //inicializarCalendario();
     }
     
-    protected void departamentos() {
+    public void departamentos() {
         departamentos.add(new Departamento("Computacion"));
         departamentos.add(new Departamento("Ciencias y Letras"));
         departamentos.add(new Departamento("Administracion de Empresas"));
+        DepartamentoCls.setDepartamento(departamentos);
         asignaturas();
     }
     
-    public void aulas() {
-        // (String _nombre, int _numero, String _ubicacion, int _capacidad, boolean _acondicionado)
+    /*public void aulas() {
         aulas.add(new Clase("Aula 01",1,"Computacion",30,true));
         aulas.add(new Clase("Aula 02",2,"Computacion",30,true));
         aulas.add(new Clase("Aula 03",3,"Computacion",30,true));
-        aulas.add(new Clase("Aula 04",4,"Computacion",30,true));
-        aulas.add(new Clase("Aula 05",5,"Computacion",30,true));
+        aulas.add(new Clase("Aula 04",4,"Ciencias y Letras",30,true));
+        aulas.add(new Clase("Aula 05",5,"Ciencias y Letras",30,false));
         aulas.add(new Clase("Aula 06",6,"Ciencias y Letras",30,true));
-        aulas.add(new Clase("Aula 07",7,"Ciencias y Letras",30,false));
-        aulas.add(new Clase("Aula 08",8,"Ciencias y Letras",30,true));
+        aulas.add(new Clase("Aula 07",7,"Ciencias y Letras",30,true));
+        aulas.add(new Clase("Aula 08",8,"Ciencias y Letras",30,false));
         aulas.add(new Clase("Aula 09",9,"Ciencias y Letras",30,true));
         aulas.add(new Clase("Aula 10",10,"Ciencias y Letras",30,false));
-        aulas.add(new Clase("Aula 11",11,"Ciencias y Letras",30,true));
-        aulas.add(new Clase("Aula 12",12,"Ciencias y Letras",30,false));
-        aulas.add(new Clase("Aula 13",13,"Ciencias y Letras",30,false));
-        aulas.add(new Clase("Aula 14",14,"Ciencias y Letras",30,true));
-        aulas.add(new Clase("Aula 15",15,"Ciencias y Letras",30,false));
-        
-        // (String _nombre, int _numero, String _ubicacion, int _capacidad)
-        aulas.add(new Laboratorio("LAIMI",4,"Computacion",30));
+        aulas.add(new Clase("Aula 11",11,"Ciencias y Letras",30,false));
+        aulas.add(new Clase("Aula 12",12,"Ciencias y Letras",30,true));
+        aulas.add(new Laboratorio("LAIMI",3,"Computacion",30));
         aulas.add(new Laboratorio("Laboratorio 01",1,"Computacion",24));
         aulas.add(new Laboratorio("Laboratorio 02",2,"Computacion",24));
-        aulas.add(new Laboratorio("Laboratorio 03",3,"Computacion",24));
-    }
+    }*/
     
-    protected void asignaturas(){
-        //( codigo, String _nombre, int _grupo, int _semestre, int _creditos)
-        Teorica t1 = new Teorica("CI1400","Fundamentos de Organizacion de Computadoras",50,1,4,"www.algo1.com");
-        asignaturas.add(t1);
-        departamentos.get(0).agregar(t1);
-        Teorica t2 = new Teorica("CI1802","Introduccion a la Programacion",50,1,4,"www.algo2.com");
-        asignaturas.add(t2);
-        departamentos.get(0).agregar(t2);
-        Practica p1 = new Practica("CI1803","Taller de Programacion",50,1,4,"Windows xp");
+    public void asignaturas(){
+        Teorica p1 = new Teorica("CI1400","Fundamentos de Organizacion de Computadoras",50,1,4,"www.tec-digital.itcr.ac.cr");
         asignaturas.add(p1);
-        departamentos.get(0).agregar(p1);
-        Practica p2 = new Practica("CI0202","Ingles Basico",50,1,2,"");
+        insDepa.getDepartamento("Computacion").agregar(p1);
+        Teorica t2 = new Teorica("CI1802","Introduccion a la Programacion",50,1,4,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t2);
+        insDepa.getDepartamento("Computacion").agregar(t2);
+        Practica t1 = new Practica("CI1803","Taller de Programacion",50,1,4,"Windows 7");
+        asignaturas.add(t1);
+        insDepa.getDepartamento("Computacion").agregar(t1);
+        Teorica p2 = new Teorica("CI0202","Ingles Basico",50,1,2,"www.tec-digital.itcr.ac.cr");
         asignaturas.add(p2);
-        departamentos.get(1).agregar(p2);
-        Practica p3 = new Practica("MA0101","Matematica General",50,1,3,"");
+        insDepa.getDepartamento("Ciencias y Letras").agregar(p2);
+        Practica p3 = new Practica("MA0101","Matematica General",50,1,3,"Windows 7");
         asignaturas.add(p3);
-        departamentos.get(1).agregar(p3);
-        Practica p4 = new Practica("CI1311","Ingles I para Computacion",50,1,2,"");
+        insDepa.getDepartamento("Ciencias y Letras").agregar(p3);
+        Teorica p4 = new Teorica("CI1311","Ingles I para Computacion",50,1,2,"www.tec-digital.itcr.ac.cr");
         asignaturas.add(p4);
-        departamentos.get(1).agregar(p4);
-        Practica p5 = new Practica("CI1403","Comunicacion Tecnica",50,1,2,"");
+        insDepa.getDepartamento("Ciencias y Letras").agregar(p4);
+        Teorica p5 = new Teorica("CI1403","Comunicacion Tecnica",50,1,2,"www.tec-digital.itcr.ac.cr");
         asignaturas.add(p5);
-        departamentos.get(1).agregar(p5);
-        // ******************************************************************************
-        Teorica t3 = new Teorica("CI2001","Estructura de Datos",50,2,4,"www.algo3.com");
+        insDepa.getDepartamento("Ciencias y Letras").agregar(p5);
+        Practica t3 = new Practica("CI2001","Estructura de Datos",50,2,4,"Windows 7");
         asignaturas.add(t3);
-        departamentos.get(0).agregar(t3);
-        Practica p6 = new Practica("CI2101","Programacion Orientada a Objetos",50,2,4,"Windows xp");
+        insDepa.getDepartamento("Computacion").agregar(t3);
+        Practica p6 = new Practica("CI2101","Programacion Orientada a Objetos",50,2,4,"Windows 7");
         asignaturas.add(p6);
-        departamentos.get(1).agregar(p6);
-        Teorica t4 = new Teorica("CI3101","Arquitectura de Computadores",50,2,4,"www.algo4.com");
+        insDepa.getDepartamento("Computacion").agregar(p6);
+        Teorica t4 = new Teorica("CI3101","Arquitectura de Computadores",50,2,4,"www.tec-digital.itcr.ac.cr");
         asignaturas.add(t4);
-        departamentos.get(0).agregar(t4);
-        Practica p7 = new Practica("CI1312","Ingles II para Computacion",50,2,2,"");
+        insDepa.getDepartamento("Computacion").agregar(t4);
+        Teorica p7 = new Teorica("CI1312","Ingles II para Computacion",50,2,2,"www.tec-digital.itcr.ac.cr");
         asignaturas.add(p7);
-        departamentos.get(1).agregar(p7);
-        Practica p8 = new Practica("MA1404","Calculo",50,2,4,"");
+        insDepa.getDepartamento("Ciencias y Letras").agregar(p7);
+        Practica p8 = new Practica("MA1404","Calculo",50,2,4,"Windows 7");
         asignaturas.add(p8);
-        departamentos.get(1).agregar(p8);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(p8);
+        Teorica p9 = new Teorica("CI3002","Analisis de Algoritmos",50,3,4,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(p9);
+        insDepa.getDepartamento("Computacion").agregar(p9);
+        Practica p10 = new Practica("CI4301","Bases de Datos I",50,3,4,"Ubunto");
+        asignaturas.add(p10);
+        insDepa.getDepartamento("Computacion").agregar(p10);
+        Teorica t5 = new Teorica("CI1313","Ingles III para Computacion",50,3,2,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t5);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(t5);
+        Teorica t6 = new Teorica("CS2101","Ambiente Humano",50,3,2,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t6);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(t6);
+        Practica t7 = new Practica("MA2405","Algebra Lineal para Computacion",50,3,4,"Windows 7");
+        asignaturas.add(t7);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(t7);
+        Teorica p11 = new Teorica("CI4302","Bases de Datos II",50,4,4,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(p11);
+        insDepa.getDepartamento("Computacion").agregar(p11);
+        Practica p12 = new Practica("CI4700","Lenguajes de Programacion",50,4,4,"Windows 7");
+        asignaturas.add(p12);
+        insDepa.getDepartamento("Computacion").agregar(p12);
+        Practica p13 = new Practica("CI5821","Requerimientos de Software",50,4,4,"Window 7");
+        asignaturas.add(p13);
+        insDepa.getDepartamento("Computacion").agregar(p13);
+        Teorica t8 = new Teorica("CI1314","Ingles IV para Computacion",50,4,2,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t8);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(t8);
+        Practica t9 = new Practica("MA2404","Probabilidades",50,4,4,"Windows 7");
+        asignaturas.add(t9);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(t9);
+        Teorica t10 = new Teorica("CI4810","Administracion de Proyectos",50,5,4,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t10);
+        insDepa.getDepartamento("Computacion").agregar(t10);
+        Practica p14 = new Practica("CI5701","Compiladores e Interpretes",50,5,4,"Windows 7");
+        asignaturas.add(p14);
+        insDepa.getDepartamento("Computacion").agregar(p14);
+        Practica p15 = new Practica("CI6821","Diseño de Software de Software",50,5,4,"Windows 7");
+        asignaturas.add(p15);
+        insDepa.getDepartamento("Computacion").agregar(p15);
+        Teorica t11 = new Teorica("CS3401","Seminario de Estudios Filosoficos",50,5,2,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t11);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(t11);
+        Practica p16 = new Practica("MA3405","Estadistica",50,5,4,"Windows 7");
+        asignaturas.add(p16);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(p16);
+        Teorica t12 = new Teorica("CI4003","Electiva I",50,6,4,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t12);
+        insDepa.getDepartamento("Computacion").agregar(t12);
+        Practica p18 = new Practica("CI6400","Investigacion de Operaciones",50,6,4,"Windows 8");
+        asignaturas.add(p18);
+        insDepa.getDepartamento("Computacion").agregar(p18);
+        Teorica t13 = new Teorica("CI6600","Principios de Sistemas Operativos",50,6,4,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t13);
+        insDepa.getDepartamento("Computacion").agregar(t13);
+        Teorica t14 = new Teorica("CI6831","Aseguramiento de la Calidad de Software",50,6,4,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t14);
+        insDepa.getDepartamento("Computacion").agregar(t14);
+        Teorica t15 = new Teorica("CI7900","Computacion y Sociedad",50,6,2,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t15);
+        insDepa.getDepartamento("Computacion").agregar(t15);
+        Teorica t16 = new Teorica("CS4402","Seminario de Estudios Costarricenses",50,6,2,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t16);
+        insDepa.getDepartamento("Ciencias y Letras").agregar(t16);
+        Practica p19 = new Practica("CI5001","Electiva II",50,7,4,"Windows 8");
+        asignaturas.add(p19);
+        insDepa.getDepartamento("Computacion").agregar(p19);
+        Practica p20 = new Practica("CI6200","Inteligencia Artificial",50,7,4,"Windows 8");
+        asignaturas.add(p20);
+        insDepa.getDepartamento("Computacion").agregar(p20);
+        Teorica t21 = new Teorica("CI7602","Redes",50,7,4,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t21);
+        insDepa.getDepartamento("Computacion").agregar(t21);
+        Practica p21 = new Practica("CI7841","Proyecto de Ingenieria de Software",50,7,4,"Windows 7");
+        asignaturas.add(p21);
+        insDepa.getDepartamento("Computacion").agregar(p21);
+        Teorica t22 = new Teorica("AE4208","Desarrollo de Emprendedores",50,7,3,"www.tec-digital.itcr.ac.cr");
+        asignaturas.add(t22);
+        insDepa.getDepartamento("Administracion de Empresas").agregar(t22);
+        departamentos = insDepa.getDepartamento();
         asignaturas1();
-        // ******************************************************************************
-        /*departamentos.get(0).agregar(new Practica("CI3002","Analisis de Algoritmos",50,3,4,"Windows xp"));
-        departamentos.get(0).agregar(new Teorica("CI4301","Bases de Datos I",50,3,4,"www.algo5.com"));
-        departamentos.get(1).agregar(new Practica("CI1313","Ingles III para Computacion",50,3,2,""));
-        departamentos.get(1).agregar(new Teorica("CS2101","Ambiente Humano",50,3,2,""));
-        departamentos.get(1).agregar(new Practica("MA2405","Algebra Lineal para Computacion",50,3,4,""));
-        
-        departamentos.get(0).agregar(new Teorica("CI4302","Bases de Datos II",50,4,4,"www.algo6.com"));
-        departamentos.get(0).agregar(new Practica("CI4700","Lenguajes de Programacion",50,4,4,"Windows xp"));
-        departamentos.get(0).agregar(new Teorica("CI5821","Requerimientos de Software",50,4,4,"www.algo7.com"));
-        departamentos.get(1).agregar(new Practica("CI1314","Ingles IV para Computacion",50,4,2,""));
-        departamentos.get(1).agregar(new Practica("MA2404","Probabilidades",50,4,4,""));
-        
-        departamentos.get(0).agregar(new Teorica("CI4810","Administracion de Proyectos",50,5,4,"www.algo8.com"));
-        departamentos.get(0).agregar(new Practica("CI5701","Compiladores e Interpretes",50,5,4,"Windows xp"));
-        departamentos.get(0).agregar(new Teorica("CI6821","Diseño de Software de Software",50,5,4,"www.algo9.com"));
-        departamentos.get(1).agregar(new Teorica("CS3401","Seminario de Estudios Filosoficos",50,5,2,""));
-        departamentos.get(1).agregar(new Practica("MA3405","Estadistica",50,5,4,""));
-        
-        departamentos.get(0).agregar(new Practica("CI4003","Electiva I",50,6,4,"Windows xp"));
-        departamentos.get(0).agregar(new Practica("CI6400","Investigacion de Operaciones",50,6,4,""));
-        departamentos.get(0).agregar(new Teorica("CI6600","Principios de Sistemas Operativos",50,6,4,"www.algo10.com"));
-        departamentos.get(0).agregar(new Teorica("CI6831","Aseguramiento de la Calidad de Software",50,6,4,"www.algo11.com"));
-        departamentos.get(0).agregar(new Teorica("CI7900","Computacion y Sociedad",50,6,2,"www.algo12.com"));
-        departamentos.get(1).agregar(new Teorica("CS4402","Seminario de Estudios Costarricenses",50,6,2,""));
-        
-        departamentos.get(0).agregar(new Practica("CI5001","Electiva II",50,7,4,"Windows xp"));
-        departamentos.get(0).agregar(new Teorica("CI6200","Inteligencia Artificial",50,7,4,"www.algo13.com"));
-        departamentos.get(0).agregar(new Teorica("CI7602","Redes",50,7,4,"www.algo14.com"));
-        departamentos.get(0).agregar(new Practica("CI7841","Proyecto de Ingenieria de Software",50,7,4,"Windows xp"));
-        departamentos.get(2).agregar(new Teorica("AE4208","Desarrollo de Emprendedores",50,7,3,"www.algo15.com"));*/
     }
     
     protected void asignaturas1() {
-        for(int i=0; i<asignaturas.size(); i++) {
-            Dia d1 = new Dia("Lunes");
-            d1.agregar(new Horario("7:00", "11:30"));
-            d1.agregar(new Horario("12:30", "4:00"));
-            asignaturas.get(i).agregar(d1);
-            Dia d2 = new Dia("Martes");
-            d2.agregar(new Horario("7:00", "11:30"));
-            d2.agregar(new Horario("12:30", "4:00"));
-            asignaturas.get(i).agregar(d2);
-            Dia d3 = new Dia("Miercoles");
-            d3.agregar(new Horario("7:00", "11:30"));
-            d3.agregar(new Horario("12:30", "4:00"));
-            asignaturas.get(i).agregar(d3);
-            Dia d4 = new Dia("Jueves");
-            d4.agregar(new Horario("7:00", "11:30"));
-            d4.agregar(new Horario("12:30", "4:00"));
-            asignaturas.get(i).agregar(d4);
-            Dia d5 = new Dia("Viernes");
-            d5.agregar(new Horario("7:00", "11:30"));
-            d5.agregar(new Horario("12:30", "4:00"));
+        for(int i=0; i < insDepa.getDepartamento().size(); i++) {
+            for(int j=0; j < insDepa.getDepartamento().get(i).getAsignatura().size(); j++) {
+                Dia d1 = new Dia("Lunes");
+                d1.agregar(new Horario("7:00", "11:30"));
+                d1.agregar(new Horario("12:30", "4:00"));
+                insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d1);
+                Dia d2 = new Dia("Martes");
+                d2.agregar(new Horario("7:00", "11:30"));
+                d2.agregar(new Horario("12:30", "4:00"));
+                insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d2);
+                Dia d3 = new Dia("Miercoles");
+                d3.agregar(new Horario("7:00", "11:30"));
+                d3.agregar(new Horario("12:30", "4:00"));
+                insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d3);
+                Dia d4 = new Dia("Jueves");
+                d4.agregar(new Horario("7:00", "11:30"));
+                d4.agregar(new Horario("12:30", "4:00"));
+                insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d4);
+                Dia d5 = new Dia("Viernes");
+                d5.agregar(new Horario("7:00", "11:30"));
+                d5.agregar(new Horario("12:30", "4:00"));
+                insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d5);
+            }
         }
-        
     }
     
     /*protected boolean compararDia(List<Dia> _calDia, List<Dia> _asigDia) {

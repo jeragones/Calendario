@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author GeOrge
  */
-public class Dia {
+public class Dia implements java.io.Serializable {
     
     private String dia;
     private ArrayList<Horario> horario = new ArrayList<>();

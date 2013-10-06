@@ -14,19 +14,17 @@ import java.util.ArrayList;
 public class AulaCls implements Interface{
 
     private static ArrayList<Aula> aula = new ArrayList<>();
-    /*private static ArrayList<Clase> clase = new ArrayList<>();
-    private static ArrayList<Laboratorio> laboratorio = new ArrayList<>();*/
     
     @Override
     public void insertar(Object args) {
         aula.add((Aula)args);
     }
 
-    public ArrayList<Aula> getAula() {
+    public static ArrayList<Aula> getAula() {
         return aula;
     }
 
-    public void setAula(ArrayList<Aula> aula) {
+    public static void setAula(ArrayList<Aula> aula) {
         AulaCls.aula = aula;
     }
 }

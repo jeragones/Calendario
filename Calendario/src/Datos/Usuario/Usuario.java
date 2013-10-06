@@ -8,7 +8,7 @@ package Datos.Usuario;
  *
  * @author GeOrge
  */
-public class Usuario {
+public class Usuario implements java.io.Serializable {
     
     private String nombre;
     private String usuario;

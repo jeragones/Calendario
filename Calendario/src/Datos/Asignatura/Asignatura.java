@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class Asignatura {
+public class Asignatura implements java.io.Serializable {
     
     private String codigo;
     private String nombre;

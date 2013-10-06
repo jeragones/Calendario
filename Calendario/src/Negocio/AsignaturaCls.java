@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class AsignaturaCls implements Interface{
     
-    private static ArrayList<Asignatura> asignatura = new ArrayList<>();
+    private ArrayList<Asignatura> asignatura = new ArrayList<>();
     
     @Override
     public void insertar(Object args) {
@@ -25,6 +25,6 @@ public class AsignaturaCls implements Interface{
     }
 
     public void setAsignatura(ArrayList<Asignatura> asignatura) {
-        AsignaturaCls.asignatura = asignatura;
+        this.asignatura = asignatura;
     }
 }

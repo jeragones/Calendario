@@ -10,7 +10,7 @@ import Datos.Aula.Aula;
  *
  * @author GeOrge
  */
-public class Horario {
+public class Horario implements java.io.Serializable {
     
     private String horaInicio;
     private String horaFinal;

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class DepartamentoCls implements Interface{
+public class DepartamentoCls implements Interface, java.io.Serializable{
     
     private static ArrayList<Departamento> departamento = new ArrayList<>();
 
@@ -20,11 +20,11 @@ public class DepartamentoCls implements Interface{
         departamento.add((Departamento)args);
     }
 
-    public ArrayList<Departamento> getDepartamento() {
+    public static ArrayList<Departamento> getDepartamento() {
         return departamento;
     }
     
-    public Departamento getDepartamento(String arg) {
+    public static Departamento getDepartamento(String arg) {
         for(int x=0; x < departamento.size(); x++) {
             if(departamento.get(x).getDepartamento().equals(arg))
                 return departamento.get(x);
@@ -32,7 +32,7 @@ public class DepartamentoCls implements Interface{
         return null;
     }
 
-    public void setDepartamento(ArrayList<Departamento> departamento) {
-        this.departamento = departamento;
+    public static void setDepartamento(ArrayList<Departamento> departament) {
+        departamento = departament;
     }
 }

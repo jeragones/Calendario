@@ -15,16 +15,17 @@ public class UsuarioCls implements Interface{
 
     private static ArrayList<Usuario> usuario = new ArrayList<>();
     
+    
     @Override
     public void insertar(Object args) {
         usuario.add((Usuario)args);
     }
 
-    public ArrayList<Usuario> getUsuario() {
+    public static ArrayList<Usuario> getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(ArrayList<Usuario> usuario) {
+    public static void setUsuario(ArrayList<Usuario> usuario) {
         UsuarioCls.usuario = usuario;
     }
 }
