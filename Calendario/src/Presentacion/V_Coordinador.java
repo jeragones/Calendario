@@ -10,6 +10,7 @@ import Datos.Asignatura.Teorica;
 import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
+import Negocio.ArchivoCls;
 import Negocio.DepartamentoCls;
 import Negocio.UsuarioCls;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class V_Coordinador extends javax.swing.JFrame {
     /**
      * Creates new form V_Coordinador
      */
-    
+    ArchivoCls file = new ArchivoCls();
     
     public V_Coordinador() {
         initComponents();
@@ -523,6 +524,11 @@ public class V_Coordinador extends javax.swing.JFrame {
             }
             listaUser.setModel(modelo);            
         }
+        ArrayList<Object> lista = new ArrayList();
+        for(int i=0;i<UsuarioCls.getUsuario().size();i++){
+            lista.add(UsuarioCls.getUsuario().get(i));
+        } 
+        file.guardar("usuario ", lista);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txt_Prof_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Prof_IDActionPerformed
@@ -593,6 +599,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         int c=0;
         String var = txt_Asig_Variable.getText();
         String depa = jComboDep.getSelectedItem().toString();
+        String profesor =jcProfe.getSelectedItem().toString();
         try{
             g= (int)Integer.parseInt(txt_Asig_Group.getText());
         }
@@ -620,6 +627,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                 Teorica teo = new Teorica(id,n,g,s,c,var);
                 //DepartamentoCls.getDepartamento("Computacion").agregar(teo);
                 DepartamentoCls.getDepartamento(depa).agregar(teo);
+                DepartamentoCls.getDepartamento(depa).getProfesor(profesor).agregar(teo);
                 for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
                     if (DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getClass().getSimpleName().equals("Teorica")){
                         modelo.addElement(DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getNombre().toString() + "  ( Teoric )");
@@ -630,6 +638,8 @@ public class V_Coordinador extends javax.swing.JFrame {
                 Practica prac = new Practica(id,n, g, s, c,var);
                 prac.agregarMateriales(materiales);
                 DepartamentoCls.getDepartamento(depa).agregar(prac);
+                DepartamentoCls.getDepartamento(depa).getProfesor(profesor).agregar(prac);
+               
                 for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
                     if (DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getClass().getSimpleName().equals("Practica")){
                         modelo.addElement(DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getNombre().toString() + "  ( Practice )");
