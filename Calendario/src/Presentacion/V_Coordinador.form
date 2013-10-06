@@ -437,10 +437,10 @@
                                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                                       <Component id="jB_Add_Material" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jComboDep" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jcProfe" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel_Material" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txt_Asig_Material" min="-2" pref="154" max="-2" attributes="0"/>
+                                  <Component id="jComboDep" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcProfe" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="asig_tipo" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -455,22 +455,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="asig_tipo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_Asig_ID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcProfe" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_Asig_ID" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_Asig_Name" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jComboDep" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jcProfe" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txt_Asig_Name" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboDep" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>

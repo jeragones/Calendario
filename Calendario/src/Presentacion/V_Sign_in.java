@@ -170,13 +170,7 @@ public class V_Sign_in extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        Coordinador leo = new Coordinador("Leonardo Viquez","lviquez","1234");
-        Profesor prof =new Profesor("Oscar Viquez", "oviquez", "1234", "123456789");
-        Estudiante est =new Estudiante("Daniel Berrocal", "dberrocal", "1234", "206980244");
-        UsuarioCls.getUsuario().add(leo);
-        UsuarioCls.getUsuario().add(prof);
-        UsuarioCls.getUsuario().add(est);
-        System.out.println(UsuarioCls.getUsuario().get(0).getClass().getSimpleName());
+        file.cargar();
         
     }//GEN-LAST:event_formComponentShown
 
