@@ -2,7 +2,24 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package Presentacion;
+
+import Datos.Asignatura.Asignatura;
+import Negocio.ArchivoCls;
+import Negocio.AulaCls;
+import Negocio.CalendarioCls;
+import Negocio.DepartamentoCls;
+import Negocio.UsuarioCls;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.text.TableView.TableRow;
 
 /**
  *
@@ -28,7 +45,8 @@ public class frmCalendario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblHorario = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -39,12 +57,11 @@ public class frmCalendario extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignaturas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 204)));
 
-        jTable1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHorario.setAutoCreateRowSorter(true);
+        tblHorario.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tblHorario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Fundamentos de Organizacion de Computadoras", null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Curso", "Aula", "Horario", "Profesor"
@@ -58,16 +75,15 @@ public class frmCalendario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTable1.setFocusTraversalPolicyProvider(true);
-        jTable1.setFocusable(false);
-        jTable1.setMinimumSize(new java.awt.Dimension(2147483647, 64));
-        jTable1.setPreferredSize(new java.awt.Dimension(500, 64));
-        jTable1.setRequestFocusEnabled(false);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable1.setShowHorizontalLines(false);
-        jTable1.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(jTable1);
+        tblHorario.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tblHorario.setFocusTraversalPolicyProvider(true);
+        tblHorario.setFocusable(false);
+        tblHorario.setMinimumSize(new java.awt.Dimension(2147483647, 64));
+        tblHorario.setPreferredSize(new java.awt.Dimension(500, 611));
+        tblHorario.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblHorario.setShowHorizontalLines(false);
+        tblHorario.setShowVerticalLines(false);
+        jScrollPane1.setViewportView(tblHorario);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,11 +96,15 @@ public class frmCalendario extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
         );
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,12 +114,17 @@ public class frmCalendario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -107,8 +132,63 @@ public class frmCalendario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        DefaultTableModel model = (DefaultTableModel) tblHorario.getModel();
+        //Object[] vector = new Object[4];
+        ArchivoCls insA = new ArchivoCls();
+        insA.cargar();
+        CalendarioCls ins = new CalendarioCls();
+        ArrayList<Asignatura> calendario = ins.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula());
+        
+        /*model.addColumn("Curso");
+        model.addColumn("Curso");*/
+        for(int i=0; i < calendario.size(); i++) {
+            Vector vector = new Vector();
+            
+            vector.add(calendario.get(i).getNombre());
+            String aula = calendario.get(i).getAula().get(0).getNombre();
+            vector.add(aula);
+            String dia = calendario.get(i).getHorario().get(0).getDia();
+            vector.add(dia);
+            vector.add(new JButton("seleccionar"));
+            
+            model.addRow(vector);
+        }
+        
+        tblHorario.setFillsViewportHeight(true);
+         
+        //tblHorario.setModel(model); // = new JTable(model);
+        
+        //tblHorario.repaint();
+        //tblHorario.setAutoCreateRowSorter(true);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*String[] columnNames = {"First Name",
+                        "Last Name",
+                        "Sport",
+                        "# of Years",
+                        "Vegetarian"};
+        Object[][] data = {
+    {"Kathy", "Smith", "Snowboarding", new Integer(5), new Boolean(false)},
+    {"John", "Doe", "Rowing", new Integer(3), new Boolean(true)},
+    {"Sue", "Black", "Knitting", new Integer(2), new Boolean(false)},
+    {"Jane", "White", "Speed reading", new Integer(20), new Boolean(true)},
+    {"Joe", "Brown", "Pool", new Integer(10), new Boolean(false)}};
+        tblHorario = new JTable(data, columnNames);*/
         
     }//GEN-LAST:event_formComponentShown
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,8 +225,9 @@ public class frmCalendario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblHorario;
     // End of variables declaration//GEN-END:variables
 }

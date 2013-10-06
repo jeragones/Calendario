@@ -28,6 +28,14 @@ public class Departamento implements java.io.Serializable {
     public ArrayList<Profesor> getProfesor() {
         return profesor;
     }
+    
+    public Profesor getProfesor(String nombre) {
+        for(int i=0; i < profesor.size(); i++) {
+            if(profesor.get(i).getNombre().equals(nombre))
+                return profesor.get(i);
+        }
+        return null;
+    }
 
     public String getDepartamento() {
         return departamento;
