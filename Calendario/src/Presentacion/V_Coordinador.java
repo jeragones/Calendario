@@ -90,6 +90,8 @@ public class V_Coordinador extends javax.swing.JFrame {
         jB_Add_Material = new javax.swing.JButton();
         txt_Asig_Material = new javax.swing.JTextField();
         jLabel_Material = new javax.swing.JLabel();
+        jComboDep = new javax.swing.JComboBox();
+        jcProfe = new javax.swing.JComboBox();
         Exit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaUser = new javax.swing.JList();
@@ -187,7 +189,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                 .addComponent(jcombo_depart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jButton1)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Teacher", jPanel1);
@@ -254,7 +256,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                     .addComponent(txt_Est_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Student", jPanel2);
@@ -311,7 +313,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                     .addComponent(txt_Coor_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Coodinator", jPanel3);
@@ -395,54 +397,61 @@ public class V_Coordinador extends javax.swing.JFrame {
                                     .addComponent(txt_Asig_Group)
                                     .addComponent(txt_Asig_Name)
                                     .addComponent(txt_Asig_ID)
-                                    .addComponent(txt_Asig_Variable, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt_Asig_Material, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jB_Add_Material)))
+                                    .addComponent(txt_Asig_Variable, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addComponent(jButton4))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(asig_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                        .addComponent(jLabel_Material)
-                        .addGap(124, 124, 124))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(103, 103, 103)
+                                .addComponent(jB_Add_Material))
+                            .addComponent(jComboDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcProfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Material)
+                            .addComponent(txt_Asig_Material, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(asig_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(asig_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_Material))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txt_Asig_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Asig_Material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(asig_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_Asig_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jB_Add_Material)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txt_Asig_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(txt_Asig_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jComboDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcProfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
-                    .addComponent(txt_Asig_Group, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_Asig_Group, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel_Material)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
-                    .addComponent(txt_Asig_Sem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_Asig_Sem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_Asig_Material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
-                    .addComponent(txt_Asig_Cred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Asig_Cred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jB_Add_Material))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_Asig_Variable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_Variable))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addContainerGap())
         );
@@ -499,6 +508,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         String u =txt_Prof_User.getText();
         String p=txt_Prof_Pass.getText();
         String id=txt_Prof_ID.getText();
+        String depa =jcombo_depart.getSelectedItem().toString();
         DefaultListModel modelo = new DefaultListModel();
         if (n.isEmpty()||u.isEmpty()||p.isEmpty()||id.isEmpty()){
             new V_Alerta_Coor().show();
@@ -507,6 +517,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             Datos.Usuario.Profesor prof = new Profesor(n, u, p, id);
             UsuarioCls.getUsuario().add(prof);
             
+            DepartamentoCls.getDepartamento(depa).agregar(prof);
             //Departamento.getProfesor().add(prof);
             for(int i =0; i<UsuarioCls.getUsuario().size();i++){
                if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Profesor")){
@@ -584,6 +595,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         int s=0;
         int c=0;
         String var = txt_Asig_Variable.getText();
+        String depa = jComboDep.getSelectedItem().toString();
         try{
             g= (int)Integer.parseInt(txt_Asig_Group.getText());
         }
@@ -607,35 +619,36 @@ public class V_Coordinador extends javax.swing.JFrame {
                 new V_Alerta_Coor().show();
             }
             else{
-               /*if (asig_tipo.getSelectedItem().toString().equals("Practice")){
-                   Teorica teo = new Teorica(id,n,g,s,c,var);
-                     DepartamentoCls.getDepartamento("Computacion").agregar(teo);
-                     for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
-                             if (Departamento.getAsignatura().get(i).getClass().getSimpleName().equals("Teorica")){
-                                 modelo.addElement((Departamento.getAsignatura().get(i).getNombre()).toString() + "  ( Teoric )");
-                             }
-                     }
-                 }
-               else{
-                   Practica prac = new Practica(id,n, g, s, c,var);
-                   prac.agregarMateriales(materiales);
-                   Departamento.getAsignatura().add(prac);
-                   for(int i =0; i<Departamento.getAsignatura().size();i++){
-                             if (Departamento.getAsignatura().get(i).getClass().getSimpleName().equals("Practica")){
-                                 modelo.addElement((Departamento.getAsignatura().get(i).getNombre()).toString() + "  ( Practice )");
-                             }
-                     }
-               }*/
-            listaUser.setModel(modelo);            
+                if (asig_tipo.getSelectedItem().toString().equals("Teoric")){
+                Teorica teo = new Teorica(id,n,g,s,c,var);
+                //DepartamentoCls.getDepartamento("Computacion").agregar(teo);
+                DepartamentoCls.getDepartamento(depa).agregar(teo);
+                for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
+                    if (DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getClass().getSimpleName().equals("Teorica")){
+                        modelo.addElement(DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getNombre().toString() + "  ( Teoric )");
+                    }
+                }
+            }
+            else{
+                Practica prac = new Practica(id,n, g, s, c,var);
+                prac.agregarMateriales(materiales);
+                DepartamentoCls.getDepartamento(depa).agregar(prac);
+                for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
+                    if (DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getClass().getSimpleName().equals("Practica")){
+                        modelo.addElement(DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getNombre().toString() + "  ( Practice )");
+                    }
+                }
+            }
+            listaUser.setModel(modelo);
             txt_Asig_Cred.setText("");
             txt_Asig_Group.setText("");
             txt_Asig_ID.setText("");
-            txt_Asig_Material.setText("");       
+            txt_Asig_Material.setText("");
             txt_Asig_Name.setText("");
             txt_Asig_Sem.setText("");
             txt_Asig_Variable.setText("");
             materiales.clear();
-            }
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
@@ -662,7 +675,6 @@ public class V_Coordinador extends javax.swing.JFrame {
             jLabel_Material.setVisible(false);
             txt_Asig_Material.setVisible(false);
             jLabel_Variable.setText("Link:");
-            jLabel_Variable.setText("System");
             txt_Asig_Cred.setText("");
             txt_Asig_Group.setText("");
             txt_Asig_ID.setText("");
@@ -694,9 +706,13 @@ public class V_Coordinador extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         for (int i =0; i< DepartamentoCls.getDepartamento().size();i++){
-            jcombo_depart.addItem(DepartamentoCls.getDepartamento().get(i).getClass().getSimpleName());
+            jcombo_depart.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
+            jComboDep.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
         }
-            
+        
+        for (int i =0; i< UsuarioCls.getUsuario().size();i++){
+            jcProfe.addItem(((Profesor)UsuarioCls.getUsuario().get(i)).getNombre());
+        }    
         
         
     }//GEN-LAST:event_formComponentShown
@@ -743,6 +759,7 @@ public class V_Coordinador extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox jComboDep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -767,6 +784,7 @@ public class V_Coordinador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox jcProfe;
     private javax.swing.JComboBox jcombo_depart;
     private javax.swing.JList listaUser;
     private javax.swing.JTextField txt_Asig_Cred;
