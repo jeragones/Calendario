@@ -21,11 +21,6 @@ import java.util.ArrayList;
  */
 public class ArchivoCls {
     
-    /*private AulaCls insAula = new AulaCls();
-    private AsignaturaCls insAsignatura = new AsignaturaCls();
-    private DepartamentoCls insDepartamento = new DepartamentoCls();
-    private UsuarioCls insUsuario = new UsuarioCls();*/
-    
     public void guardar(String nombre, ArrayList<Object> lista) {
         String path = new File(".").getAbsolutePath();
         path = path.substring(0, path.length()-1) + "src\\Datos\\Archivos\\"+nombre+".obj";
@@ -53,7 +48,7 @@ public class ArchivoCls {
         }
     }
     
-    public void cargar(String nombre) {
+    protected void cargar(String nombre) {
         String path = new File(".").getAbsolutePath();
         path = path.substring(0, path.length()-1) + "src\\Datos\\Archivos\\" + nombre + ".obj";
         
@@ -94,5 +89,11 @@ public class ArchivoCls {
                 } 
             }
         }
+    }
+    
+    public void cargar() {
+        cargar("aula");
+        cargar("departamento");
+        cargar("usuario");
     }
 }

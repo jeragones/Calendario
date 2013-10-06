@@ -90,9 +90,10 @@ public class Borreme extends javax.swing.JFrame {
         }
         ins1.guardar("usuario", l);*/
         
-        ins1.cargar("departamento");
+        /*ins1.cargar("departamento");
         ins1.cargar("aula");
-        ins1.cargar("usuario");
+        ins1.cargar("usuario");*/
+        ins1.cargar();
         ArrayList<Departamento> dep = DepartamentoCls.getDepartamento();
         ArrayList<Aula> aul = AulaCls.getAula();     
         ArrayList<Usuario> us = UsuarioCls.getUsuario();
