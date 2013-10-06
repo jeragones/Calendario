@@ -10,9 +10,13 @@ import Datos.Asignatura.Teorica;
 import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
+import Negocio.DepartamentoCls;
 import Negocio.UsuarioCls;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Marshaller.Listener;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -23,6 +27,8 @@ public class V_Coordinador extends javax.swing.JFrame {
     /**
      * Creates new form V_Coordinador
      */
+    
+    
     public V_Coordinador() {
         initComponents();
     }
@@ -47,6 +53,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         txt_Prof_ID = new javax.swing.JTextField();
         txt_Prof_Pass = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jcombo_depart = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -89,6 +96,11 @@ public class V_Coordinador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coordinador");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setText("Name:");
 
@@ -136,9 +148,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -150,8 +160,9 @@ public class V_Coordinador extends javax.swing.JFrame {
                             .addComponent(txt_Prof_Pass, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                             .addComponent(txt_Prof_User)
                             .addComponent(txt_Prof_Name)
-                            .addComponent(txt_Prof_ID, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
-                        .addContainerGap(155, Short.MAX_VALUE))))
+                            .addComponent(txt_Prof_ID, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))
+                    .addComponent(jcombo_depart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,9 +183,11 @@ public class V_Coordinador extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txt_Prof_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcombo_depart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(jButton1)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Teacher", jPanel1);
@@ -493,7 +506,8 @@ public class V_Coordinador extends javax.swing.JFrame {
         else{
             Datos.Usuario.Profesor prof = new Profesor(n, u, p, id);
             UsuarioCls.getUsuario().add(prof);
-            Departamento.getProfesor().add(prof);
+            
+            //Departamento.getProfesor().add(prof);
             for(int i =0; i<UsuarioCls.getUsuario().size();i++){
                if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Profesor")){
                     modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString() + "  ( Teacher )");
@@ -593,10 +607,10 @@ public class V_Coordinador extends javax.swing.JFrame {
                 new V_Alerta_Coor().show();
             }
             else{
-               if (asig_tipo.getSelectedItem().toString().equals("Practice")){
+               /*if (asig_tipo.getSelectedItem().toString().equals("Practice")){
                    Teorica teo = new Teorica(id,n,g,s,c,var);
-                     Departamento.getAsignatura().add(teo);
-                     for(int i =0; i<Departamento.getAsignatura().size();i++){
+                     DepartamentoCls.getDepartamento("Computacion").agregar(teo);
+                     for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
                              if (Departamento.getAsignatura().get(i).getClass().getSimpleName().equals("Teorica")){
                                  modelo.addElement((Departamento.getAsignatura().get(i).getNombre()).toString() + "  ( Teoric )");
                              }
@@ -611,7 +625,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                                  modelo.addElement((Departamento.getAsignatura().get(i).getNombre()).toString() + "  ( Practice )");
                              }
                      }
-               }
+               }*/
             listaUser.setModel(modelo);            
             txt_Asig_Cred.setText("");
             txt_Asig_Group.setText("");
@@ -675,6 +689,17 @@ public class V_Coordinador extends javax.swing.JFrame {
     private void asig_tipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asig_tipoMouseClicked
         // TODO add your handling code here:     
     }//GEN-LAST:event_asig_tipoMouseClicked
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        
+        for (int i =0; i< DepartamentoCls.getDepartamento().size();i++){
+            jcombo_depart.addItem(DepartamentoCls.getDepartamento().get(i).getClass().getSimpleName());
+        }
+            
+        
+        
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -742,6 +767,7 @@ public class V_Coordinador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox jcombo_depart;
     private javax.swing.JList listaUser;
     private javax.swing.JTextField txt_Asig_Cred;
     private javax.swing.JTextField txt_Asig_Group;
