@@ -6,9 +6,11 @@ package Datos.Aula;
 
 import java.util.ArrayList;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class Clase extends Aula {
     

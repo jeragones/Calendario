@@ -6,9 +6,11 @@ package Datos.Horario;
 
 import Datos.Aula.Aula;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class Horario implements java.io.Serializable {
     

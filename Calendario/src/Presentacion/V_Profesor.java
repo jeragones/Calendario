@@ -4,9 +4,11 @@
  */
 package Presentacion;
 
+
 /**
  *
- * @author jdbr
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class V_Profesor extends javax.swing.JFrame {
 

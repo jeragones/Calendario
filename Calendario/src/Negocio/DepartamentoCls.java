@@ -7,9 +7,11 @@ package Negocio;
 import Datos.Asignatura.Departamento;
 import java.util.ArrayList;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class DepartamentoCls implements Interface, java.io.Serializable{
     

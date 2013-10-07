@@ -15,9 +15,11 @@ import Negocio.DepartamentoCls;
 import Negocio.UsuarioCls;
 import java.util.ArrayList;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class Borreme extends javax.swing.JFrame {
 

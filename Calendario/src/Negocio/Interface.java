@@ -6,9 +6,11 @@ package Negocio;
 
 import java.util.ArrayList;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public interface Interface {
     

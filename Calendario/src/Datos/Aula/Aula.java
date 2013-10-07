@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public abstract class Aula implements java.io.Serializable {
     

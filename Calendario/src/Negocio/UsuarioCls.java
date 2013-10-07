@@ -7,9 +7,11 @@ package Negocio;
 import Datos.Usuario.Usuario;
 import java.util.ArrayList;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class UsuarioCls implements Interface{
 

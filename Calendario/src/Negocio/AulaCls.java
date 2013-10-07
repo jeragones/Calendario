@@ -7,9 +7,11 @@ package Negocio;
 import Datos.Aula.Aula;
 import java.util.ArrayList;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class AulaCls implements Interface{
 

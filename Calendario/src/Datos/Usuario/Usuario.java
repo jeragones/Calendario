@@ -4,9 +4,11 @@
  */
 package Datos.Usuario;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public abstract class Usuario implements java.io.Serializable {
     

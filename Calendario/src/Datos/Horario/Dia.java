@@ -7,9 +7,11 @@ package Datos.Horario;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class Dia implements java.io.Serializable {
     

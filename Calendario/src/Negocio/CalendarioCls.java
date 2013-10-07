@@ -19,9 +19,11 @@ import Datos.Usuario.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class CalendarioCls {
 

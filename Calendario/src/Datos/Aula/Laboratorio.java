@@ -5,9 +5,11 @@
 package Datos.Aula;
 import java.util.List;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class Laboratorio extends Aula {
     

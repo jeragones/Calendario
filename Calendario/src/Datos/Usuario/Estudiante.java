@@ -4,9 +4,11 @@
  */
 package Datos.Usuario;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class Estudiante extends Usuario {
     

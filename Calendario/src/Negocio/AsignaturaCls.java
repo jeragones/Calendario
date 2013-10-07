@@ -7,9 +7,11 @@ package Negocio;
 import Datos.Asignatura.Asignatura;
 import java.util.ArrayList;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class AsignaturaCls {
     

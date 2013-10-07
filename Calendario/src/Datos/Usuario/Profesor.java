@@ -8,9 +8,11 @@ import Datos.Asignatura.Asignatura;
 import Datos.Horario.Dia;
 import java.util.ArrayList;
 
+
 /**
  *
- * @author GeOrge
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class Profesor extends Usuario {
     
