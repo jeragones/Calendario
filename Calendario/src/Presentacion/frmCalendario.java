@@ -13,18 +13,15 @@ import Negocio.UsuarioCls;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.text.TableView.TableRow;
+import javax.swing.table.TableCellRenderer;
+
 
 /**
  *
  * @author GeOrge
  */
+
 public class frmCalendario extends javax.swing.JFrame {
 
     /**
@@ -147,13 +144,32 @@ public class frmCalendario extends javax.swing.JFrame {
             vector.add(calendario.get(i).getNombre());
             String aula = calendario.get(i).getAula().get(0).getNombre();
             vector.add(aula);
-            String dia = calendario.get(i).getHorario().get(0).getDia();
+            
+            
+            String horaInicial = "";
+            String horaFinal = "";
+            String dia = "";
+            boolean m = false;
+            for(int j=0; j < calendario.get(i).getHorario().size(); j++) {
+                dia = calendario.get(i).getHorario().get(j).getDia();
+                for(int k=0; k < calendario.get(i).getHorario().get(j).getHorario().size(); k++) {
+                    if(!calendario.get(i).getHorario().get(j).getHorario().get(k).isEstado()) {
+                        horaInicial = calendario.get(i).getHorario().get(j).getHorario().get(k).getHoraInicio();
+                        horaFinal = calendario.get(i).getHorario().get(j).getHorario().get(k).getHoraFinal();
+                        m = true;
+                        break;
+                    }
+                }
+                if(m)
+                    break;
+            }
             vector.add(dia);
-            vector.add(new JButton("seleccionar"));
+            vector.add( horaInicial+" - "+horaFinal);
+            //vector.add(new );
             
             model.addRow(vector);
         }
-        
+        //tblHorario.setRowHeight(10);
         tblHorario.setFillsViewportHeight(true);
          
         //tblHorario.setModel(model); // = new JTable(model);

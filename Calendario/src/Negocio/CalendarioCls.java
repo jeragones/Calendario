@@ -13,6 +13,7 @@ import Datos.Aula.Clase;
 import Datos.Aula.Laboratorio;
 import Datos.Horario.Dia;
 import Datos.Horario.Horario;
+import Datos.Usuario.Coordinador;
 import Datos.Usuario.Profesor;
 import Datos.Usuario.Usuario;
 import java.util.ArrayList;
@@ -59,12 +60,6 @@ public class CalendarioCls {
         p1.agregar(asignaturas.get(29));
         profesores.add(p1);
         dep.agregar(p1);
-        
-        /*Profesor p2 = new Profesor("Leonardo Viquez", "lviquez", "lviquez", "2-321-658");
-        p2.agregar(asignaturas.get(2));
-        p2.agregar(asignaturas.get(3));
-        profesores.add(p2);
-        dep.agregar(p2);*/
         
         Profesor p3 = new Profesor("Lorena Valerio", "lvalerio", "lvalerio", "3-895-234");
         p3.agregar(asignaturas.get(7));
@@ -118,13 +113,13 @@ public class CalendarioCls {
         
         Profesor p9 = new Profesor("Rodolfo Jimenez", "rjimenez", "rjimenez", "2-743-961");
         p9.agregar(asignaturas.get(4));
-        p9.agregar(asignaturas.get(14));
+        p9.agregar(asignaturas.get(16));
         p9.agregar(asignaturas.get(26));
         profesores.add(p9);
         dep1.agregar(p9);
         
         Profesor p10 = new Profesor("Marlon Benavidez", "mbenavidez", "mbenavidez", "3-951-753");
-        p10.agregar(asignaturas.get(15));
+        p10.agregar(asignaturas.get(14));
         p10.agregar(asignaturas.get(20));
         profesores.add(p10);
         dep1.agregar(p10);
@@ -138,15 +133,22 @@ public class CalendarioCls {
         
         Profesor p12 = new Profesor("Karina Corella Esquivez", "kesquivel", "kesquivel", "1-125-985");
         p12.agregar(asignaturas.get(6));
-        p12.agregar(asignaturas.get(16));
+        p12.agregar(asignaturas.get(15));
         p12.agregar(asignaturas.get(25));
         p12.agregar(asignaturas.get(32));
         profesores.add(p12);
         dep1.agregar(p12);
         
-        profesores1();
-        UsuarioCls.setUsuario(profesores);
+        /*for(int i=0; i < asignaturas.size(); i++) {
+            System.err.println(String.valueOf(i)+" "+asignaturas.get(i).getCodigo()+" "+asignaturas.get(i).getNombre());
+        }*/
         
+        profesores1();
+        
+        Coordinador p2 = new Coordinador("Leonardo Viquez", "lviquez", "lviquez");
+        profesores.add(p2);
+        UsuarioCls.setUsuario(profesores);
+
         ArchivoCls ins = new ArchivoCls();
         
         ArrayList<Object> l = new ArrayList<>();

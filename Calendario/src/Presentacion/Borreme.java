@@ -14,7 +14,6 @@ import Negocio.CalendarioCls;
 import Negocio.DepartamentoCls;
 import Negocio.UsuarioCls;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -73,32 +72,23 @@ public class Borreme extends javax.swing.JFrame {
         ArchivoCls ins1 = new ArchivoCls();
         //DepartamentoCls insDep = new DepartamentoCls();
         //AulaCls insAul = new AulaCls();
-        //UsuarioCls insUs = new UsuarioCls();
-        
-        /*ins.profesores();
+        CalendarioCls ins = new CalendarioCls();
+        ins.profesores();
         ArrayList<Object> l = new ArrayList<>();
-        for (int i=0; i < insUs.getUsuario().size(); i++) {
-            l.add(insUs.getUsuario().get(i));
-        }*/
-        //ins1.guardar("usuario", l);
-        /*for (int i=0; i < insUs.getUsuario().size(); i++) {
-            l.add(insUs.getUsuario().get(i));
-        }*/
-        /*for (int i=0; i < insUs.getUsuario().size(); i++) {
-            l.add(insUs.getUsuario().get(i));
-        }
-        ins1.guardar("usuario", l);*/
-        
-        /*ins1.cargar("departamento");
-        ins1.cargar("aula");
-        ins1.cargar("usuario");*/
-        //ins.profesores();
+        for (int i=0; i < UsuarioCls.getUsuario().size(); i++) 
+            l.add(UsuarioCls.getUsuario().get(i));
+        ins1.guardar("usuario", l);
+        l.clear();
+        for (int i=0; i < DepartamentoCls.getDepartamento().size(); i++) 
+            l.add(DepartamentoCls.getDepartamento().get(i));
+        ins1.guardar("departamento", l);
+ 
         ins1.cargar();
         ArrayList<Departamento> dep = DepartamentoCls.getDepartamento();
         ArrayList<Aula> aul = AulaCls.getAula();     
         ArrayList<Usuario> us = UsuarioCls.getUsuario();
         
-        CalendarioCls ins = new CalendarioCls();
+        
         ArrayList<Asignatura> calendario = ins.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula());
         
     }//GEN-LAST:event_jButton1ActionPerformed
