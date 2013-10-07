@@ -138,6 +138,7 @@ public class frmCalendario extends javax.swing.JFrame {
         
         /*model.addColumn("Curso");
         model.addColumn("Curso");*/
+        jButton1.setText(String.valueOf(calendario.size()));
         for(int i=0; i < calendario.size(); i++) {
             Vector vector = new Vector();
             
