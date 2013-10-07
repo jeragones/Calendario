@@ -528,7 +528,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         for(int i=0;i<UsuarioCls.getUsuario().size();i++){
             lista.add(UsuarioCls.getUsuario().get(i));
         } 
-        file.guardar("usuario ", lista);
+        file.guardar("usuario", lista);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txt_Prof_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Prof_IDActionPerformed
@@ -567,6 +567,11 @@ public class V_Coordinador extends javax.swing.JFrame {
             }
             listaUser.setModel(modelo);            
         }
+        ArrayList<Object> lista = new ArrayList();
+        for(int i=0;i<UsuarioCls.getUsuario().size();i++){
+            lista.add(UsuarioCls.getUsuario().get(i));
+        } 
+        file.guardar("usuario", lista);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -588,6 +593,11 @@ public class V_Coordinador extends javax.swing.JFrame {
             }
             listaUser.setModel(modelo);
             }
+        ArrayList<Object> lista = new ArrayList();
+        for(int i=0;i<UsuarioCls.getUsuario().size();i++){
+            lista.add(UsuarioCls.getUsuario().get(i));
+        } 
+        file.guardar("usuario", lista);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -625,7 +635,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             else{
                 if (asig_tipo.getSelectedItem().toString().equals("Teoric")){
                 Teorica teo = new Teorica(id,n,g,s,c,var);
-                //DepartamentoCls.getDepartamento("Computacion").agregar(teo);
+               
                 DepartamentoCls.getDepartamento(depa).agregar(teo);
                 DepartamentoCls.getDepartamento(depa).getProfesor(profesor).agregar(teo);
                 for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
@@ -656,6 +666,11 @@ public class V_Coordinador extends javax.swing.JFrame {
             txt_Asig_Variable.setText("");
             materiales.clear();
         }
+        ArrayList<Object> lista = new ArrayList();
+        for(int i=0;i<DepartamentoCls.getDepartamento().size();i++){
+            lista.add(DepartamentoCls.getDepartamento().get(i));
+        } 
+        file.guardar("departamento", lista);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
