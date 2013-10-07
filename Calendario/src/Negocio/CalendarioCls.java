@@ -373,6 +373,40 @@ public class CalendarioCls {
         return true;
     } */
     
+    protected boolean validarHora(List<Horario> curso, String[] horario) {
+        for(int i=0; i < curso.size(); i++) {
+            if(curso.get(i).getHoraInicio().equals(horario[1]) &
+               curso.get(i).getHoraFinal().equals(horario[2])) {
+                if(curso.get(i).isEstado())
+                    return true;
+                else
+                    return false;
+            }
+        }
+        return true;
+    }
+    
+    protected boolean validarDia(List<Dia> curso, String[] horario) {
+        for(int i=0; i < curso.size(); i++) {
+            if(curso.get(i).getDia().equals(horario[0])) {
+                return validarHora(curso.get(i).getHorario(), horario);
+            }
+                //return false;
+        }
+        return true;
+    }
+    
+    protected boolean validarSemestre(List<Asignatura> cursos, Asignatura curso, String[] horario) {
+        for(int i=0; i < cursos.size(); i++) {
+            if(!cursos.get(i).equals(curso) & 
+                cursos.get(i).getSemestre() == curso.getSemestre()) {
+                if(!validarDia(cursos.get(i).getHorario(), horario))
+                    return false;
+            }
+        }
+        return true;
+    }
+    
     protected Dia nuevoDia(String d, Horario h) {
         Dia dia = new Dia(d);
         Horario hora = new Horario(h.getHoraInicio(), h.getHoraFinal());
@@ -440,13 +474,18 @@ public class CalendarioCls {
         return null;
     }
     
-    protected boolean crear(Asignatura curso, List<Horario> horaCurso, List<Horario> horaProfesor, String dia, List<Aula> aulas, String departamento) {
+    protected boolean crear(List<Asignatura> cursos, Asignatura curso, List<Horario> horaCurso, List<Horario> horaProfesor, String dia, List<Aula> aulas, String departamento) {
         for(int i=0; i < horaCurso.size(); i++) {
             for(int j=0; j < horaProfesor.size(); j++) {
                 if(horaCurso.get(i).isEstado() & horaProfesor.get(j).isEstado()) {
                     String[] hCurso = new String[]{horaCurso.get(i).getHoraInicio(), horaCurso.get(i).getHoraFinal()};
                     String[] hProfesor = new String[]{horaProfesor.get(j).getHoraInicio(), horaProfesor.get(j).getHoraFinal()};
-                    if(hCurso[0].equals(hProfesor[0]) & hCurso[1].equals(hProfesor[1])) {                
+                    String[] horario = new String[] {dia,
+                                                     horaCurso.get(i).getHoraInicio(), 
+                                                     horaCurso.get(i).getHoraFinal()};
+                    if(hCurso[0].equals(hProfesor[0]) & 
+                       hCurso[1].equals(hProfesor[1]) &
+                       validarSemestre(cursos, curso, horario)) {                
                         Aula aula = aula(aulas, departamento, dia, horaCurso.get(i), true);
                         if(aula != null) {
                             horaCurso.get(i).setEstado(false);
@@ -462,11 +501,11 @@ public class CalendarioCls {
         return false;
     }
     
-    protected boolean validar(Asignatura curso, List<Dia> diaCurso, List<Dia> diaProfesor, List<Aula> aula, String departamento) {
+    protected boolean validar(List<Asignatura> cursos, Asignatura curso, List<Dia> diaCurso, List<Dia> diaProfesor, List<Aula> aula, String departamento) {
         for(int i=0; i < diaCurso.size(); i++) {
             for(int j=0; j < diaProfesor.size(); j++) {
                 if(diaCurso.get(i).getDia().equals(diaProfesor.get(j).getDia())) {
-                    if(crear(curso, diaCurso.get(i).getHorario(), diaProfesor.get(j).getHorario(), diaCurso.get(i).getDia(), aula, departamento))
+                    if(crear(cursos, curso, diaCurso.get(i).getHorario(), diaProfesor.get(j).getHorario(), diaCurso.get(i).getDia(), aula, departamento))
                         return true;
                 }
             }
@@ -474,42 +513,42 @@ public class CalendarioCls {
         return false;
     }
     
-    protected boolean crear(Asignatura curso, Profesor profesor, List<Aula> aula, String departamento) {
+    protected boolean crear(List<Asignatura> cursos, Asignatura curso, Profesor profesor, List<Aula> aula, String departamento) {
         for(int x=0; x < profesor.getAsignatura().size(); x++) {
             if(curso.equals(profesor.getAsignatura().get(x))) {
-                if(validar(curso, curso.getHorario(), profesor.getHorario(), aula, departamento))
+                if(validar(cursos, curso, curso.getHorario(), profesor.getHorario(), aula, departamento))
                     return true;
             }
         }
         return false;
     }
     
-    protected boolean crear(Asignatura curso, List<Profesor> profesor, List<Aula> aula, String departamento) {
+    protected boolean crear(List<Asignatura> cursos, Asignatura curso, List<Profesor> profesor, List<Aula> aula, String departamento) {
         for(int x=0; x < profesor.size(); x++) {
-            //if(profesor.get(x).getClass().equals(Profesor.class)) {
-            if(crear(curso, profesor.get(x), aula, departamento)) 
+            if(crear(cursos, curso, profesor.get(x), aula, departamento)) 
                 return true;
-            //}
         }
         return false;
     }
     
-    protected void calendario(List<Asignatura> curso, List<Profesor> profesor, List<Aula> aula, String departamento, List<Asignatura> calendario) {
+    protected void calendario(List<Asignatura> cursos, List<Asignatura> curso, List<Profesor> profesor, List<Aula> aula, String departamento, List<Asignatura> calendario) {
         if(!curso.isEmpty() & !profesor.isEmpty() & !aula.isEmpty()) {
             for(int x=0; x < curso.size(); x++) {
-                if(crear(curso.get(x), profesor, aula, departamento)) {
+                if(crear(cursos, curso.get(x), profesor, aula, departamento)) {
                     calendario.add(curso.get(x));
                     curso.remove(x);
                     x -= 1;
                 }
             }
         }
-        //return calendario;
     }
     
     public ArrayList<Asignatura> crear(List<Departamento> departamento, List<Usuario> usuario, List<Aula> aula) {
+        ArrayList<Asignatura> cursos = new ArrayList<>();
+        for(int x=0; x < departamento.size(); x++) 
+            cursos.addAll(departamento.get(x).getAsignatura());
         for(int x=0; x < departamento.size(); x++) {
-            calendario(departamento.get(x).getAsignatura(), departamento.get(x).getProfesor(), aula, departamento.get(x).getDepartamento(), calendario);
+            calendario(cursos, departamento.get(x).getAsignatura(), departamento.get(x).getProfesor(), aula, departamento.get(x).getDepartamento(), calendario);
         }
         return calendario;
     }
