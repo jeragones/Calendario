@@ -177,7 +177,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                             .addComponent(txt_Prof_Name)
                             .addComponent(txt_Prof_ID, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))
                     .addComponent(jcombo_depart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,7 +246,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_Est_User, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_Est_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +307,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_Coor_User, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_Coor_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,7 +427,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                             .addComponent(jComboDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jcProfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(asig_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,7 +488,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(table)
+                .addComponent(table, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -503,9 +503,11 @@ public class V_Coordinador extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Exit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -772,21 +774,45 @@ public class V_Coordinador extends javax.swing.JFrame {
         //System.out.println(table.getTitleAt(table.getSelectedIndex()));
         String tab = table.getTitleAt(table.getSelectedIndex());
         if (tab.equals("Add Teacher")){
+            modelo.clear();
             for(int i =0; i<UsuarioCls.getUsuario().size();i++){
                if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Profesor")){
-                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString() + "  ( Teacher )");
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString());
                 }       
             }
             listaUser.setModel(modelo);
                 System.out.println(1);
         }
         if (tab.equals("Add Student")){
+            modelo.clear();
+            for(int i =0; i<UsuarioCls.getUsuario().size();i++){
+               if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Estudiante")){
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString());
+                }       
+            }
+            listaUser.setModel(modelo);   
                 System.out.println(2);
         }
         if (tab.equals("Add Coordinator")){
+            modelo.clear();
+            for(int i =0; i<UsuarioCls.getUsuario().size();i++){
+               if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Coordinador")){
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString());
+                }       
+            }
+            listaUser.setModel(modelo);
                 System.out.println(3);
         }
         if (tab.equals("Add Course")){
+            modelo.clear();
+            for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
+                for(int j=0;j<DepartamentoCls.getDepartamento().get(i).getAsignatura().size();j++){
+                    
+                   modelo.addElement(DepartamentoCls.getDepartamento().get(i).getAsignatura().get(j).getNombre().toString());
+                    
+                }
+            }
+            listaUser.setModel(modelo);
                 System.out.println(4);
         }
         
