@@ -20,8 +20,9 @@ import javax.xml.bind.Marshaller.Listener;
 import javax.xml.bind.Unmarshaller;
 
 /**
- *
- * @author jdbr
+ *  Ventana que muestra las diferentes acciones que puede ejecutar el usuario administrador
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class V_Coordinador extends javax.swing.JFrame {
 
@@ -30,6 +31,8 @@ public class V_Coordinador extends javax.swing.JFrame {
      */
     ArchivoCls file = new ArchivoCls();
     DefaultListModel modelo = new DefaultListModel();
+    ArrayList<String> materiales =new ArrayList();
+    
     
     public V_Coordinador() {
         initComponents();
@@ -518,7 +521,10 @@ public class V_Coordinador extends javax.swing.JFrame {
         this.setVisible(false);
         new V_Sign_in().show();
     }//GEN-LAST:event_ExitActionPerformed
-
+    /**
+     * Boton que agrega un nuevo profesor a la lista de usuarios y lo guarda en el archivo indicado
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String n = txt_Prof_Name.getText();
@@ -565,13 +571,17 @@ public class V_Coordinador extends javax.swing.JFrame {
     private void txt_Prof_PassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Prof_PassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_Prof_PassActionPerformed
-
+    /**
+     * Boton que agrega un nuevo estudiante a la lista de usuarios y lo guarda en el archivo indicado
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String n = txt_Est_Name.getText();
         String u =txt_Est_User.getText();
         String p=txt_Est_Pass.getText();
         String id=txt_Est_Id.getText();
+        modelo.clear();
         
         if (n.isEmpty()||u.isEmpty()||p.isEmpty()||id.isEmpty()){
             new V_Alerta_Coor().show();
@@ -581,7 +591,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             UsuarioCls.getUsuario().add(est);
             for(int i =0; i<UsuarioCls.getUsuario().size();i++){
                if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Estudiante")){
-                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString() + "  ( Student )");
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString());
                 }       
             }
             listaUser.setModel(modelo);            
@@ -591,14 +601,21 @@ public class V_Coordinador extends javax.swing.JFrame {
             lista.add(UsuarioCls.getUsuario().get(i));
         } 
         file.guardar("usuario", lista);
+        txt_Est_Name.setText("");
+        txt_Est_User.setText("");
+        txt_Est_Pass.setText("");
+        txt_Est_Id.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /**
+     * Boton que agrega un nuevo coordinador a la lista de usuarios y lo guarda en el archivo indicado
+     * @param evt 
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String n = txt_Coor_Name.getText();
         String u =txt_Coor_User.getText();
         String p=txt_Coor_Pass.getText();
-        
+        modelo.clear();
         if (n.isEmpty()||u.isEmpty()||p.isEmpty()){
             new V_Alerta_Coor().show();
         }
@@ -607,7 +624,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             UsuarioCls.getUsuario().add(coor);
             for(int i =0; i<UsuarioCls.getUsuario().size();i++){
                if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Coordinador")){
-                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString() + "  ( Coordinator )");
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString());
                 }       
             }
             listaUser.setModel(modelo);
@@ -618,7 +635,10 @@ public class V_Coordinador extends javax.swing.JFrame {
         } 
         file.guardar("usuario", lista);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    /**
+     * Boton que agrega una nueva asignatura, esta asignatura se le asigna a un profesor y a un departamendo, y la guarda en el archivo indicado
+     * @param evt 
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         String id =txt_Asig_ID.getText();
@@ -629,6 +649,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         String var = txt_Asig_Variable.getText();
         String depa = jComboDep.getSelectedItem().toString();
         String profesor =jcProfe.getSelectedItem().toString();
+        modelo.clear();
         try{
             g= (int)Integer.parseInt(txt_Asig_Group.getText());
         }
@@ -695,7 +716,10 @@ public class V_Coordinador extends javax.swing.JFrame {
     private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_Asig_NameActionPerformed
-
+    /**
+     * Metodo para mostrar u ocultar componentes en la interfaz dependiendo del tipo de asignatura que desee insertar, como parametros recibe el evento de la interfaz
+     * @param evt 
+     */
     private void asig_tipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_asig_tipoItemStateChanged
         // TODO add your handling code here:
         if(asig_tipo.getSelectedItem().toString().equals("Practice")){
@@ -726,8 +750,11 @@ public class V_Coordinador extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_asig_tipoItemStateChanged
     
-    ArrayList<String> materiales =new ArrayList();
     
+    /**
+     * Accion del boton que agrega un material a la lista de materiales.
+     * @param evt 
+     */
     private void jB_Add_MaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Add_MaterialActionPerformed
         // TODO add your handling code here:     
         String mate =txt_Asig_Material.getText();
@@ -742,7 +769,10 @@ public class V_Coordinador extends javax.swing.JFrame {
     private void asig_tipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asig_tipoMouseClicked
         // TODO add your handling code here:     
     }//GEN-LAST:event_asig_tipoMouseClicked
-
+    /**
+     * Accion de la interfaz que carga diferentes datos en los combobox indicados
+     * @param evt 
+     */
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         

@@ -16,8 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author GeOrge
+ * Ventana que permite el ingreso de usuarios registrados en el sistema
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class V_Sign_in extends javax.swing.JFrame {
 
@@ -132,7 +133,10 @@ public class V_Sign_in extends javax.swing.JFrame {
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
-
+    /**
+     * Boton que verifica si el usuario que desea ingresar al sistema es un usuario valido.
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String userName=txtUser.getText();
@@ -167,11 +171,13 @@ public class V_Sign_in extends javax.swing.JFrame {
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
-
+    /**
+     * Evento de interfaz que llama al metodo cargar, el cual asigna a las estructuras de datos toda la informacion guardada en los archivos de datos.
+     * @param evt 
+     */
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         file.cargar();
-        System.out.println(UsuarioCls.getUsuario().get(0).getNombre());
         
     }//GEN-LAST:event_formComponentShown
 
