@@ -14,12 +14,21 @@ import java.util.ArrayList;
 public class DepartamentoCls implements Interface, java.io.Serializable{
     
     private static ArrayList<Departamento> departamento = new ArrayList<>();
-
+    ArchivoCls insArchivo = new ArchivoCls();
+    
     @Override
     public void insertar(Object args) {
         departamento.add((Departamento)args);
     }
-
+    
+    @Override
+    public void guardar() {
+        ArrayList<Object> lista = new ArrayList<>();
+        for(int i=0; i < departamento.size(); i++)
+            lista.add(departamento.get(i));
+        insArchivo.guardar("departamento", lista);
+    }
+    
     public static ArrayList<Departamento> getDepartamento() {
         return departamento;
     }

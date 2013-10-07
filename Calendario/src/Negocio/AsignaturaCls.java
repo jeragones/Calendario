@@ -11,15 +11,14 @@ import java.util.ArrayList;
  *
  * @author GeOrge
  */
-public class AsignaturaCls implements Interface{
+public class AsignaturaCls {
     
     private ArrayList<Asignatura> asignatura = new ArrayList<>();
     
-    @Override
     public void insertar(Object args) {
         asignatura.add((Asignatura)args);
     }
-
+    
     public ArrayList<Asignatura> getAsignatura() {
         return asignatura;
     }
@@ -27,4 +26,6 @@ public class AsignaturaCls implements Interface{
     public void setAsignatura(ArrayList<Asignatura> asignatura) {
         this.asignatura = asignatura;
     }
+
+
 }

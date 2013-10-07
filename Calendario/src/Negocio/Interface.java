@@ -4,11 +4,14 @@
  */
 package Negocio;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author GeOrge
  */
 public interface Interface {
     
-    public abstract void insertar(Object args);
+    public void guardar();
+    public void insertar(Object args);
 }
