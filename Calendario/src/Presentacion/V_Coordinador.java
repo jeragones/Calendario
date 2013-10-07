@@ -29,6 +29,7 @@ public class V_Coordinador extends javax.swing.JFrame {
      * Creates new form V_Coordinador
      */
     ArchivoCls file = new ArchivoCls();
+    DefaultListModel modelo = new DefaultListModel();
     
     public V_Coordinador() {
         initComponents();
@@ -43,7 +44,7 @@ public class V_Coordinador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        table = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -102,6 +103,17 @@ public class V_Coordinador extends javax.swing.JFrame {
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
+            }
+        });
+
+        table.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tableStateChanged(evt);
+            }
+        });
+        table.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                tableVetoableChange(evt);
             }
         });
 
@@ -193,7 +205,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Add Teacher", jPanel1);
+        table.addTab("Add Teacher", jPanel1);
 
         jLabel5.setText("Name:");
 
@@ -260,7 +272,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Add Student", jPanel2);
+        table.addTab("Add Student", jPanel2);
 
         jLabel9.setText("Name:");
 
@@ -317,7 +329,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                 .addContainerGap(128, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Add Coodinator", jPanel3);
+        table.addTab("Add Coordinator", jPanel3);
 
         jLabel12.setText("Id:");
 
@@ -351,6 +363,11 @@ public class V_Coordinador extends javax.swing.JFrame {
         asig_tipo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 asig_tipoItemStateChanged(evt);
+            }
+        });
+        asig_tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asig_tipoActionPerformed(evt);
             }
         });
         asig_tipo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -454,7 +471,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Add Course ", jPanel4);
+        table.addTab("Add Course", jPanel4);
 
         Exit.setText("Exit");
         Exit.addActionListener(new java.awt.event.ActionListener() {
@@ -471,7 +488,7 @@ public class V_Coordinador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(table)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -487,7 +504,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                         .addComponent(Exit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -507,7 +524,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         String p=txt_Prof_Pass.getText();
         String id=txt_Prof_ID.getText();
         String depa =jcombo_depart.getSelectedItem().toString();
-        DefaultListModel modelo = new DefaultListModel();
+        
         if (n.isEmpty()||u.isEmpty()||p.isEmpty()||id.isEmpty()){
             new V_Alerta_Coor().show();
         }
@@ -553,7 +570,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         String u =txt_Est_User.getText();
         String p=txt_Est_Pass.getText();
         String id=txt_Est_Id.getText();
-        DefaultListModel modelo = new DefaultListModel();
+        
         if (n.isEmpty()||u.isEmpty()||p.isEmpty()||id.isEmpty()){
             new V_Alerta_Coor().show();
         }
@@ -579,7 +596,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         String n = txt_Coor_Name.getText();
         String u =txt_Coor_User.getText();
         String p=txt_Coor_Pass.getText();
-        DefaultListModel modelo = new DefaultListModel();
+        
         if (n.isEmpty()||u.isEmpty()||p.isEmpty()){
             new V_Alerta_Coor().show();
         }
@@ -628,7 +645,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         catch(Exception e){
             txt_Asig_Cred .setText("This field can only contain numbers");
         }
-        DefaultListModel modelo = new DefaultListModel();
+        
         if (id.isEmpty()||n.isEmpty()){
                 new V_Alerta_Coor().show();
             }
@@ -741,6 +758,40 @@ public class V_Coordinador extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formComponentShown
 
+    private void asig_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asig_tipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asig_tipoActionPerformed
+
+    private void tableVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_tableVetoableChange
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tableVetoableChange
+
+    private void tableStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tableStateChanged
+        // TODO add your handling code here:
+        //System.out.println(table.getTitleAt(table.getSelectedIndex()));
+        String tab = table.getTitleAt(table.getSelectedIndex());
+        if (tab.equals("Add Teacher")){
+            for(int i =0; i<UsuarioCls.getUsuario().size();i++){
+               if (UsuarioCls.getUsuario().get(i).getClass().getSimpleName().equals("Profesor")){
+                    modelo.addElement((UsuarioCls.getUsuario().get(i).getNombre()).toString() + "  ( Teacher )");
+                }       
+            }
+            listaUser.setModel(modelo);
+                System.out.println(1);
+        }
+        if (tab.equals("Add Student")){
+                System.out.println(2);
+        }
+        if (tab.equals("Add Coordinator")){
+                System.out.println(3);
+        }
+        if (tab.equals("Add Course")){
+                System.out.println(4);
+        }
+        
+    }//GEN-LAST:event_tableStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -807,10 +858,10 @@ public class V_Coordinador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JComboBox jcProfe;
     private javax.swing.JComboBox jcombo_depart;
     private javax.swing.JList listaUser;
+    private javax.swing.JTabbedPane table;
     private javax.swing.JTextField txt_Asig_Cred;
     private javax.swing.JTextField txt_Asig_Group;
     private javax.swing.JTextField txt_Asig_ID;

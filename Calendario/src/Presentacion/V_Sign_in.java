@@ -171,6 +171,7 @@ public class V_Sign_in extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         file.cargar();
+        System.out.println(UsuarioCls.getUsuario().get(0).getNombre());
         
     }//GEN-LAST:event_formComponentShown
 
