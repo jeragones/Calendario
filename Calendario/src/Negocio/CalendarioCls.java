@@ -358,6 +358,10 @@ public class CalendarioCls {
                 d5.agregar(new Horario("7:00", "11:30"));
                 d5.agregar(new Horario("12:30", "4:00"));
                 insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d5);
+                if(insDepa.getDepartamento().get(i).getAsignatura().get(j).getCodigo().equals("CI1403")) {
+                    insDepa.getDepartamento().get(i).getAsignatura().get(j).getHorario().clear();
+                    insDepa.getDepartamento().get(i).getAsignatura().get(j).agregar(d1);
+                }
             }
         }
     }
