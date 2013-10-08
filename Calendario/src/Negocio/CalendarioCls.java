@@ -383,13 +383,11 @@ public class CalendarioCls {
         for(int i=0; i < curso.size(); i++) {
             if(curso.get(i).getHoraInicio().equals(horario[1]) &
                curso.get(i).getHoraFinal().equals(horario[2])) {
-                if(curso.get(i).isEstado())
+                if(!curso.get(i).isEstado())
                     return true;
-                else
-                    return false;
             }
         }
-        return true;
+        return false;
     }
     
     protected boolean validarDia(List<Dia> curso, String[] horario) {
@@ -399,14 +397,14 @@ public class CalendarioCls {
             }
                 //return false;
         }
-        return true;
+        return false;
     }
     
     protected boolean validarSemestre(List<Asignatura> cursos, Asignatura curso, String[] horario) {
         for(int i=0; i < cursos.size(); i++) {
             if(!cursos.get(i).equals(curso) & 
                 cursos.get(i).getSemestre() == curso.getSemestre()) {
-                if(!validarDia(cursos.get(i).getHorario(), horario))
+                if(validarDia(cursos.get(i).getHorario(), horario))
                     return false;
             }
         }
