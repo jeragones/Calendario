@@ -538,11 +538,8 @@ public class CalendarioCls {
     protected void calendario(List<Asignatura> cursos, List<Asignatura> curso, List<Profesor> profesor, List<Aula> aula, String departamento, List<Asignatura> calendario) {
         if(!curso.isEmpty() & !profesor.isEmpty() & !aula.isEmpty()) {
             for(int x=0; x < curso.size(); x++) {
-                if(crear(cursos, curso.get(x), profesor, aula, departamento)) {
+                if(crear(cursos, curso.get(x), profesor, aula, departamento))
                     calendario.add(curso.get(x));
-                    curso.remove(x);
-                    x -= 1;
-                }
             }
         }
     }
@@ -554,7 +551,16 @@ public class CalendarioCls {
         for(int x=0; x < departamento.size(); x++) {
             calendario(cursos, departamento.get(x).getAsignatura(), departamento.get(x).getProfesor(), aula, departamento.get(x).getDepartamento(), calendario);
         }
-        return calendario;
+        if(calendario.size() == cursos.size())
+            return calendario;
+        else {
+            ordenar(calendario);
+            return calendario;
+        }
+    }
+    
+    protected void ordenar(List<Asignatura> calendario) {
+        
     }
     
     
