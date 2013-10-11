@@ -38,12 +38,14 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 
+
 /**
  *
  * @author GeOrge
  */
 
 public class frmCalendario extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form frmCalendario
@@ -65,6 +67,7 @@ public class frmCalendario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHorario = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        cmbSemestre = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -121,12 +124,16 @@ public class frmCalendario extends javax.swing.JFrame {
             }
         });
 
+        cmbSemestre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primer", "Segundo" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cmbSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -138,7 +145,9 @@ public class frmCalendario extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(cmbSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -146,10 +155,15 @@ public class frmCalendario extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         
+        
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ArchivoCls insArchivo = new ArchivoCls();
         insArchivo.cargar();
-        CalendarioCls insCalendario = new CalendarioCls();
-        ArrayList<Asignatura> calendario = insCalendario.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula());
+        CalendarioCls insCalendario = new CalendarioCls();            
+        insCalendario.reset();
+        ArrayList<Asignatura> calendario = insCalendario.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula(), cmbSemestre.getSelectedIndex());
         
         String horaInicial = "";
         String horaFinal = "";
@@ -157,6 +171,7 @@ public class frmCalendario extends javax.swing.JFrame {
         String[] columns = {"Curso","Aula","Horario","Profesor"};
         ArrayList<Vector> data = new ArrayList<>();
         
+        tblHorario.setPreferredSize(new Dimension(500, 20));
         TableCellRenderer defaultRenderer = tblHorario.getDefaultRenderer(JButton.class);
         tblHorario.setDefaultRenderer(JButton.class, new TableButtonRenderer(defaultRenderer));
         tblHorario.addMouseListener(new TableButtonMouseListener(tblHorario));
@@ -191,10 +206,6 @@ public class frmCalendario extends javax.swing.JFrame {
         tblHorario.setModel(new TableButtonModel(data,columns));
         
         tblHorario.setFillsViewportHeight(true);        
-    }//GEN-LAST:event_formComponentShown
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -232,13 +243,13 @@ public class frmCalendario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbSemestre;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblHorario;
     // End of variables declaration//GEN-END:variables
 }
-
 /*
  *
  * 

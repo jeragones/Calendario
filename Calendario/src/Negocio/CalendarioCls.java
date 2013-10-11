@@ -379,6 +379,9 @@ public class CalendarioCls {
         return true;
     } */
     
+    public void reset() {
+        calendario.clear();
+    }
     protected boolean validarHora(List<Horario> curso, String[] horario) {
         for(int i=0; i < curso.size(); i++) {
             if(curso.get(i).getHoraInicio().equals(horario[1]) &
@@ -535,21 +538,23 @@ public class CalendarioCls {
         return false;
     }
     
-    protected void calendario(List<Asignatura> cursos, List<Asignatura> curso, List<Profesor> profesor, List<Aula> aula, String departamento, List<Asignatura> calendario) {
+    protected void calendario(List<Asignatura> cursos, List<Asignatura> curso, List<Profesor> profesor, List<Aula> aula, String departamento, List<Asignatura> calendario, int semestre) {
         if(!curso.isEmpty() & !profesor.isEmpty() & !aula.isEmpty()) {
             for(int x=0; x < curso.size(); x++) {
-                if(crear(cursos, curso.get(x), profesor, aula, departamento))
-                    calendario.add(curso.get(x));
+                if(curso.get(x).getTipoSemestre() == semestre) {
+                    if(crear(cursos, curso.get(x), profesor, aula, departamento))
+                        calendario.add(curso.get(x));
+                }
             }
         }
     }
     
-    public ArrayList<Asignatura> crear(List<Departamento> departamento, List<Usuario> usuario, List<Aula> aula) {
+    public ArrayList<Asignatura> crear(List<Departamento> departamento, List<Usuario> usuario, List<Aula> aula, int semestre) {
         ArrayList<Asignatura> cursos = new ArrayList<>();
         for(int x=0; x < departamento.size(); x++) 
             cursos.addAll(departamento.get(x).getAsignatura());
         for(int x=0; x < departamento.size(); x++) {
-            calendario(cursos, departamento.get(x).getAsignatura(), departamento.get(x).getProfesor(), aula, departamento.get(x).getDepartamento(), calendario);
+            calendario(cursos, departamento.get(x).getAsignatura(), departamento.get(x).getProfesor(), aula, departamento.get(x).getDepartamento(), calendario, semestre);
         }
         if(calendario.size() == cursos.size())
             return calendario;

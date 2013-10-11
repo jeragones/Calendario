@@ -91,7 +91,7 @@ public class Borreme extends javax.swing.JFrame {
         ArrayList<Usuario> us = UsuarioCls.getUsuario();
         
         
-        ArrayList<Asignatura> calendario = ins.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula());
+        ArrayList<Asignatura> calendario = ins.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula(), 0);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
