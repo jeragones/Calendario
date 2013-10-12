@@ -4,6 +4,7 @@
  */
 package Negocio;
 
+import Datos.Asignatura.Asignatura;
 import Datos.Asignatura.Departamento;
 import java.util.ArrayList;
 
@@ -46,4 +47,30 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
     public static void setDepartamento(ArrayList<Departamento> departament) {
         departamento = departament;
     }
+    
+    
+    public static Asignatura getAsig(String name){
+        for(Departamento dep:departamento){
+            for(Asignatura asig :dep.getAsignatura()){
+                if (asig.getNombre().equals(name)){
+                    return asig;
+                }
+            }
+            
+        }
+        
+        return null;
+    }
+    
+    public static void deleteAsig(String name){
+        for(int i=0; i<departamento.size();i++){
+            for(int j=0;j<departamento.get(i).getAsignatura().size();i++){
+                if (departamento.get(i).getAsignatura().get(j).getNombre().equals(name)){
+                    departamento.get(i).getAsignatura().remove(departamento.get(i).getAsignatura().get(j));
+                }
+            }
+        }
+    }
+    
+    
 }
