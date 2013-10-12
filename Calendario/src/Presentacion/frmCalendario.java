@@ -53,12 +53,12 @@ public class frmCalendario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlAsignatura = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblHorario = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         cmbSemestre = new javax.swing.JComboBox();
         V_Interna = new javax.swing.JInternalFrame();
+        pnlDesktop = new javax.swing.JDesktopPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblHorario = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -67,7 +67,27 @@ public class frmCalendario extends javax.swing.JFrame {
             }
         });
 
-        pnlAsignatura.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignaturas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 204)));
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        cmbSemestre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primer", "Segundo" }));
+
+        V_Interna.setVisible(false);
+
+        javax.swing.GroupLayout V_InternaLayout = new javax.swing.GroupLayout(V_Interna.getContentPane());
+        V_Interna.getContentPane().setLayout(V_InternaLayout);
+        V_InternaLayout.setHorizontalGroup(
+            V_InternaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        V_InternaLayout.setVerticalGroup(
+            V_InternaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         tblHorario.setAutoCreateRowSorter(true);
         tblHorario.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -97,60 +117,27 @@ public class frmCalendario extends javax.swing.JFrame {
         tblHorario.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tblHorario);
 
-        javax.swing.GroupLayout pnlAsignaturaLayout = new javax.swing.GroupLayout(pnlAsignatura);
-        pnlAsignatura.setLayout(pnlAsignaturaLayout);
-        pnlAsignaturaLayout.setHorizontalGroup(
-            pnlAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        pnlAsignaturaLayout.setVerticalGroup(
-            pnlAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
-        );
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        cmbSemestre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primer", "Segundo" }));
-
-        V_Interna.setVisible(false);
-
-        javax.swing.GroupLayout V_InternaLayout = new javax.swing.GroupLayout(V_Interna.getContentPane());
-        V_Interna.getContentPane().setLayout(V_InternaLayout);
-        V_InternaLayout.setHorizontalGroup(
-            V_InternaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        V_InternaLayout.setVerticalGroup(
-            V_InternaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jScrollPane1.setBounds(10, 10, 587, 430);
+        pnlDesktop.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(V_Interna, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
                 .addComponent(cmbSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(pnlDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(pnlAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(V_Interna, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -258,7 +245,7 @@ public class frmCalendario extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbSemestre;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel pnlAsignatura;
+    public static javax.swing.JDesktopPane pnlDesktop;
     private javax.swing.JTable tblHorario;
     // End of variables declaration//GEN-END:variables
 }
@@ -372,15 +359,9 @@ class TableButtonMouseListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        JDesktopPane dtp = new JDesktopPane();
-        pnla .setContentPane(dtp);
-        JInternalFrame mboxFrame = new JInternalFrame("Prueba", true, true, true, true);
-        JLabel reader = new JLabel("Mail Reader Would Be Here");
-        mboxFrame.setContentPane(reader);
-        mboxFrame.setSize(400, 300);
-        mboxFrame.setLocation(50, 50);
-        mboxFrame.setVisible(true);
-        dtp.add(mboxFrame);
+        
+        
+        
     }
 
     @Override

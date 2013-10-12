@@ -796,13 +796,12 @@ public class V_Coordinador extends javax.swing.JFrame {
      */
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        
+        file.cargar();
         for (int i =0; i< DepartamentoCls.getDepartamento().size();i++){
             jcombo_depart.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
             jComboDep.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
             System.out.println("hola");
         }
-        ArrayList<Usuario> lis =UsuarioCls.getUsuario();
         for (int i =0; i< UsuarioCls.getUsuario().size();i++){
             String s = UsuarioCls.getUsuario().get(i).getClass().getSimpleName();
             String m=Profesor.class.getSimpleName();
