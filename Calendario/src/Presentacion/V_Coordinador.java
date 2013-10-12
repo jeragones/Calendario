@@ -880,9 +880,11 @@ String tab="";
         String selec=listaUser.getSelectedValue().toString();
         
         if (tab.equals("Add Course")){
-            for(Departamento dep:DepartamentoCls.getDepartamento()){
-                DepartamentoCls.deleteAsig(selec);
-            }
+            //for(Departamento dep:DepartamentoCls.getDepartamento()){
+           DepartamentoCls.deleteAsig(selec);
+           modelo.removeElement(selec);
+           listaUser.setModel(modelo);
+            
         }
         else{
             UsuarioCls.deleteUser(selec);

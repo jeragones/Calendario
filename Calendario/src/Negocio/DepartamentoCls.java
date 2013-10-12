@@ -64,7 +64,9 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
     
     public static void deleteAsig(String name){
         for(int i=0; i<departamento.size();i++){
-            for(int j=0;j<departamento.get(i).getAsignatura().size();i++){
+            String dep = departamento.get(i).getDepartamento();
+            for(int j=0;j<departamento.get(i).getAsignatura().size();j++){
+                String asig = departamento.get(i).getAsignatura().get(j).getNombre();
                 if (departamento.get(i).getAsignatura().get(j).getNombre().equals(name)){
                     departamento.get(i).getAsignatura().remove(departamento.get(i).getAsignatura().get(j));
                 }
