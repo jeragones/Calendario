@@ -10,6 +10,7 @@ import Datos.Asignatura.Teorica;
 import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
+import Datos.Usuario.Usuario;
 import Negocio.ArchivoCls;
 import Negocio.AsignaturaCls;
 import Negocio.DepartamentoCls;
@@ -31,6 +32,7 @@ public class V_Coordinador extends javax.swing.JFrame {
      * Creates new form V_Coordinador
      */
     ArchivoCls file = new ArchivoCls();
+    DepartamentoCls depart= new DepartamentoCls();
     UsuarioCls user=new UsuarioCls();
     DefaultListModel modelo = new DefaultListModel();
     ArrayList<String> materiales =new ArrayList();
@@ -728,11 +730,8 @@ public class V_Coordinador extends javax.swing.JFrame {
             txt_Asig_Variable.setText("");
             materiales.clear();
         }
-        ArrayList<Object> lista = new ArrayList();
-        for(int i=0;i<DepartamentoCls.getDepartamento().size();i++){
-            lista.add(DepartamentoCls.getDepartamento().get(i));
-        } 
-        file.guardar("departamento", lista);
+         
+        depart.guardar();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
@@ -803,10 +802,15 @@ public class V_Coordinador extends javax.swing.JFrame {
             jComboDep.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
             System.out.println("hola");
         }
-        
+        ArrayList<Usuario> lis =UsuarioCls.getUsuario();
         for (int i =0; i< UsuarioCls.getUsuario().size();i++){
-            if(UsuarioCls.getUsuario().get(i).getClass().equals(Profesor.class))
-                jcProfe.addItem(((Profesor)UsuarioCls.getUsuario().get(i)).getNombre());
+            String s = UsuarioCls.getUsuario().get(i).getClass().getSimpleName();
+            String m=Profesor.class.getSimpleName();
+            if(UsuarioCls.getUsuario().get(i).getClass().equals(Profesor.class)){
+                    jcProfe.addItem(((Profesor)UsuarioCls.getUsuario().get(i)).getNombre());
+                }
+            
+            
         }    
         
         
