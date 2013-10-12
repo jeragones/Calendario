@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class AsignaturaCls {
     
-    private ArrayList<Asignatura> asignatura = new ArrayList<>();
+    private static ArrayList<Asignatura> asignatura = new ArrayList<>();
     
     public void insertar(Object args) {
         asignatura.add((Asignatura)args);
@@ -29,5 +29,6 @@ public class AsignaturaCls {
         this.asignatura = asignatura;
     }
 
-
+    
+    
 }

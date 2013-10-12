@@ -39,5 +39,19 @@ public class UsuarioCls implements Interface{
         UsuarioCls.usuario = usuario;
     }
 
-    
+    public static Usuario getUser(String name){
+        for(Usuario user:usuario){
+            if (user.getNombre().equals(name)){
+                return user;
+            }
+        }
+        return null;
+    }
+    public static void deleteUser(String name){
+        for(int i=0; i<usuario.size();i++){
+            if (usuario.get(i).getNombre().equals(name)){
+                usuario.remove(usuario.get(i));
+            }
+        }
+    }
 }
