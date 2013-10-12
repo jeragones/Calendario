@@ -10,6 +10,7 @@ import Datos.Asignatura.Teorica;
 import Datos.Usuario.Coordinador;
 import Datos.Usuario.Estudiante;
 import Datos.Usuario.Profesor;
+import Datos.Usuario.Usuario;
 import Negocio.ArchivoCls;
 import Negocio.DepartamentoCls;
 import Negocio.UsuarioCls;
@@ -775,13 +776,13 @@ public class V_Coordinador extends javax.swing.JFrame {
      */
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        
+        file.cargar();
         for (int i =0; i< DepartamentoCls.getDepartamento().size();i++){
             jcombo_depart.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
             jComboDep.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
             System.out.println("hola");
         }
-        
+        ArrayList<Usuario> list = UsuarioCls.getUsuario();
         for (int i =0; i< UsuarioCls.getUsuario().size();i++){
             if(UsuarioCls.getUsuario().get(i).getClass().equals(Profesor.class))
                 jcProfe.addItem(((Profesor)UsuarioCls.getUsuario().get(i)).getNombre());
