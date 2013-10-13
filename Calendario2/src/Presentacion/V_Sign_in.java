@@ -30,6 +30,7 @@ public class V_Sign_in extends javax.swing.JFrame {
     ArrayList<Departamento> departamentos = new ArrayList<>();
     ArrayList<Aula> aulas = new ArrayList<>();
     ArchivoCls file = new ArchivoCls();
+    public static Profesor profesor;
     
     public V_Sign_in() {
         initComponents();
@@ -159,6 +160,7 @@ public class V_Sign_in extends javax.swing.JFrame {
                     if(((Profesor)UsuarioCls.getUsuario().get(i)).getUsuario().equals(userName)&&((Profesor)UsuarioCls.getUsuario().get(i)).getContrasena().equals(userPassword)){
                             this.setVisible(false);
                             new V_Profesor().show();
+                            profesor=((Profesor)UsuarioCls.getUsuario().get(i));
                     }
                 }
             } 
