@@ -4,6 +4,8 @@
  */
 package Negocio;
 
+import Datos.Asignatura.Asignatura;
+import Datos.Usuario.Profesor;
 import Datos.Usuario.Usuario;
 import java.util.ArrayList;
 
@@ -53,5 +55,21 @@ public class UsuarioCls implements Interface{
                 usuario.remove(usuario.get(i));
             }
         }
+    }
+    
+    public static Profesor getProfesorporAsignatura(String asig){
+        for(Usuario Prof:usuario){
+            String p=Prof.getNombre();
+            if (Prof instanceof Profesor){
+                Profesor profe = (Profesor)Prof;
+                for(Asignatura asigna:profe.getAsignatura()){
+                    String a=asigna.getNombre();
+                    if (asigna.getNombre().equals(asig)){
+                        return profe;
+                    }                   
+                }                
+            }            
+        }
+       return null;
     }
 }

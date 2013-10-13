@@ -4,6 +4,7 @@
  */
 package Presentacion;
 
+import Datos.Asignatura.Asignatura;
 import Datos.Asignatura.Departamento;
 import Datos.Asignatura.Practica;
 import Datos.Asignatura.Teorica;
@@ -105,6 +106,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaUser = new javax.swing.JList();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coordinador");
@@ -349,6 +351,12 @@ public class V_Coordinador extends javax.swing.JFrame {
 
         jLabel16.setText("Credits:");
 
+        txt_Asig_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Asig_IDActionPerformed(evt);
+            }
+        });
+
         txt_Asig_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_Asig_NameActionPerformed(evt);
@@ -497,6 +505,13 @@ public class V_Coordinador extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Edit");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -506,11 +521,14 @@ public class V_Coordinador extends javax.swing.JFrame {
                 .addComponent(table)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(132, 132, 132)
                             .addComponent(Exit))
-                        .addComponent(jButton5))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -524,7 +542,9 @@ public class V_Coordinador extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5)
+                            .addComponent(jButton6)))
                     .addComponent(table, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -659,138 +679,10 @@ public class V_Coordinador extends javax.swing.JFrame {
         txt_Coor_User.setText("");
         txt_Coor_Pass.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
-    /**
-     * Boton que agrega una nueva asignatura, esta asignatura se le asigna a un profesor y a un departamendo, y la guarda en el archivo indicado
-     * @param evt 
-     */
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        String id =txt_Asig_ID.getText();
-        String n = txt_Asig_Name.getText();
-        int g =0;
-        int s=0;
-        int c=0;
-        String var = txt_Asig_Variable.getText();
-        String depa = jComboDep.getSelectedItem().toString();
-        String profesor =jcProfe.getSelectedItem().toString();
-        modelo.clear();
-        try{
-            g= (int)Integer.parseInt(txt_Asig_Group.getText());
-        }
-        catch(Exception e){
-            txt_Asig_Group.setText("This field can only contain numbers");
-        }
-        try{
-           s = (int)Integer.parseInt(txt_Asig_Sem.getText());
-       }
-       catch(Exception e){
-           txt_Asig_Sem.setText("This field can only contain numbers");
-       }
-       try{
-             c = (int)Integer.parseInt(txt_Asig_Cred.getText());
-        }
-        catch(Exception e){
-            txt_Asig_Cred .setText("This field can only contain numbers");
-        }
-        
-        if (id.isEmpty()||n.isEmpty()){
-                new V_Alerta_Coor().show();
-            }
-            else{
-                if (asig_tipo.getSelectedItem().toString().equals("Teoric")){
-                Teorica teo = new Teorica(id,n,g,s,c,var);
-               
-                DepartamentoCls.getDepartamento(depa).agregar(teo);
-                DepartamentoCls.getDepartamento(depa).getProfesor(profesor).agregar(teo);
-                for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
-                    if (DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getClass().getSimpleName().equals("Teorica")){
-                        modelo.addElement(DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getNombre().toString() + "  ( Teoric )");
-                    }
-                }
-            }
-            else{
-                Practica prac = new Practica(id,n, g, s, c,var);
-                prac.agregarMateriales(materiales);
-                DepartamentoCls.getDepartamento(depa).agregar(prac);
-                DepartamentoCls.getDepartamento(depa).getProfesor(profesor).agregar(prac);
-               
-                for(int i =0; i<DepartamentoCls.getDepartamento().size();i++){
-                    if (DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getClass().getSimpleName().equals("Practica")){
-                        modelo.addElement(DepartamentoCls.getDepartamento(depa).getAsignatura().get(i).getNombre().toString() + "  ( Practice )");
-                    }
-                }
-            }
-            listaUser.setModel(modelo);
-            txt_Asig_Cred.setText("");
-            txt_Asig_Group.setText("");
-            txt_Asig_ID.setText("");
-            txt_Asig_Material.setText("");
-            txt_Asig_Name.setText("");
-            txt_Asig_Sem.setText("");
-            txt_Asig_Variable.setText("");
-            materiales.clear();
-        }
-         
-        depart.guardar();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_Asig_NameActionPerformed
-    /**
-     * Metodo para mostrar u ocultar componentes en la interfaz dependiendo del tipo de asignatura que desee insertar, como parametros recibe el evento de la interfaz
-     * @param evt 
-     */
-    private void asig_tipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_asig_tipoItemStateChanged
-        // TODO add your handling code here:
-        if(asig_tipo.getSelectedItem().toString().equals("Practice")){
-            jB_Add_Material.setVisible(true);
-            jLabel_Material.setVisible(true);
-            txt_Asig_Material.setVisible(true);
-            jLabel_Variable.setText("System");
-            txt_Asig_Cred.setText("");
-            txt_Asig_Group.setText("");
-            txt_Asig_ID.setText("");
-            txt_Asig_Material.setText("");       
-            txt_Asig_Name.setText("");
-            txt_Asig_Sem.setText("");
-            txt_Asig_Variable.setText("");
-        }       
-        else{
-            jB_Add_Material.setVisible(false);
-            jLabel_Material.setVisible(false);
-            txt_Asig_Material.setVisible(false);
-            jLabel_Variable.setText("Link:");
-            txt_Asig_Cred.setText("");
-            txt_Asig_Group.setText("");
-            txt_Asig_ID.setText("");
-            txt_Asig_Material.setText("");       
-            txt_Asig_Name.setText("");
-            txt_Asig_Sem.setText("");
-            txt_Asig_Variable.setText("");
-        }        
-    }//GEN-LAST:event_asig_tipoItemStateChanged
+   
     
-    
-    /**
-     * Accion del boton que agrega un material a la lista de materiales.
-     * @param evt 
-     */
-    private void jB_Add_MaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Add_MaterialActionPerformed
-        // TODO add your handling code here:     
-        String mate =txt_Asig_Material.getText();
-        materiales.add(mate);
-        txt_Asig_Material.setText("");      
-    }//GEN-LAST:event_jB_Add_MaterialActionPerformed
-
-    private void asig_tipoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_asig_tipoPropertyChange
-        // TODO add your handling code here:        
-    }//GEN-LAST:event_asig_tipoPropertyChange
-
-    private void asig_tipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asig_tipoMouseClicked
-        // TODO add your handling code here:     
-    }//GEN-LAST:event_asig_tipoMouseClicked
-    /**
+   /**
      * Accion de la interfaz que carga diferentes datos en los combobox indicados
      * @param evt 
      */
@@ -800,7 +692,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         for (int i =0; i< DepartamentoCls.getDepartamento().size();i++){
             jcombo_depart.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
             jComboDep.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
-            System.out.println("hola");
+            //System.out.println("hola");
         }
         for (int i =0; i< UsuarioCls.getUsuario().size();i++){
             String s = UsuarioCls.getUsuario().get(i).getClass().getSimpleName();
@@ -814,10 +706,6 @@ public class V_Coordinador extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_formComponentShown
-
-    private void asig_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asig_tipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asig_tipoActionPerformed
 
     private void tableVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_tableVetoableChange
         // TODO add your handling code here:
@@ -894,6 +782,84 @@ String tab="";
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        tab = table.getTitleAt(table.getSelectedIndex());
+        String selec=listaUser.getSelectedValue().toString();
+        
+        if (tab.equals("Add Course")){
+            Asignatura asi = DepartamentoCls.getAsig(selec);
+            if (asi instanceof Teorica){
+                txt_Asig_Cred.setText(((Integer)(asi.getCreditos())).toString());
+                txt_Asig_Group.setText(((Integer)(asi.getGrupo())).toString());
+                txt_Asig_ID.setText(asi.getCodigo());
+                txt_Asig_Name.setText(asi.getNombre());
+                txt_Asig_Sem.setText(((Integer)(asi.getSemestre())).toString());
+                Teorica teo=(Teorica)asi;
+                txt_Asig_Variable.setText(teo.getPagina());
+                Profesor prof=UsuarioCls.getProfesorporAsignatura(selec);
+                jcProfe.setSelectedItem(prof.getNombre());                
+            }
+            else{
+                txt_Asig_Cred.setText(((Integer)(asi.getCreditos())).toString());
+                txt_Asig_Group.setText(((Integer)(asi.getGrupo())).toString());
+                txt_Asig_ID.setText(asi.getCodigo());
+                txt_Asig_Material.setText("");
+                txt_Asig_Name.setText(asi.getNombre());
+                txt_Asig_Sem.setText(((Integer)(asi.getSemestre())).toString());
+                Practica prac=(Practica)asi;
+                txt_Asig_Variable.setText(prac.getSistema());
+                Profesor prof=UsuarioCls.getProfesorporAsignatura(selec);
+                jcProfe.setSelectedItem(prof.getNombre());
+                jB_Add_Material.setVisible(true);
+                jLabel_Material.setVisible(true);
+                txt_Asig_Material.setVisible(true);
+                jLabel_Variable.setText("System");
+                Departamento depart=DepartamentoCls.getDepartamentoporAsignatura(selec);
+                jComboDep.setSelectedItem(depart.getDepartamento());
+            }
+            
+           
+            
+        }
+        else{
+            
+            
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+//GEN-FIRST:event_jB_Add_MaterialActionPerformed
+ 
+//GEN-LAST:event_jB_Add_MaterialActionPerformed
+
+    private void asig_tipoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_asig_tipoPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asig_tipoPropertyChange
+
+    private void asig_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asig_tipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asig_tipoActionPerformed
+
+//GEN-FIRST:event_asig_tipoItemStateChanged
+ 
+//GEN-LAST:event_asig_tipoItemStateChanged
+
+    private void asig_tipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asig_tipoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asig_tipoMouseClicked
+
+//GEN-FIRST:event_jButton4ActionPerformed
+ 
+//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Asig_NameActionPerformed
+
+    private void txt_Asig_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Asig_IDActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -930,13 +896,14 @@ String tab="";
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Exit;
-    public javax.swing.JComboBox asig_tipo;
-    public javax.swing.JButton jB_Add_Material;
+    private javax.swing.JComboBox asig_tipo;
+    private javax.swing.JButton jB_Add_Material;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboDep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -954,8 +921,8 @@ String tab="";
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JLabel jLabel_Material;
-    public javax.swing.JLabel jLabel_Variable;
+    private javax.swing.JLabel jLabel_Material;
+    private javax.swing.JLabel jLabel_Variable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -968,7 +935,7 @@ String tab="";
     private javax.swing.JTextField txt_Asig_Cred;
     private javax.swing.JTextField txt_Asig_Group;
     private javax.swing.JTextField txt_Asig_ID;
-    public javax.swing.JTextField txt_Asig_Material;
+    private javax.swing.JTextField txt_Asig_Material;
     private javax.swing.JTextField txt_Asig_Name;
     private javax.swing.JTextField txt_Asig_Sem;
     private javax.swing.JTextField txt_Asig_Variable;
