@@ -26,6 +26,8 @@ public class V_Profesor extends javax.swing.JFrame {
      */
     
     DefaultListModel modelo = new DefaultListModel();
+    public static Asignatura asignatura=null;
+    public static V_Profesor vp =null;
     
     public V_Profesor() {
         initComponents();
@@ -133,9 +135,12 @@ public class V_Profesor extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
           int index = theList.locationToIndex(evt.getPoint());
           if (index >= 0) {
-            Asignatura asig = DepartamentoCls.getAsig(theList.getModel().getElementAt(index).toString());
-            
-            System.out.println("Double-clicked on: " + asig.getNombre());
+            asignatura = DepartamentoCls.getAsig(theList.getModel().getElementAt(index).toString());
+            V_Asignatura vent =new V_Asignatura();
+            vent.setVisible(true);
+            vp=this;
+            this.setVisible(false);
+            System.out.println("Double-clicked on: " + asignatura.getNombre());
           }
         }
     }//GEN-LAST:event_jasignaturasMouseClicked
