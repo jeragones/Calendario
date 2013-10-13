@@ -12,17 +12,38 @@ import Negocio.DepartamentoCls;
 import Negocio.UsuarioCls;
 import java.awt.Component;
 import java.awt.Dimension;
+<<<<<<< HEAD
+=======
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
+<<<<<<< HEAD
 import javax.swing.JButton;
+=======
+import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultDesktopManager;
+import javax.swing.DesktopManager;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+<<<<<<< HEAD
+=======
+import javax.swing.border.Border;
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -59,6 +80,10 @@ public class frmCalendario extends javax.swing.JFrame {
         pnlDesktop = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHorario = new javax.swing.JTable();
+<<<<<<< HEAD
+=======
+        frmInterno = new javax.swing.JInternalFrame();
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -119,6 +144,25 @@ public class frmCalendario extends javax.swing.JFrame {
 
         jScrollPane1.setBounds(10, 10, 587, 430);
         pnlDesktop.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+<<<<<<< HEAD
+=======
+
+        frmInterno.setVisible(true);
+
+        javax.swing.GroupLayout frmInternoLayout = new javax.swing.GroupLayout(frmInterno.getContentPane());
+        frmInterno.getContentPane().setLayout(frmInternoLayout);
+        frmInternoLayout.setHorizontalGroup(
+            frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 6, Short.MAX_VALUE)
+        );
+        frmInternoLayout.setVerticalGroup(
+            frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 4, Short.MAX_VALUE)
+        );
+
+        frmInterno.setBounds(330, 440, 22, 37);
+        pnlDesktop.add(frmInterno, javax.swing.JLayeredPane.DEFAULT_LAYER);
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,8 +193,7 @@ public class frmCalendario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        
-        
+        frmInterno.setVisible(false);
     }//GEN-LAST:event_formComponentShown
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -178,9 +221,13 @@ public class frmCalendario extends javax.swing.JFrame {
         for(int i=0; i < calendario.size(); i++) {
             tblHorario.setPreferredSize(new Dimension(500, tblHorario.getPreferredSize().height+16));
             Vector vector = new Vector();
-            vector.add(new JButton(calendario.get(i).getCodigo()));
-            String aula = calendario.get(i).getAula().get(0).getNombre();
-            vector.add(new JButton(aula));
+            
+            JButton b1 = new JButton(calendario.get(i).getCodigo());
+            b1.setBorderPainted(false);
+            vector.add(b1);
+            JButton b2 = new JButton(calendario.get(i).getAula().get(0).getNombre());
+            b2.setBorderPainted(false);
+            vector.add(b2);
             boolean bandera = false;
             for(int j=0; j < calendario.get(i).getHorario().size(); j++) {
                 dia = calendario.get(i).getHorario().get(j).getDia();
@@ -198,12 +245,11 @@ public class frmCalendario extends javax.swing.JFrame {
             vector.add(new JButton(dia+" - "+horaInicial+" - "+horaFinal));
             vector.add("Oscar");
             data.add(vector);
-            //vector.add( horaInicial+" - "+horaFinal);
         }
         
         tblHorario.setModel(new TableButtonModel(data,columns));
         
-        tblHorario.setFillsViewportHeight(true);        
+        //tblHorario.setFillsViewportHeight(true);        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -243,10 +289,15 @@ public class frmCalendario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame V_Interna;
     private javax.swing.JComboBox cmbSemestre;
+    public static javax.swing.JInternalFrame frmInterno;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JDesktopPane pnlDesktop;
+<<<<<<< HEAD
     private javax.swing.JTable tblHorario;
+=======
+    public static javax.swing.JTable tblHorario;
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
     // End of variables declaration//GEN-END:variables
 }
 /*
@@ -333,9 +384,26 @@ class TableButtonMouseListener implements MouseListener {
         int column = columnModel.getColumnIndexAtX(e.getX());
         int row    = e.getY() / table.getRowHeight();
         Object value;
-        
         MouseEvent buttonEvent;
+        DesktopManager manager = new DefaultDesktopManager() {
+            @Override
+            public void setBoundsForFrame(JComponent f, int newX, int newY, int newWidth, int newHeight) {
+                boolean didResize = (f.getWidth() != newWidth || f.getHeight() != newHeight);
+                if (!inBounds((JInternalFrame) f, newX, newY, newWidth, newHeight)) return;
+                f.setBounds(newX, newY, newWidth, newHeight);
+                if(didResize) {
+                    f.validate();
+                } 
+            }
 
+            protected boolean inBounds(JInternalFrame f, int newX, int newY, int newWidth, int newHeight) {
+                if (newX < 0 || newY < 0) return false;
+                if (newX + newWidth > f.getDesktopPane().getWidth()) return false;
+                if (newY + newHeight > f.getDesktopPane().getHeight()) return false;
+                return true;
+            }
+        };
+        
         if(row >= table.getRowCount() || row < 0 || column >= table.getColumnCount() || column < 0)
             return;
 
@@ -345,23 +413,52 @@ class TableButtonMouseListener implements MouseListener {
             return;
 
         button = (JButton)value;
-        buttonEvent = (MouseEvent)SwingUtilities.convertMouseEvent(table, e, button);
-        button.dispatchEvent(buttonEvent);
-        // This is necessary so that when a button is pressed and released
-        // it gets rendered properly.  Otherwise, the button may still appear
-        // pressed down when it has been released.
+        frmCalendario.pnlDesktop.setDesktopManager(manager);
+        frmCalendario.frmInterno.setLocation(200, 100);
+        frmCalendario.frmInterno.setSize(new Dimension(200, 150));
+        //Internal.setBackground(Color.white);
+        frmCalendario.frmInterno.moveToFront();
+        frmCalendario.frmInterno.setVisible(true);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         table.repaint();
     }
 
+//    static MouseListener evento = new MouseAdapter() {
+//        public void mouseClicked(MouseEvent e) {
+//            
+//            
+//
+//            
+////            Object lista = e.getSource();
+////            if (e.getClickCount() == 1) {
+////                
+////            }
+//        };
+//    };
+    
     public TableButtonMouseListener(JTable table) {
         this.table = table;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+<<<<<<< HEAD
         
         
         
+=======
+        EventToButton(e);
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
     }
 
     @Override
@@ -376,12 +473,11 @@ class TableButtonMouseListener implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
-        EventToButton(e);
+        //EventToButton(e);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        EventToButton(e);
+        //EventToButton(e);
     }
 }

@@ -352,6 +352,12 @@ public class V_Coordinador extends javax.swing.JFrame {
 
         jLabel16.setText("Credits:");
 
+        txt_Asig_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Asig_IDActionPerformed(evt);
+            }
+        });
+
         txt_Asig_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_Asig_NameActionPerformed(evt);
@@ -528,6 +534,7 @@ public class V_Coordinador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(table)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton5)
@@ -535,6 +542,18 @@ public class V_Coordinador extends javax.swing.JFrame {
                         .addComponent(jButton6))
                     .addComponent(Exit, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(132, 132, 132)
+                            .addComponent(Exit))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -684,6 +703,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         txt_Coor_User.setText("");
         txt_Coor_Pass.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
+<<<<<<< HEAD
     /**
      * Boton que agrega una nueva asignatura, esta asignatura se le asigna a un profesor y a un departamendo, y la guarda en el archivo indicado
      * @param evt 
@@ -758,64 +778,12 @@ public class V_Coordinador extends javax.swing.JFrame {
          
         depart.guardar();
     }//GEN-LAST:event_bADDActionPerformed
+=======
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
 
-    private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_Asig_NameActionPerformed
-    /**
-     * Metodo para mostrar u ocultar componentes en la interfaz dependiendo del tipo de asignatura que desee insertar, como parametros recibe el evento de la interfaz
-     * @param evt 
-     */
-    private void asig_tipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_asig_tipoItemStateChanged
-        // TODO add your handling code here:
-        if(asig_tipo.getSelectedItem().toString().equals("Practice")){
-            jB_Add_Material.setVisible(true);
-            jLabel_Material.setVisible(true);
-            txt_Asig_Material.setVisible(true);
-            jLabel_Variable.setText("System");
-            txt_Asig_Cred.setText("");
-            txt_Asig_Group.setText("");
-            txt_Asig_ID.setText("");
-            txt_Asig_Material.setText("");       
-            txt_Asig_Name.setText("");
-            txt_Asig_Sem.setText("");
-            txt_Asig_Variable.setText("");
-        }       
-        else{
-            jB_Add_Material.setVisible(false);
-            jLabel_Material.setVisible(false);
-            txt_Asig_Material.setVisible(false);
-            jLabel_Variable.setText("Link:");
-            txt_Asig_Cred.setText("");
-            txt_Asig_Group.setText("");
-            txt_Asig_ID.setText("");
-            txt_Asig_Material.setText("");       
-            txt_Asig_Name.setText("");
-            txt_Asig_Sem.setText("");
-            txt_Asig_Variable.setText("");
-        }        
-    }//GEN-LAST:event_asig_tipoItemStateChanged
+   
     
-    
-    /**
-     * Accion del boton que agrega un material a la lista de materiales.
-     * @param evt 
-     */
-    private void jB_Add_MaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_Add_MaterialActionPerformed
-        // TODO add your handling code here:     
-        String mate =txt_Asig_Material.getText();
-        materiales.add(mate);
-        txt_Asig_Material.setText("");      
-    }//GEN-LAST:event_jB_Add_MaterialActionPerformed
-
-    private void asig_tipoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_asig_tipoPropertyChange
-        // TODO add your handling code here:        
-    }//GEN-LAST:event_asig_tipoPropertyChange
-
-    private void asig_tipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asig_tipoMouseClicked
-        // TODO add your handling code here:     
-    }//GEN-LAST:event_asig_tipoMouseClicked
-    /**
+   /**
      * Accion de la interfaz que carga diferentes datos en los combobox indicados
      * @param evt 
      */
@@ -825,7 +793,7 @@ public class V_Coordinador extends javax.swing.JFrame {
         for (int i =0; i< DepartamentoCls.getDepartamento().size();i++){
             jcombo_depart.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
             jComboDep.addItem(DepartamentoCls.getDepartamento().get(i).getDepartamento());
-            System.out.println("hola");
+            //System.out.println("hola");
         }
         for (int i =0; i< UsuarioCls.getUsuario().size();i++){
             String s = UsuarioCls.getUsuario().get(i).getClass().getSimpleName();
@@ -839,10 +807,6 @@ public class V_Coordinador extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_formComponentShown
-
-    private void asig_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asig_tipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asig_tipoActionPerformed
 
     private void tableVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_tableVetoableChange
         // TODO add your handling code here:
@@ -926,8 +890,11 @@ String tab="";
         
         if (tab.equals("Add Course")){
             Asignatura asi = DepartamentoCls.getAsig(selec);
+<<<<<<< HEAD
             bOK.setVisible(true);
             bADD.setVisible(false);
+=======
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
             if (asi instanceof Teorica){
                 txt_Asig_Cred.setText(((Integer)(asi.getCreditos())).toString());
                 txt_Asig_Group.setText(((Integer)(asi.getGrupo())).toString());
@@ -967,6 +934,7 @@ String tab="";
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+<<<<<<< HEAD
     private void bOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOKActionPerformed
         // TODO add your handling code here:
         
@@ -991,6 +959,39 @@ String tab="";
            
         
     }//GEN-LAST:event_bOKActionPerformed
+=======
+//GEN-FIRST:event_jB_Add_MaterialActionPerformed
+ 
+//GEN-LAST:event_jB_Add_MaterialActionPerformed
+
+    private void asig_tipoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_asig_tipoPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asig_tipoPropertyChange
+
+    private void asig_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asig_tipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asig_tipoActionPerformed
+
+//GEN-FIRST:event_asig_tipoItemStateChanged
+ 
+//GEN-LAST:event_asig_tipoItemStateChanged
+
+    private void asig_tipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_asig_tipoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asig_tipoMouseClicked
+
+//GEN-FIRST:event_jButton4ActionPerformed
+ 
+//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txt_Asig_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Asig_NameActionPerformed
+
+    private void txt_Asig_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Asig_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_Asig_IDActionPerformed
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
 
     /**
      * @param args the command line arguments
@@ -1028,10 +1029,15 @@ String tab="";
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Exit;
+<<<<<<< HEAD
     public javax.swing.JComboBox asig_tipo;
     private javax.swing.JButton bADD;
     public javax.swing.JButton bOK;
     public javax.swing.JButton jB_Add_Material;
+=======
+    private javax.swing.JComboBox asig_tipo;
+    private javax.swing.JButton jB_Add_Material;
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1054,8 +1060,8 @@ String tab="";
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JLabel jLabel_Material;
-    public javax.swing.JLabel jLabel_Variable;
+    private javax.swing.JLabel jLabel_Material;
+    private javax.swing.JLabel jLabel_Variable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1068,7 +1074,7 @@ String tab="";
     private javax.swing.JTextField txt_Asig_Cred;
     private javax.swing.JTextField txt_Asig_Group;
     private javax.swing.JTextField txt_Asig_ID;
-    public javax.swing.JTextField txt_Asig_Material;
+    private javax.swing.JTextField txt_Asig_Material;
     private javax.swing.JTextField txt_Asig_Name;
     private javax.swing.JTextField txt_Asig_Sem;
     private javax.swing.JTextField txt_Asig_Variable;

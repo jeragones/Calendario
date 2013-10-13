@@ -30,11 +30,25 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="table" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+=======
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                          <Component id="Exit" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                      </Group>
+>>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
                   </Group>
                   <Component id="Exit" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" alignment="1" min="-2" pref="197" max="-2" attributes="0"/>
@@ -550,6 +564,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_Asig_ID">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_Asig_IDActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_Asig_Name">
               <Events>
