@@ -1,0 +1,52 @@
+P@Computacion@Oscar Viquez@oviquez@oviquez@2-987-654
+C@Leonardo Viquez@lviquez@lviquez@2-321-658
+P@Computacion@Lorena Valerio@lvalerio@lvalerio@3-895-234
+P@Computacion@Gaudy Esquivel@gesquivel@gesquivel@2-856-681
+P@Computacion@Jorge Velazco@jvelazco@jvelazco@1-963-785
+P@Computacion@Oscar Lopez@olopez@olopez@2-963-741
+P@Computacion@Abel Mendez@amendez@amendez@5-693-120
+E@Daniel Berrocal@jdaniel@jdaniel@2-697-135
+E@Jorge Rojas@jrojas@jrojas@2-465-327
+>
+oviquez@Lunes@7:00@11:30
+oviquez@Miercoles@12:30@4:00
+oviquez@Viernes@7:00@12:30
+oviquez@Viernes@12:30@4:00
+lvalerio@Lunes@7:00@11:30
+lvalerio@Lunes@12:30@4:00
+lvalerio@Martes@7:00@11:30
+lvalerio@Martes@12:30@4:00
+lvalerio@Miercoles@7:00@11:30
+lvalerio@Miercoles@12:30@4:00
+lvalerio@Jueves@7:00@11:30
+lvalerio@Jueves@12:30@4:00
+gesquivel@Jueves@7:00@11:30
+gesquivel@Viernes@7:00@12:30
+gesquivel@Martes@7:00@11:30
+jvelazco@Miercoles@7:00@11:30
+jvelazco@Miercoles@12:30@4:00
+jvelazco@Lunes@7:00@11:30
+jvelazco@Lunes@12:30@4:00
+olopez@Martes@12:30@4:00
+olopez@Miercoles@12:30@4:00
+olopez@Jueves@12:30@4:00
+amendez@Lunes@7:00@11:30
+amendez@Lunes@12:30@4:00
+amendez@Martes@7:00@11:30
+amendez@Martes@12:30@4:00
+amendez@Jueves@7:00@11:30
+amendez@Jueves@12:30@4:00
+amendez@Viernes@7:00@11:30
+>
+oviquez@CI2101@CI4700@CI5701@CI6600            -> 8,18,23,29
+lvalerio@CI2001@CI3002@CI7900                  -> 7,12,31
+gesquivel@CI4301@CI4810                        -> 13,22
+jvelazco@CI1400@CI3101@CI7602                  -> 0,9,35
+olopez@CI4302@CI5821@CI6821@CI6831@CI6400@7841 -> 17,19,24,30,28,36
+amendez@CI1802@CI1803@CI5001@CI4003@CI6200     -> 1,2,33,27,34
+ballestero                                     -> 11,21
+rodolfo                                        -> 4,14,26
+marlon                                         -> 15,20
+danilo                                         -> 3,5,10
+oscar                                          -> 37
+karina                                         -> 6,16,25,32
