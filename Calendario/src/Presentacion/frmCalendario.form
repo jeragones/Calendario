@@ -26,28 +26,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="V_Interna" min="-2" pref="0" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-              <Component id="cmbSemestre" min="-2" pref="74" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="476" max="32767" attributes="0"/>
+              <Component id="cmbSemestre" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="pnlDesktop" min="-2" pref="606" max="-2" attributes="0"/>
+          <Component id="pnlDesktop" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="pnlDesktop" min="-2" pref="456" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="V_Interna" alignment="0" min="-2" pref="0" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmbSemestre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Component id="pnlDesktop" pref="164" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbSemestre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -55,7 +51,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JButton" name="jButton1">
-<<<<<<< HEAD
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
@@ -65,43 +60,16 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbSemestre">
       <Properties>
-=======
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbSemestre">
-      <Properties>
->>>>>>> 51c29a13f3d4f885568e19cc56817dbbc5e0a18f
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Primer"/>
-            <StringItem index="1" value="Segundo"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JInternalFrame" name="V_Interna">
-      <Properties>
-        <Property name="visible" type="boolean" value="false"/>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-    </Container>
     <Container class="javax.swing.JDesktopPane" name="pnlDesktop">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -115,7 +83,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-              <JLayeredPaneConstraints x="10" y="10" width="587" height="430" layer="0" position="-1"/>
+              <JLayeredPaneConstraints x="10" y="10" width="600" height="100" layer="0" position="-1"/>
             </Constraint>
           </Constraints>
 
@@ -123,38 +91,66 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tblHorario">
               <Properties>
-                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                     <EmptyBorder/>
                   </Border>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="0">
-                    <Column editable="false" title="Curso" type="java.lang.Object"/>
+                  <Table columnCount="4" rowCount="3">
+                    <Column editable="false" title="Curso" type="java.lang.Object">
+                      <Data value=""/>
+                      <Data value="null"/>
+                      <Data value="null"/>
+                    </Column>
                     <Column editable="false" title="Aula" type="java.lang.Object"/>
                     <Column editable="false" title="Horario" type="java.lang.Object"/>
                     <Column editable="false" title="Profesor" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="autoResizeMode" type="int" value="4"/>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
                 <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[2147483647, 64]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[500, 20]"/>
+                  <Dimension value="[500, 64]"/>
                 </Property>
+                <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
                   <JTableSelectionModel selectionMode="0"/>
                 </Property>
                 <Property name="showHorizontalLines" type="boolean" value="false"/>
                 <Property name="showVerticalLines" type="boolean" value="false"/>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -167,7 +163,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
-              <JLayeredPaneConstraints x="330" y="440" width="-1" height="-1" layer="0" position="-1"/>
+              <JLayeredPaneConstraints x="350" y="120" width="-1" height="40" layer="0" position="-1"/>
             </Constraint>
           </Constraints>
 
@@ -179,7 +175,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
