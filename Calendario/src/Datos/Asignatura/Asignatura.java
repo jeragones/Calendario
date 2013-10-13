@@ -98,6 +98,30 @@ public class Asignatura implements java.io.Serializable {
     public ArrayList<Aula> getAula() {
         return aula;
     }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setGrupo(int grupo) {
+        this.grupo = grupo;
+    }
+
+    public void setSemestre(int semestre) {
+        this.semestre = semestre;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
+    }
+
+    public void setTipoSemestre(int tipoSemestre) {
+        this.tipoSemestre = tipoSemestre;
+    }
     
     /**
      * Metodo que obtiene la lista de dias en las que se imparte la aignatura

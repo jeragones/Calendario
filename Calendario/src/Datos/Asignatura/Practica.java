@@ -61,4 +61,13 @@ public class Practica extends Asignatura {
     public void agregarMateriales(ArrayList l){
         this.material=l;
     }
+
+    public void setSistema(String sistema) {
+        this.sistema = sistema;
+    }
+
+    public void setMaterial(ArrayList<String> material) {
+        this.material = material;
+    }
+    
 }

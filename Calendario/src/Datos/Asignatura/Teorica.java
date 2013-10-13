@@ -34,4 +34,9 @@ public class Teorica extends Asignatura {
     public String getPagina() {
         return pagina;
     }
+
+    public void setPagina(String pagina) {
+        this.pagina = pagina;
+    }
+    
 }

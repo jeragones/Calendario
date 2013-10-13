@@ -72,6 +72,21 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
                 }
             }
         }
+        DepartamentoCls dep =new DepartamentoCls();
+        dep.guardar();
+    }
+    
+    public static Departamento getDepartamentoporAsignatura(String asig){
+        for(Departamento dep:departamento){
+            for(Asignatura asigna :dep.getAsignatura()){
+                if (asigna.getNombre().equals(asig)){
+                    return dep;
+                }
+            }
+            
+        }
+        
+        return null;
     }
     
     
