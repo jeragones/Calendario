@@ -30,7 +30,7 @@ public class V_Sign_in extends javax.swing.JFrame {
     ArrayList<Departamento> departamentos = new ArrayList<>();
     ArrayList<Aula> aulas = new ArrayList<>();
     ArchivoCls file = new ArchivoCls();
-    public static Profesor profesor;
+    public static Profesor profesor=null;
     
     public V_Sign_in() {
         initComponents();
