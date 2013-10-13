@@ -6,8 +6,6 @@ package Negocio;
 
 import Datos.Asignatura.Asignatura;
 import Datos.Asignatura.Departamento;
-import Datos.Usuario.Profesor;
-import Datos.Usuario.Usuario;
 import java.util.ArrayList;
 
 
@@ -54,7 +52,7 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
     public static Asignatura getAsig(String name){
         for(Departamento dep:departamento){
             for(Asignatura asig :dep.getAsignatura()){
-                if (asig.getNombre().equals(name)){
+                if (asig.getNombre().equals(name) || asig.getCodigo().equals(name)){
                     return asig;
                 }
             }
