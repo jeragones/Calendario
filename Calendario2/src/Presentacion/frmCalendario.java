@@ -53,8 +53,6 @@ public class frmCalendario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        cmbSemestre = new javax.swing.JComboBox();
         pnlDesktop = new javax.swing.JDesktopPane();
         frmInterno = new javax.swing.JInternalFrame();
         lblCabeza1 = new javax.swing.JLabel();
@@ -75,15 +73,6 @@ public class frmCalendario extends javax.swing.JFrame {
                 formComponentShown(evt);
             }
         });
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        cmbSemestre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primero", "Segundo" }));
 
         pnlDesktop.setPreferredSize(new java.awt.Dimension(490, 100));
 
@@ -179,7 +168,7 @@ public class frmCalendario extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Curso", "Horario", "Aula", "Profesor"
+                "Course", "Schedule", "Classroom", "Teacher"
             }
         ));
         tblHorario.setPreferredSize(new java.awt.Dimension(500, 20));
@@ -195,21 +184,10 @@ public class frmCalendario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cmbSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(29, Short.MAX_VALUE))
+            .addComponent(pnlDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -226,6 +204,55 @@ public class frmCalendario extends javax.swing.JFrame {
         lblDato2.setVisible(false);
         lblDato3.setVisible(false);
         lblDato4.setVisible(false);
+        
+        ArchivoCls insArchivo = new ArchivoCls();
+        insArchivo.cargar();
+        CalendarioCls insCalendario = new CalendarioCls();            
+        insCalendario.reset();
+        ArrayList<Asignatura> calendario = insCalendario.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula(), V_Coordinador.jCombo_Semestre.getSelectedIndex());
+        
+        String horaInicial = "";
+        String horaFinal = "";
+        String dia = "";
+        String[] columns = {"Curso","Aula","Horario","Profesor"};
+        ArrayList<Vector> data = new ArrayList<>();
+        
+        tblHorario.setPreferredSize(new Dimension(500, 20));
+        TableCellRenderer defaultRenderer = tblHorario.getDefaultRenderer(JButton.class);
+        tblHorario.setDefaultRenderer(JButton.class, new TableButtonRenderer(defaultRenderer));
+        tblHorario.addMouseListener(new TableButtonMouseListener(tblHorario));
+        
+        
+        
+        for(int i=0; i < calendario.size(); i++) {
+            tblHorario.setPreferredSize(new Dimension(500, tblHorario.getPreferredSize().height+16));
+            Vector vector = new Vector();
+            
+            JButton b1 = new JButton(calendario.get(i).getCodigo());
+            b1.setBorderPainted(false);
+            vector.add(b1);
+            JButton b2 = new JButton(calendario.get(i).getAula().get(0).getNombre());
+            b2.setBorderPainted(false);
+            vector.add(b2);
+            boolean bandera = false;
+            for(int j=0; j < calendario.get(i).getHorario().size(); j++) {
+                dia = calendario.get(i).getHorario().get(j).getDia();
+                for(int k=0; k < calendario.get(i).getHorario().get(j).getHorario().size(); k++) {
+                    if(!calendario.get(i).getHorario().get(j).getHorario().get(k).isEstado()) {
+                        horaInicial = calendario.get(i).getHorario().get(j).getHorario().get(k).getHoraInicio();
+                        horaFinal = calendario.get(i).getHorario().get(j).getHorario().get(k).getHoraFinal();
+                        bandera = true;
+                        break;
+                    }
+                }
+                if(bandera)
+                    break;
+            }
+            vector.add(new JButton("View"));
+            vector.add(UsuarioCls.getProfesorporAsignatura(calendario.get(i).getCodigo()).getNombre());
+            data.add(vector);
+        }
+        tblHorario.setModel(new TableButtonModel(data,columns));
     }//GEN-LAST:event_formComponentShown
 
     private static void datos(String[] cabeza, String[] datos) {
@@ -293,7 +320,7 @@ public class frmCalendario extends javax.swing.JFrame {
         switch(columna) {
             case 0:
                 Asignatura curso = DepartamentoCls.getAsig(codigo);
-                cabeza = new String[] {"Codigo: ", "Nombre: ", "Grupo: ", "Creditos: ", "Semestre: "};
+                cabeza = new String[] {"Id: ", "Name: ", "Group: ", "Credits: ", "Semester: "};
                 datos = new String[] {codigo, 
                                       curso.getNombre(), 
                                       String.valueOf(curso.getGrupo()), 
@@ -302,8 +329,23 @@ public class frmCalendario extends javax.swing.JFrame {
                 datos(cabeza, datos);
                 break;
             case 1:
+                ArrayList<Aula> aula = DepartamentoCls.getAula(codigo);
+                cabeza = new String[] {"Name: ", "Number: ", "Location: ", "Capacity: "};
+                String nombre="", numero="", ubicacion="", capacidad="";
+                if(!aula.isEmpty()) {
+                    for(int x=0; x < aula.size(); x++) {
+                        nombre = aula.get(x).getNombre();
+                        numero = String.valueOf(aula.get(x).getNumero());
+                        ubicacion = aula.get(x).getUbicacion();
+                        capacidad = String.valueOf(aula.get(x).getCapacidad());
+                    }
+                }
+                datos = new String[] {nombre, numero, ubicacion, capacidad}; 
+                datos(cabeza, datos);
+                break;
+            case 2:
                 ArrayList<Dia> horario = DepartamentoCls.getHorario(codigo);
-                cabeza = new String[] {"Día: ", "Horario: "};
+                cabeza = new String[] {"Day: ", "Time: "};
                 String dia="", hora="";
                 if(!horario.isEmpty()) {
                     for(int x=0; x < horario.size(); x++) {
@@ -321,78 +363,9 @@ public class frmCalendario extends javax.swing.JFrame {
                 datos = new String[] {dia, hora}; 
                 datos(cabeza, datos);
                 break;
-            case 2:
-                ArrayList<Aula> aula = DepartamentoCls.getAula(codigo);
-                cabeza = new String[] {"Name: ", "Number: ", "Location: ", "Capacity: "};
-                String nombre="", numero="", ubicacion="", capacidad="";
-                if(!aula.isEmpty()) {
-                    for(int x=0; x < aula.size(); x++) {
-                        nombre = aula.get(x).getNombre();
-                        numero = String.valueOf(aula.get(x).getNumero());
-                        ubicacion = aula.get(x).getUbicacion();
-                        capacidad = String.valueOf(aula.get(x).getCapacidad());
-                    }
-                }
-                datos = new String[] {nombre, numero, ubicacion, capacidad}; 
-                datos(cabeza, datos);
-                break;
-            case 3:
-                
-                break;
         }
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ArchivoCls insArchivo = new ArchivoCls();
-        insArchivo.cargar();
-        CalendarioCls insCalendario = new CalendarioCls();            
-        insCalendario.reset();
-        ArrayList<Asignatura> calendario = insCalendario.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula(), cmbSemestre.getSelectedIndex());
-        
-        String horaInicial = "";
-        String horaFinal = "";
-        String dia = "";
-        String[] columns = {"Curso","Aula","Horario","Profesor"};
-        ArrayList<Vector> data = new ArrayList<>();
-        
-        tblHorario.setPreferredSize(new Dimension(500, 20));
-        TableCellRenderer defaultRenderer = tblHorario.getDefaultRenderer(JButton.class);
-        tblHorario.setDefaultRenderer(JButton.class, new TableButtonRenderer(defaultRenderer));
-        tblHorario.addMouseListener(new TableButtonMouseListener(tblHorario));
-        
-        jButton1.setText(String.valueOf(calendario.size()));
-        
-        for(int i=0; i < calendario.size(); i++) {
-            tblHorario.setPreferredSize(new Dimension(500, tblHorario.getPreferredSize().height+16));
-            Vector vector = new Vector();
-            
-            JButton b1 = new JButton(calendario.get(i).getCodigo());
-            b1.setBorderPainted(false);
-            vector.add(b1);
-            JButton b2 = new JButton(calendario.get(i).getAula().get(0).getNombre());
-            b2.setBorderPainted(false);
-            vector.add(b2);
-            boolean bandera = false;
-            for(int j=0; j < calendario.get(i).getHorario().size(); j++) {
-                dia = calendario.get(i).getHorario().get(j).getDia();
-                for(int k=0; k < calendario.get(i).getHorario().get(j).getHorario().size(); k++) {
-                    if(!calendario.get(i).getHorario().get(j).getHorario().get(k).isEstado()) {
-                        horaInicial = calendario.get(i).getHorario().get(j).getHorario().get(k).getHoraInicio();
-                        horaFinal = calendario.get(i).getHorario().get(j).getHorario().get(k).getHoraFinal();
-                        bandera = true;
-                        break;
-                    }
-                }
-                if(bandera)
-                    break;
-            }
-            vector.add(new JButton("Horario"/*dia+" - "+horaInicial+" - "+horaFinal*/));
-            vector.add("Oscar");
-            data.add(vector);
-        }
-        tblHorario.setModel(new TableButtonModel(data,columns));
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         frmInterno.setVisible(false);                
         frmCalendario.tblHorario.setEnabled(true);
@@ -433,9 +406,7 @@ public class frmCalendario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cmbSemestre;
     public static javax.swing.JInternalFrame frmInterno;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private static javax.swing.JLabel lblCabeza1;
@@ -531,7 +502,7 @@ class TableButtonMouseListener implements MouseListener {
         if(row >= table.getRowCount() || row < 0 || column >= table.getColumnCount() || column < 0)
             return;
 
-        value = table.getValueAt(row, column);
+        value = table.getValueAt(row, 0);
 
         if(!(value instanceof JButton))
             return;

@@ -14,11 +14,18 @@ import Datos.Usuario.Profesor;
 import Datos.Usuario.Usuario;
 import Negocio.ArchivoCls;
 import Negocio.AsignaturaCls;
+import Negocio.AulaCls;
+import Negocio.CalendarioCls;
 import Negocio.DepartamentoCls;
 import Negocio.UsuarioCls;
+import static Presentacion.frmCalendario.tblHorario;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.table.TableCellRenderer;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Marshaller.Listener;
 import javax.xml.bind.Unmarshaller;
@@ -1014,9 +1021,7 @@ String tab="";
     }//GEN-LAST:event_jbAdd_MaterialActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        String sem= jCombo_Semestre.getSelectedItem().toString();
-        
+        new frmCalendario().show();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -1064,7 +1069,7 @@ String tab="";
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboDep;
-    private javax.swing.JComboBox jCombo_Semestre;
+    public static javax.swing.JComboBox jCombo_Semestre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
