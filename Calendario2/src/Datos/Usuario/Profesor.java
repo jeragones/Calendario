@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * Clase Usuaio de tipo Profesor, cada profesor tiene una cedula con la que se identifica, una lista de dias en los que trabaja y una lista con las asignaturas que imparte
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
@@ -19,7 +19,13 @@ public class Profesor extends Usuario {
     private String cedula;
     private ArrayList<Dia> horario = new ArrayList<>();
     private ArrayList<Asignatura> asignatura = new ArrayList<>();
-    
+    /**
+     * Constructor de la clase profesor
+     * @param _nombre
+     * @param _usuario
+     * @param _contrasena
+     * @param _cedula 
+     */
     public Profesor(String _nombre, String _usuario, String _contrasena, String _cedula) {
         super(_nombre, _usuario, _contrasena);
         cedula = _cedula;

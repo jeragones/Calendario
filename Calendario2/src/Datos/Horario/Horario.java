@@ -8,7 +8,7 @@ import Datos.Aula.Aula;
 
 
 /**
- *
+ * Clase horario, esta clase implemeta la interface java.io.Serializable para poder guardarla y cargarla del fichero como un objeto 
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
@@ -18,6 +18,11 @@ public class Horario implements java.io.Serializable {
     private String horaFinal;
     private boolean estado;
     
+    /**
+     * Constructor de la clase horario
+     * @param _inicio Hora inicio 
+     * @param _final Hora final
+     */
     public Horario(String _inicio, String _final) {
         horaInicio = _inicio;
         horaFinal = _final;
