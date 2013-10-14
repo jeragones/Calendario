@@ -53,8 +53,6 @@ public class frmCalendario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        cmbSemestre = new javax.swing.JComboBox();
         pnlDesktop = new javax.swing.JDesktopPane();
         frmInterno = new javax.swing.JInternalFrame();
         lblCabeza1 = new javax.swing.JLabel();
@@ -75,15 +73,6 @@ public class frmCalendario extends javax.swing.JFrame {
                 formComponentShown(evt);
             }
         });
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        cmbSemestre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primero", "Segundo" }));
 
         pnlDesktop.setPreferredSize(new java.awt.Dimension(490, 100));
 
@@ -179,7 +168,7 @@ public class frmCalendario extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Curso", "Horario", "Aula", "Profesor"
+                "Course", "Schedule", "Classroom", "Teacher"
             }
         ));
         tblHorario.setPreferredSize(new java.awt.Dimension(500, 20));
@@ -195,21 +184,10 @@ public class frmCalendario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlDesktop, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cmbSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(29, Short.MAX_VALUE))
+            .addComponent(pnlDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -270,7 +248,7 @@ public class frmCalendario extends javax.swing.JFrame {
                 if(bandera)
                     break;
             }
-            vector.add(new JButton("Schedule"));
+            vector.add(new JButton("View"));
             vector.add(UsuarioCls.getProfesorporAsignatura(calendario.get(i).getCodigo()).getNombre());
             data.add(vector);
         }
@@ -388,10 +366,6 @@ public class frmCalendario extends javax.swing.JFrame {
         }
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         frmInterno.setVisible(false);                
         frmCalendario.tblHorario.setEnabled(true);
@@ -432,9 +406,7 @@ public class frmCalendario extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cmbSemestre;
     public static javax.swing.JInternalFrame frmInterno;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private static javax.swing.JLabel lblCabeza1;
