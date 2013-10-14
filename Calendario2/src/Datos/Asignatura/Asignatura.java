@@ -130,35 +130,67 @@ public class Asignatura implements java.io.Serializable {
     public void agregar(Dia _horario) {
         horario.add(_horario);
     }
-
+    
+    /**
+     * Metodo para cambiar el codigo de la asignatura
+     * @param codigo Nuevo Codigo
+     */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * Metodo para cambiar el nombre de la asignatura
+     * @param nombre Nuevo Nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
+    /**
+     * Metodo para cambiar el grupo de la asignatura
+     * @param grupo Nuevo grupo
+     */
     public void setGrupo(int grupo) {
         this.grupo = grupo;
     }
-
+    
+    /**
+     * Metodo para cambiar el semestre de la asignatura
+     * @param semestre Nuevo semestre
+     */
     public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
-
+    
+    /**
+     * Metodo para cambiar el numero de creditos de la asignatura
+     * @param creditos Nuevo numero de creditos
+     */
     public void setCreditos(int creditos) {
         this.creditos = creditos;
     }
-
+    
+    /**
+     * Metodo para cambiar la lista de aulas de la asignatura
+     * @param aula Nueva lista de aulas
+     */
     public void setAula(ArrayList<Aula> aula) {
         this.aula = aula;
     }
-
+    
+    /**
+     * Metodo para cambiar el horario de la asignatura
+     * @param horario Nuevo horario
+     */
     public void setHorario(ArrayList<Dia> horario) {
         this.horario = horario;
     }
-
+    
+    /**
+     * Metodo para cambiar el tipo de semestre de la asignatura
+     * @param tipoSemestre Nuevo tipo de semestre
+     */
     public void setTipoSemestre(int tipoSemestre) {
         this.tipoSemestre = tipoSemestre;
     }

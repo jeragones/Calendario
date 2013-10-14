@@ -8,7 +8,7 @@ import Datos.Horario.Dia;
 import java.util.ArrayList;
 
 /**
- *
+ * Clase abstracta aula de la cual extienden los tipos de aulas (Laboratorio y Clase)
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
@@ -20,6 +20,13 @@ public abstract class Aula implements java.io.Serializable {
     private int capacidad;
     private ArrayList<Dia> horario = new ArrayList<>();
     
+    /**
+     * Constructor de la clase aula
+     * @param _nombre Nombre del aula
+     * @param _numero Numero del aula
+     * @param _ubicacion Ubicacion del aula 
+     * @param _capacidad  Capacidad maxima de alumnos en el aula
+     */
     public Aula(String _nombre, int _numero, String _ubicacion, int _capacidad) {
         nombre = _nombre;
         numero = _numero;

@@ -12,14 +12,6 @@ import java.util.ArrayList;
  * @author Jorge Rojas
  */
 public class Practica extends Asignatura {
-
-    public void setSistema(String sistema) {
-        this.sistema = sistema;
-    }
-
-    public void setMaterial(ArrayList<String> material) {
-        this.material = material;
-    }
     
     private String sistema;
     private ArrayList<String> material = new ArrayList<>();
@@ -69,4 +61,21 @@ public class Practica extends Asignatura {
     public void agregarMateriales(ArrayList l){
         this.material=l;
     }
+    
+/**
+ * Metodo para cambiar el sistema que utiliza la asignatura practica
+ * @param sistema Nuevo sistema
+ */    
+    public void setSistema(String sistema) {
+        this.sistema = sistema;
+    }
+    
+    /**
+     * Metodo para cambiar la lista de materiales que utiliza la asignatura practica
+     * @param material Nueva lista de materiales
+     */
+    public void setMaterial(ArrayList<String> material) {
+        this.material = material;
+    }
+
 }

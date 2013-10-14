@@ -10,10 +10,6 @@ package Datos.Asignatura;
  * @author Jorge Rojas
  */
 public class Teorica extends Asignatura {
-
-    public void setPagina(String pagina) {
-        this.pagina = pagina;
-    }
     
     private String pagina;
     
@@ -38,4 +34,13 @@ public class Teorica extends Asignatura {
     public String getPagina() {
         return pagina;
     }
+    
+    /**
+     *Metodo para cambiar la pagina de la asignatura teorica 
+     * @param pagina Nueva pagina
+     */
+    public void setPagina(String pagina) {
+        this.pagina = pagina;
+    }
+    
 }
