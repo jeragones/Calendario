@@ -6,7 +6,7 @@ package Presentacion;
 
 
 /**
- *
+ * Ventana que alerta al usuario
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */

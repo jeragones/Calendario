@@ -26,11 +26,11 @@ import java.util.List;
 
 
 /**
- *
+ * Interfaz con boton que permite resetear los archivos
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
-public class Borreme extends javax.swing.JFrame {
+public class Reset extends javax.swing.JFrame {
 
     public ArrayList<Aula> aulas = new ArrayList<>();
     public ArrayList<Asignatura> asignaturas = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Borreme extends javax.swing.JFrame {
     /**
      * Creates new form Borreme
      */
-    public Borreme() {
+    public Reset() {
         initComponents();
     }
 
@@ -396,7 +396,10 @@ public class Borreme extends javax.swing.JFrame {
             }
         }
     }
-    
+    /**
+     * Evento que resetea los archivos
+     * @param evt evento de interfaz
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ArchivoCls ins1 = new ArchivoCls();
         CalendarioCls ins = new CalendarioCls();
@@ -434,20 +437,20 @@ public class Borreme extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Borreme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reset.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Borreme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reset.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Borreme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reset.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Borreme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reset.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Borreme().setVisible(true);
+                new Reset().setVisible(true);
             }
         });
     }

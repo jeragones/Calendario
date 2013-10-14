@@ -33,8 +33,9 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 /**
- *
- * @author jdbr
+ *  Ventana que permite al profesor elegir el horario en que desea impartir cierta asignatura 
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class V_Asignatura extends javax.swing.JFrame {
 

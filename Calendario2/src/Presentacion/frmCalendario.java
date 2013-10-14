@@ -32,8 +32,9 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 /**
- *
- * @author GeOrge
+ * Ventana donde se muestra el horario generado
+ * @author Daniel Berrocal
+ * @author Jorge Rojas
  */
 public class frmCalendario extends javax.swing.JFrame {
 
