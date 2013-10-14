@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * Clase que permite administrar todas las asignaturas
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
@@ -17,6 +17,10 @@ public class AsignaturaCls {
     
     private static ArrayList<Asignatura> asignatura = new ArrayList<>();
     
+    /**
+     * Metodo que permite insertar una nueva asignatura
+     * @param args Nueva asignatura
+     */
     public void insertar(Object args) {
         asignatura.add((Asignatura)args);
     }

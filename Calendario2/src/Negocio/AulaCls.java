@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * Metodo que permite administrar las aulas
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
@@ -18,11 +18,18 @@ public class AulaCls implements Interface{
     private static ArrayList<Aula> aula = new ArrayList<>();
     ArchivoCls insArchivo = new ArchivoCls();
     
+    /**
+     * Metodo de la interface, que permite insertar una nueva aula en la lista de aulas
+     * @param args 
+     */
     @Override
     public void insertar(Object args) {
         aula.add((Aula)args);
     }
     
+    /**
+     * Metodo de la interface, que permite guardar la lista de aulas en su correspondiente archivo
+     */
     @Override
     public void guardar() {
         ArrayList<Object> lista = new ArrayList<>();

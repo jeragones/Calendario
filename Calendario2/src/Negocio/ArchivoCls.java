@@ -17,12 +17,17 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * Esta clase permite administrar las actividades del sistema con los archivos
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
 public class ArchivoCls {
     
+    /**
+     * Metodo para guardar
+     * @param nombre Nombre del archivo en el que desea guardar
+     * @param lista Lista de objetos que seran guardados
+     */
     public void guardar(String nombre, ArrayList<Object> lista) {
         String path = new File(".").getAbsolutePath();
         path = path.substring(0, path.length()-1) + "src\\Datos\\Archivos\\"+nombre+".obj";
@@ -50,6 +55,10 @@ public class ArchivoCls {
         }
     }
     
+    /**
+     * Metodo que obtiene la informacion de un archivo y la carga en las diferentes estructuras de datos
+     * @param nombre Nombre del archivo del que se desea obtener la informacion
+     */
     protected void cargar(String nombre) {
         String path = new File(".").getAbsolutePath();
         path = path.substring(0, path.length()-1) + "src\\Datos\\Archivos\\" + nombre + ".obj";
@@ -93,6 +102,9 @@ public class ArchivoCls {
         }
     }
     
+    /**
+     * Metodo que obtiene la informacion de todos los archivos por medio de 3 llamadas al metodo protegido de cargar
+     */
     public void cargar() {
         cargar("aula");
         cargar("departamento");

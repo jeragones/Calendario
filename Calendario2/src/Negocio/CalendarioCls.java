@@ -21,7 +21,7 @@ import java.util.List;
 
 
 /**
- *
+ *  Clase que perminte administrar el calendario
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * Interface 
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */

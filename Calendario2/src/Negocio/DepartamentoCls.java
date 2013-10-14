@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ *  Clase que permite administrar los departamentos
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
@@ -50,7 +50,11 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
         departamento = departament;
     }
     
-    
+    /**
+     * Metodo para buscar una asignatura
+     * @param name Nombre de la asignatura
+     * @return Retorna la asignatura a la que le corresponde el nombre
+     */
     public static Asignatura getAsig(String name){
         for(Departamento dep:departamento){
             for(Asignatura asig :dep.getAsignatura()){
@@ -64,6 +68,11 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
         return null;
     }
     
+    /**
+     * Metodo que permite obtener la lista de dias en los que se imparte una determinada asignatura
+     * @param codigo Codigo de la asignatura
+     * @return Retorna la lista de dias
+     */
     public static ArrayList<Dia> getHorario(String codigo) {
         for(int x=0; x < departamento.size(); x++) {
             for(int i=0; i < departamento.get(x).getAsignatura().size(); i++) {
@@ -74,6 +83,12 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
         return null;
     }
     
+    
+    /**
+     * Metodo que permite obtener la lista de aulas en las que se imparte una determinada asignatura
+     * @param codigo Codigo de la asignatura
+     * @return Retorna la lista de aulas
+     */
     public static ArrayList<Aula> getAula(String codigo) {
         for(int x=0; x < departamento.size(); x++) {
             for(int i=0; i < departamento.get(x).getAsignatura().size(); i++) {
@@ -85,6 +100,10 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
         return null;
     }
     
+    /**
+     * Metodo para eliminar una asignatura
+     * @param name Nombre de la asignatura que se desea eliminar
+     */
     public static void deleteAsig(String name){
         for(int i=0; i<departamento.size();i++){
             String dep = departamento.get(i).getDepartamento();
@@ -97,6 +116,11 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
         }
     }
     
+    /**
+     * Metodo que obtiene el departamento al que pertenece una determinada asignatura
+     * @param asig Asignatura de la que se desea conocer el departamento
+     * @return Departamento
+     */
     public static Departamento getDepartamentoporAsignatura(String asig){
         for(Departamento dep:departamento){
             for(Asignatura asigna :dep.getAsignatura()){
