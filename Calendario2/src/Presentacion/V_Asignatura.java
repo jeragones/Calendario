@@ -4,6 +4,34 @@
  */
 package Presentacion;
 
+import Datos.Asignatura.Asignatura;
+import Datos.Horario.Dia;
+import Datos.Horario.Horario;
+import Negocio.ArchivoCls;
+import Negocio.AulaCls;
+import Negocio.CalendarioCls;
+import Negocio.DepartamentoCls;
+import Negocio.UsuarioCls;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.DefaultDesktopManager;
+import javax.swing.DefaultListModel;
+import javax.swing.DesktopManager;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
+
 /**
  *
  * @author jdbr
@@ -13,6 +41,10 @@ public class V_Asignatura extends javax.swing.JFrame {
     /**
      * Creates new form V_Asignatura
      */
+    public static Asignatura asig=null;
+    DefaultListModel modelo = new DefaultListModel();
+    public static ArrayList<Dia> dias =new ArrayList();
+    
     public V_Asignatura() {
         initComponents();
     }
@@ -27,8 +59,19 @@ public class V_Asignatura extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        txt_Titulo = new javax.swing.JLabel();
+        jC_dia = new javax.swing.JComboBox();
+        jc_Hora = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -37,21 +80,58 @@ public class V_Asignatura extends javax.swing.JFrame {
             }
         });
 
+        txt_Titulo.setText("jLabel1");
+
+        jC_dia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" }));
+
+        jc_Hora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Morning", "Afternoon" }));
+
+        jScrollPane1.setViewportView(jList1);
+
+        jButton2.setText("Add");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(335, Short.MAX_VALUE)
-                .addComponent(jButton1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txt_Titulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jC_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jc_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(txt_Titulo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jC_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jc_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -61,7 +141,101 @@ public class V_Asignatura extends javax.swing.JFrame {
         // TODO add your handling code here:
         V_Profesor.vp.modelo.clear();
         V_Profesor.vp.setVisible(true);
+        this.setVisible(false);
+               
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        asig=V_Profesor.asignatura;
+        txt_Titulo.setText(asig.getNombre());
+        
+        ArchivoCls insArchivo = new ArchivoCls();
+        if(asig.getHorario().get(0)!=null){
+            for(Dia d:asig.getHorario()){
+                modelo.addElement(new String (d.getDia()+" "+d.getHorario().get(0).getHoraInicio()+"-"+d.getHorario().get(0).getHoraFinal()));
+
+            }
+        }
+        else{
+            modelo.clear();
+        }
+        jList1.setModel(modelo);
+        
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String dia = jC_dia.getSelectedItem().toString();
+        String hora="";
+        Dia d=null;
+        Horario h =null;        
+        switch(dia){
+            case("Monday"):
+                d=new Dia("Lunes");
+                hora=jc_Hora.getSelectedItem().toString();
+                switch(hora){
+                    case("Morning"):
+                        h =new Horario("7:00", "11:30");
+                        break;
+                    case("Afternoon"):
+                        h= new Horario("12:30", "4:30");
+                        break;
+                }
+            break;    
+            case("Tuesday"):
+                d=new Dia("Martes");
+                hora=jc_Hora.getSelectedItem().toString();
+                switch(hora){
+                    case("Morning"):
+                        h =new Horario("7:00", "11:30");
+                        break;
+                    case("Afternoon"):
+                        h= new Horario("12:30", "4:30");
+                        break;
+                }
+            break;    
+            case("Wednesday"):
+                d=new Dia("Miercoles");
+                hora=jc_Hora.getSelectedItem().toString();
+                switch(hora){
+                    case("Morning"):
+                        h =new Horario("7:00", "11:30");
+                        break;
+                    case("Afternoon"):
+                        h= new Horario("12:30", "4:30");
+                        break;
+                }
+            break;    
+            case("Thursday"):
+                d=new Dia("Jueves");
+                hora=jc_Hora.getSelectedItem().toString();
+                switch(hora){
+                    case("Morning"):
+                        h =new Horario("7:00", "11:30");
+                        break;
+                    case("Afternoon"):
+                        h= new Horario("12:30", "4:30");
+                        break;
+                }
+            break;    
+            case("Friday"):
+                d=new Dia("Viernes");
+                hora=jc_Hora.getSelectedItem().toString();
+                switch(hora){
+                    case("Morning"):
+                        h =new Horario("7:00", "11:30");
+                        break;
+                    case("Afternoon"):
+                        h= new Horario("12:30", "4:30");
+                        break;
+                }
+        }
+        d.agregar(h);
+        asig.agregar(d);
+        modelo.addElement(new String (d.getDia()+" "+d.getHorario().get(0).getHoraInicio()+"-"+d.getHorario().get(0).getHoraFinal()));
+        jList1.setModel(modelo);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,5 +273,11 @@ public class V_Asignatura extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jC_dia;
+    private javax.swing.JList jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox jc_Hora;
+    private javax.swing.JLabel txt_Titulo;
     // End of variables declaration//GEN-END:variables
 }
