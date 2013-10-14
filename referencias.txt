@@ -1,0 +1,13 @@
+Suárez, V, (2013) Programación de Horarios Escolares basados en Ritmos Cognitivos usando un Algoritmo Genético de Clasificación. Recuperado el 30 de Septiembre de 2013, de http://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0718-07642013000100012
+Rodríguez, P, (S.F) Introducción a los algoritmos genéticos y sus aplicaciones. Recuperado el 5 de Septiembre de 2013, de http://www.uv.es/asepuma/X/J24C.pdf
+
+
+
+
+
+
+
+
+
+
+
