@@ -418,6 +418,7 @@ public class Reset extends javax.swing.JFrame {
         
         ArrayList<Asignatura> calendario = ins.crear(DepartamentoCls.getDepartamento(), UsuarioCls.getUsuario(), AulaCls.getAula(), 0);
         
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
