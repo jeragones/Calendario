@@ -5,7 +5,7 @@
 package Datos.Asignatura;
 
 /**
- * Asignatura Practica
+ * Asignatura Teorica
  * @author Daniel Berrocal
  * @author Jorge Rojas
  */
