@@ -265,8 +265,8 @@ public class CalendarioCls {
     }
     
     protected void ordenar(List<Asignatura> calendario, List<Asignatura> cursos) {
-        for(int x=0; x < cursos.size(); x++) {
-            
-        }
+        System.out.println("No se pudo ordenar los cursos:");
+        for(int x=0; x < cursos.size(); x++)
+            System.out.println(cursos.get(x).getCodigo()+" "+cursos.get(x).getNombre());
     }
 }
