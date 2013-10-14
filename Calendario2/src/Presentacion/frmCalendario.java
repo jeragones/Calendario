@@ -5,6 +5,9 @@
 package Presentacion;
 
 import Datos.Asignatura.Asignatura;
+import Datos.Aula.Aula;
+import Datos.Horario.Dia;
+import Datos.Horario.Horario;
 import Negocio.ArchivoCls;
 import Negocio.AulaCls;
 import Negocio.CalendarioCls;
@@ -20,6 +23,7 @@ import javax.swing.DefaultDesktopManager;
 import javax.swing.DesktopManager;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -53,6 +57,15 @@ public class frmCalendario extends javax.swing.JFrame {
         cmbSemestre = new javax.swing.JComboBox();
         pnlDesktop = new javax.swing.JDesktopPane();
         frmInterno = new javax.swing.JInternalFrame();
+        lblCabeza1 = new javax.swing.JLabel();
+        lblDato1 = new javax.swing.JLabel();
+        lblDato2 = new javax.swing.JLabel();
+        lblCabeza2 = new javax.swing.JLabel();
+        lblDato3 = new javax.swing.JLabel();
+        lblCabeza3 = new javax.swing.JLabel();
+        lblDato4 = new javax.swing.JLabel();
+        lblCabeza4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHorario = new javax.swing.JTable();
 
@@ -74,20 +87,86 @@ public class frmCalendario extends javax.swing.JFrame {
 
         pnlDesktop.setPreferredSize(new java.awt.Dimension(490, 100));
 
+        frmInterno.setClosable(true);
+        frmInterno.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        frmInterno.setResizable(true);
         frmInterno.setVisible(true);
+
+        lblCabeza1.setText("jLabel1");
+
+        lblDato1.setText("jLabel2");
+
+        lblDato2.setText("jLabel2");
+
+        lblCabeza2.setText("jLabel1");
+
+        lblDato3.setText("jLabel2");
+
+        lblCabeza3.setText("jLabel1");
+
+        lblDato4.setText("jLabel2");
+
+        lblCabeza4.setText("jLabel1");
+
+        jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout frmInternoLayout = new javax.swing.GroupLayout(frmInterno.getContentPane());
         frmInterno.getContentPane().setLayout(frmInternoLayout);
         frmInternoLayout.setHorizontalGroup(
             frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 6, Short.MAX_VALUE)
+            .addGroup(frmInternoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frmInternoLayout.createSequentialGroup()
+                        .addComponent(lblCabeza1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDato1))
+                    .addGroup(frmInternoLayout.createSequentialGroup()
+                        .addComponent(lblCabeza2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDato2))
+                    .addGroup(frmInternoLayout.createSequentialGroup()
+                        .addComponent(lblCabeza3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDato3))
+                    .addGroup(frmInternoLayout.createSequentialGroup()
+                        .addComponent(lblCabeza4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDato4)))
+                .addContainerGap(240, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmInternoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton2))
         );
         frmInternoLayout.setVerticalGroup(
             frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 11, Short.MAX_VALUE)
+            .addGroup(frmInternoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCabeza1)
+                    .addComponent(lblDato1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCabeza2)
+                    .addComponent(lblDato2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCabeza3)
+                    .addComponent(lblDato3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCabeza4)
+                    .addComponent(lblDato4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jButton2))
         );
 
-        frmInterno.setBounds(550, 300, 22, 40);
+        frmInterno.setBounds(210, 90, 340, 150);
         pnlDesktop.add(frmInterno, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(500, 20));
@@ -125,11 +204,12 @@ public class frmCalendario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlDesktop, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)))
+                    .addComponent(jButton1))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,17 +218,50 @@ public class frmCalendario extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         frmInterno.setVisible(false);
         this.setTitle("Horario");
+        lblCabeza1.setVisible(false);
+        lblCabeza2.setVisible(false);
+        lblCabeza3.setVisible(false);
+        lblCabeza4.setVisible(false);
+        lblDato1.setVisible(false);
+        lblDato2.setVisible(false);
+        lblDato3.setVisible(false);
+        lblDato4.setVisible(false);
     }//GEN-LAST:event_formComponentShown
 
     private static void datos(String[] cabeza, String[] datos) {
+        int tamano=0;
         for(int i=0; i < datos.length; i++) {
-            JLabel etiqueta = new JLabel();
-            String texto = cabeza[i]+datos[i];
-            etiqueta.setText(texto);
-            etiqueta.setPreferredSize(new Dimension(texto.length(), 5));
-            etiqueta.setLocation(5, (i+1)*10);
-            frmInterno.add(etiqueta);
+            if((cabeza[i]+datos[i]).length() > tamano)
+                tamano = (cabeza[i]+datos[i]).length();
+            switch (i) {
+                case 0:
+                    lblCabeza1.setText(cabeza[i]);
+                    lblCabeza1.setVisible(true);
+                    lblDato1.setText(datos[i]);
+                    lblDato1.setVisible(true);
+                    break;
+                case 1:
+                    lblCabeza2.setText(cabeza[i]);
+                    lblCabeza2.setVisible(true);
+                    lblDato2.setText(datos[i]);
+                    lblDato2.setVisible(true);
+                    break;
+                case 2:
+                    lblCabeza3.setText(cabeza[i]);
+                    lblCabeza3.setVisible(true);
+                    lblDato3.setText(datos[i]);
+                    lblDato3.setVisible(true);
+                    break;
+                case 3:
+                    lblCabeza4.setText(cabeza[i]);
+                    lblCabeza4.setVisible(true);
+                    lblDato4.setText(datos[i]);
+                    lblDato4.setVisible(true);
+                    break;
+            }
         }
+        
+        frmInterno.setSize(new Dimension(tamano*9, frmInterno.getSize().height));
     }
     public static void frmInterna(String codigo, int columna) {
         DesktopManager manager = new DefaultDesktopManager() {
@@ -187,21 +300,44 @@ public class frmCalendario extends javax.swing.JFrame {
                                       String.valueOf(curso.getCreditos()),
                                       String.valueOf(curso.getSemestre())};
                 datos(cabeza, datos);
-                JLabel cod = new JLabel(codigo);
-                cod.setPreferredSize(new Dimension(2*codigo.length(), 5));
-                cod.setLocation(5, 5);
-                JLabel nom = new JLabel(curso.getNombre());
-                nom.setPreferredSize(new Dimension(2*curso.getNombre().length(), 5));
-                nom.setLocation(5,  cod.getLocation().y+10);
-                JLabel gru = new JLabel(String.valueOf(curso.getGrupo()));
-                gru.setPreferredSize(new Dimension(4, 5));
-                gru.setLocation(5, nom.getLocation().y+10);
                 break;
             case 1:
+                ArrayList<Dia> horario = DepartamentoCls.getHorario(codigo);
+                cabeza = new String[] {"Día: ", "Horario: "};
+                String dia="", hora="";
+                if(!horario.isEmpty()) {
+                    for(int x=0; x < horario.size(); x++) {
+                        dia = horario.get(x).getDia();
+                        for(int y=0; y < horario.get(x).getHorario().size(); y++) {
+                            if(!horario.get(x).getHorario().get(y).isEstado()) {
+                                hora = horario.get(x).getHorario().get(y).getHoraInicio()+" a "+horario.get(x).getHorario().get(y).getHoraFinal();
+                                break;
+                            }
+                        }
+                        if(!hora.equals(""))
+                            break;
+                    }
+                }
+                datos = new String[] {dia, hora}; 
+                datos(cabeza, datos);
                 break;
             case 2:
+                ArrayList<Aula> aula = DepartamentoCls.getAula(codigo);
+                cabeza = new String[] {"Name: ", "Number: ", "Location: ", "Capacity: "};
+                String nombre="", numero="", ubicacion="", capacidad="";
+                if(!aula.isEmpty()) {
+                    for(int x=0; x < aula.size(); x++) {
+                        nombre = aula.get(x).getNombre();
+                        numero = String.valueOf(aula.get(x).getNumero());
+                        ubicacion = aula.get(x).getUbicacion();
+                        capacidad = String.valueOf(aula.get(x).getCapacidad());
+                    }
+                }
+                datos = new String[] {nombre, numero, ubicacion, capacidad}; 
+                datos(cabeza, datos);
                 break;
             case 3:
+                
                 break;
         }
     }
@@ -225,6 +361,7 @@ public class frmCalendario extends javax.swing.JFrame {
         tblHorario.addMouseListener(new TableButtonMouseListener(tblHorario));
         
         jButton1.setText(String.valueOf(calendario.size()));
+        
         for(int i=0; i < calendario.size(); i++) {
             tblHorario.setPreferredSize(new Dimension(500, tblHorario.getPreferredSize().height+16));
             Vector vector = new Vector();
@@ -249,12 +386,17 @@ public class frmCalendario extends javax.swing.JFrame {
                 if(bandera)
                     break;
             }
-            vector.add(new JButton(dia+" - "+horaInicial+" - "+horaFinal));
+            vector.add(new JButton("Horario"/*dia+" - "+horaInicial+" - "+horaFinal*/));
             vector.add("Oscar");
             data.add(vector);
         }
         tblHorario.setModel(new TableButtonModel(data,columns));
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        frmInterno.setVisible(false);                
+        frmCalendario.tblHorario.setEnabled(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,9 +436,18 @@ public class frmCalendario extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbSemestre;
     public static javax.swing.JInternalFrame frmInterno;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private static javax.swing.JLabel lblCabeza1;
+    private static javax.swing.JLabel lblCabeza2;
+    private static javax.swing.JLabel lblCabeza3;
+    private static javax.swing.JLabel lblCabeza4;
+    private static javax.swing.JLabel lblDato1;
+    private static javax.swing.JLabel lblDato2;
+    private static javax.swing.JLabel lblDato3;
+    private static javax.swing.JLabel lblDato4;
     public static javax.swing.JDesktopPane pnlDesktop;
-    private javax.swing.JTable tblHorario;
+    public static javax.swing.JTable tblHorario;
     // End of variables declaration//GEN-END:variables
 }
 
@@ -387,6 +538,7 @@ class TableButtonMouseListener implements MouseListener {
         button = (JButton)value;
         frmCalendario.frmInterna(button.getText(), column);
         frmCalendario.frmInterno.setVisible(true);   
+        frmCalendario.tblHorario.setEnabled(false);
         table.repaint();
     }
     
@@ -401,12 +553,12 @@ class TableButtonMouseListener implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        EventToButton(e);
+        //EventToButton(e);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        EventToButton(e);
+        //EventToButton(e);
     }
 
     @Override

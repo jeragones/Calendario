@@ -64,7 +64,7 @@ public class UsuarioCls implements Interface{
                 Profesor profe = (Profesor)Prof;
                 for(Asignatura asigna:profe.getAsignatura()){
                     String a=asigna.getNombre();
-                    if (asigna.getNombre().equals(asig)){
+                    if (asigna.getNombre().equals(asig) || asigna.getCodigo().equals(asig)) {
                         return profe;
                     }                   
                 }                

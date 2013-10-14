@@ -6,6 +6,8 @@ package Negocio;
 
 import Datos.Asignatura.Asignatura;
 import Datos.Asignatura.Departamento;
+import Datos.Aula.Aula;
+import Datos.Horario.Dia;
 import java.util.ArrayList;
 
 
@@ -59,6 +61,27 @@ public class DepartamentoCls implements Interface, java.io.Serializable{
             
         }
         
+        return null;
+    }
+    
+    public static ArrayList<Dia> getHorario(String codigo) {
+        for(int x=0; x < departamento.size(); x++) {
+            for(int i=0; i < departamento.get(x).getAsignatura().size(); i++) {
+                if(codigo.equals(departamento.get(x).getAsignatura().get(i).getCodigo()))
+                    return departamento.get(x).getAsignatura().get(i).getHorario();
+            }
+        }
+        return null;
+    }
+    
+    public static ArrayList<Aula> getAula(String codigo) {
+        for(int x=0; x < departamento.size(); x++) {
+            for(int i=0; i < departamento.get(x).getAsignatura().size(); i++) {
+                if(codigo.equals(departamento.get(x).getAsignatura().get(i).getCodigo())) {
+                    return departamento.get(x).getAsignatura().get(i).getAula();
+                }
+            }
+        }
         return null;
     }
     
